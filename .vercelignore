@@ -1,0 +1,5 @@
+uploads/
+.image-slots.state.json
+.thumbnail
+.claude/
+supabase-*.sql
