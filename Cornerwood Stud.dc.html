@@ -390,7 +390,9 @@ a.btn-primary, a.btn-primary:hover{ color:var(--color-bg); }
 .contact-side p{ font-size:16px; line-height:1.7; margin:0 0 var(--half); }
 .contact-side h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:18px; margin:calc(1.5*var(--leading)) 0 var(--half); }
 .contact-side h3:first-child{ margin-top:0; }
-.contact-side image-slot{ width:100%; aspect-ratio:16/9; margin-top:var(--half); }
+.contact-photo{ width:100%; aspect-ratio:16/10; overflow:hidden; margin-top:var(--half); background:#e7e5e1; }
+.contact-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 38%; display:block; }
+@media (max-width:880px){ .contact-photo{ aspect-ratio:4/3; } }
 @media (max-width:880px){ .contact-grid{ grid-template-columns:minmax(0,1fr); } .split{ grid-template-columns:minmax(0,1fr); } .stats .grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
 @media (max-width:520px){ .contact-grid form .btn{ width:100%; align-self:stretch !important; } }
 @media (max-width:640px){
@@ -979,47 +981,6 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
 </div>
 </sc-if>
 
-<sc-if value="{{ isServiceSalesAgency }}" hint-placeholder-val="{{ false }}">
-<div class="wrap">
-  <div class="service-split">
-    <div class="service-split-text">
-      <div class="pagehead" style="padding-top:calc(1.6*var(--leading));">
-        <span class="kicker">Services</span>
-        <h1>Horse Sales</h1>
-        <p class="service-lead">Sourcing and selling quality, handpicked horses, and representing trusted breeders and private owners across Europe and Ireland.</p>
-      </div>
-      <div class="service-body">
-        <p>We pick horses on how they go and how they behave, not on what they cost. Every horse is ridden by us before it's advertised, so we can tell you honestly what it's like. Viewings are by appointment, so you get the time to try the horse properly.</p>
-        <p>When we're acting as agent, we're working for the breeder or private seller, and our job is to put the right buyer and the right horse together. If a horse isn't right for you, we'll say so.</p>
-      </div>
-      <ul class="checklist">
-        <li>Handpicked horses assessed for ability and temperament</li>
-        <li>Agency representation for breeders across Europe &amp; Ireland</li>
-        <li>Viewings, trials and vettings arranged for serious buyers</li>
-        <li>Honest guidance on suitability, not just a sale</li>
-      </ul>
-      <div class="service-cta">
-        <button type="button" class="btn btn-primary" onClick="{{ goSale }}">Browse horses for sale</button>
-        <button type="button" class="btn btn-secondary" onClick="{{ goContact }}">Enquire</button>
-      </div>
-    </div>
-    <div class="collage-grid">
-      <img class="big" src="assets/sale-collage/sale-4.jpg" alt="Sport horse for sale at Cornerwood Stud" loading="lazy" decoding="async">
-      <img src="assets/sale-collage/sale-1.jpg" alt="Horse being shown in hand at Cornerwood" loading="lazy" decoding="async">
-      <img src="assets/sale-collage/sale-7.jpg" alt="Young horse at Cornerwood Stud" loading="lazy" decoding="async">
-      <img src="assets/sale-collage/sale-3.jpg" alt="Horse sold through Cornerwood Stud" loading="lazy" decoding="async">
-      <img src="assets/sale-collage/sale-9.jpg" alt="Horse ready for viewing at Cornerwood" loading="lazy" decoding="async">
-      <img class="big" src="assets/sale-collage/sale-11.jpg" alt="Sport horse at Cornerwood Stud, East Sussex" loading="lazy" decoding="async">
-      <img src="assets/sale-collage/sale-6.jpg" alt="Horse in the arena at Cornerwood" loading="lazy" decoding="async">
-      <img src="assets/sale-collage/sale-2.jpg" alt="Horse for sale in East Sussex" loading="lazy" decoding="async">
-      <img src="assets/sale-collage/sale-10.jpg" alt="Cornerwood horse on the yard" loading="lazy" decoding="async">
-      <img src="assets/sale-collage/sale-8.jpg" alt="Irish sport horse at Cornerwood" loading="lazy" decoding="async">
-      <img src="assets/sale-collage/sale-5.jpg" alt="Horse sold by Cornerwood Stud" loading="lazy" decoding="async">
-    </div>
-  </div>
-</div>
-</sc-if>
-
 <sc-if value="{{ isServiceSalesLivery }}" hint-placeholder-val="{{ false }}">
 <div class="wrap">
   <div class="pagehead">
@@ -1160,7 +1121,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       <p>Battle, East Sussex, England</p>
       <h3>Facebook</h3>
       <p><a href="https://www.facebook.com/cornerwoodstud" target="_blank" rel="noopener">Follow us on Facebook</a></p>
-      <image-slot id="contact-map" shape="rect" src="assets/aerial-yard.jpg" alt="Aerial view of the Cornerwood Stud yard" placeholder="Drop a map or yard photo"></image-slot>
+      <div class="contact-photo"><img src="assets/aerial-yard.jpg" alt="Aerial view of the Cornerwood Stud yard in Battle, East Sussex" loading="lazy" decoding="async" width="1600" height="1200"></div>
     </div>
   </div>
 </div>
@@ -1211,7 +1172,6 @@ class Component extends DCLogic {
   ROUTES = {
     home: '/', about: '/about', team: '/team', stallions: '/stallions',
     sale: '/horses', facilities: '/facilities', services: '/services',
-    'service-sales-agency': '/services/sales-agency',
     'service-sales-livery': '/services/sales-livery',
     'service-producing': '/services/producing',
     'service-breeding': '/services/breeding',
@@ -1230,7 +1190,7 @@ class Component extends DCLogic {
     if (parts[0] === 'team' && parts[1]) return { page: 'team-member', teamMemberId: parts[1] };
     if (parts[0] === 'horses' && parts[1]) return { page: 'horse-detail', horseId: parts[1] };
     if (parts[0] === 'services' && parts[1]) {
-      const svc = { 'sales-agency': 'service-sales-agency', 'sales-livery': 'service-sales-livery', 'producing': 'service-producing', 'breeding': 'service-breeding' }[parts[1]];
+      const svc = { 'sales-agency': 'services', 'sales-livery': 'service-sales-livery', 'producing': 'service-producing', 'breeding': 'service-breeding' }[parts[1]];
       if (svc) return { page: svc };
     }
     for (const [page, path] of Object.entries(this.ROUTES)) {
@@ -1459,7 +1419,6 @@ class Component extends DCLogic {
     sale: ['Horses for Sale in East Sussex | Cornerwood Stud', 'Browse quality, handpicked sport horses for sale at Cornerwood Stud in Battle, East Sussex. Allrounders, hunters, eventers and competition prospects. Viewings by appointment.'],
     facilities: ['Facilities | Floodlit Arena, Stabling & Hacking | Cornerwood Stud', 'A floodlit 20x40 arena, show jumps, cross country fences, horse walker, spacious stabling and safe off-road hacking next to Battle Abbey in East Sussex.'],
     services: ['Equestrian Services | Sales, Livery & Schooling | Cornerwood Stud', 'Horse sales and agency, sales livery, producing and schooling, and breeding services from Cornerwood Stud in Battle, East Sussex.'],
-    'service-sales-agency': ['Horse Sales & Agency | Cornerwood Stud', 'Quality, handpicked horses sourced and sold with honest advice. Cornerwood also acts as agent for trusted breeders and private owners across Europe and Ireland.'],
     'service-sales-livery': ['Sales Livery in East Sussex | Cornerwood Stud', 'Selling a horse? Our sales livery covers producing, photos, video, advertising, viewings, vettings and the sale itself, with regular updates for owners.'],
     'service-producing': ['Producing & Schooling Horses | Cornerwood Stud', 'Correct, sympathetic schooling for young and green horses in East Sussex. Starting, confidence building, flatwork, poles and jumping with regular feedback for owners.'],
     'service-breeding': ['Breeding & Stud Services | Cornerwood Stud', 'A small, carefully chosen stallion line up each season with limited bookings for outside mares, plus guidance on suitability and covering arrangements.'],
@@ -1549,7 +1508,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const page = this.state.page;
-    const servicePages = ['services', 'service-sales-agency', 'service-sales-livery', 'service-producing', 'service-breeding'];
+    const servicePages = ['services', 'service-sales-livery', 'service-producing', 'service-breeding'];
     const pagesBefore = [
       ['home','Home'], ['sale','Horses for Sale']
     ];
@@ -1567,7 +1526,6 @@ class Component extends DCLogic {
     const navItemsAfter = pagesAfter.map(mkNavItem);
     const servicesNavStyle = { color: servicePages.includes(page) ? 'var(--color-accent)' : 'var(--color-text)' };
     const serviceSubPages = [
-      ['service-sales-agency', 'Horse Sales'],
       ['service-sales-livery', 'Sales Livery'],
       ['service-producing', 'Producing & Schooling'],
       ['service-breeding', 'Breeding & Stud Services']
@@ -1591,7 +1549,6 @@ class Component extends DCLogic {
     return {
       isHome: page === 'home', isAbout: page === 'about', isTeam: page === 'team', isStallions: page === 'stallions',
       isSale: page === 'sale', isFacilities: page === 'facilities', isTerms: page === 'terms', isServices: page === 'services',
-      isServiceSalesAgency: page === 'service-sales-agency',
       isServiceSalesLivery: page === 'service-sales-livery',
       isServiceProducing: page === 'service-producing',
       isServiceBreeding: page === 'service-breeding',
@@ -1614,7 +1571,6 @@ class Component extends DCLogic {
       goFacilities: this.link('facilities'),
       goTerms: this.link('terms'),
       goServices: this.link('services'),
-      goServiceSalesAgency: this.link('service-sales-agency'),
       goServiceSalesLivery: this.link('service-sales-livery'),
       goServiceProducing: this.link('service-producing'),
       goServiceBreeding: this.link('service-breeding'),
@@ -1708,10 +1664,9 @@ class Component extends DCLogic {
         { num: '07', title: 'Keeping owners informed', copy: 'You get regular updates on how the horse is going and on every serious enquiry, with as much or as little day-to-day involvement as you want.' }
       ],
       services: [
-        { num: '01', title: 'Horse Sales', copy: 'Sourcing and selling quality, handpicked horses, and acting as agent for reputable breeders across Europe and Ireland.', href: this.pathForPage('service-sales-agency', {}), goto: this.link('service-sales-agency') },
-        { num: '02', title: 'Sales Livery', copy: 'Taking horses on a sales livery basis, advertising, enquiries and viewings handled for you, with as much or as little involvement as you like.', href: this.pathForPage('service-sales-livery', {}), goto: this.link('service-sales-livery') },
-        { num: '03', title: 'Producing & Schooling', copy: 'Bringing young or green horses on with correct, sympathetic schooling to bring out their best.', href: this.pathForPage('service-producing', {}), goto: this.link('service-producing') },
-        { num: '04', title: 'Breeding & Stud Services', copy: 'Stallions standing at stud each season, with a small number of spaces for outside mares.', href: this.pathForPage('service-breeding', {}), goto: this.link('service-breeding') }
+        { num: '01', title: 'Sales Livery', copy: 'Taking horses on a sales livery basis, advertising, enquiries and viewings handled for you, with as much or as little involvement as you like.', href: this.pathForPage('service-sales-livery', {}), goto: this.link('service-sales-livery') },
+        { num: '02', title: 'Producing & Schooling', copy: 'Bringing young or green horses on with correct, sympathetic schooling to bring out their best.', href: this.pathForPage('service-producing', {}), goto: this.link('service-producing') },
+        { num: '03', title: 'Breeding & Stud Services', copy: 'Stallions standing at stud each season, with a small number of spaces for outside mares.', href: this.pathForPage('service-breeding', {}), goto: this.link('service-breeding') }
       ]
     };
   }
