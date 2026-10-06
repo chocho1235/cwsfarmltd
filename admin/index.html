@@ -3,7 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cornerwood Stud — Admin</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0e2b26">
+<title>Cornerwood Stud, Admin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
@@ -22,15 +27,27 @@
   .wrap{ max-width:1000px; margin:0 auto; padding:0 20px; }
 
   /* --- gate --- */
-  #gate{ min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--cw-green); padding:20px; }
-  .gate-box{ background:var(--bg); padding:40px 36px; width:100%; max-width:360px; box-shadow:0 12px 32px rgba(0,0,0,.3); }
-  .gate-box h1{ font-size:24px; margin-bottom:6px; color:var(--cw-green); }
-  .gate-box p{ font-size:14px; color:#6b6764; margin:0 0 20px; }
-  .gate-box input{ width:100%; padding:12px 14px; font-size:15px; border:1px solid var(--divider); margin-bottom:12px; font-family:inherit; }
-  .gate-box input:focus{ outline:2px solid var(--gold); outline-offset:0; border-color:var(--gold); }
-  .gate-box button{ width:100%; padding:12px 14px; background:var(--gold); color:var(--cw-green); border:0; font-family:'Oswald',sans-serif; font-weight:500; font-size:15px; letter-spacing:.02em; cursor:pointer; }
-  .gate-box button:hover{ background:var(--gold-dark); color:#fff; }
-  .gate-error{ color:var(--danger); font-size:13px; margin:-4px 0 12px; display:none; }
+  #gate{ min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px; padding:32px 20px;
+    background:radial-gradient(1100px 560px at 50% -8%, #1f4d43 0%, var(--cw-green) 62%); }
+  .gate-logo{ width:min(240px,64vw); height:auto; display:block; }
+  .gate-box{ background:#faf9f7; width:100%; max-width:400px; padding:34px 34px 30px; border-top:3px solid var(--gold); box-shadow:0 24px 60px rgba(0,0,0,.38), 0 2px 6px rgba(0,0,0,.2); }
+  .gate-box h1{ font-size:26px; margin:0 0 4px; color:var(--cw-green); letter-spacing:.01em; }
+  .gate-box .gate-sub{ font-size:13.5px; color:#6b6764; margin:0 0 24px; }
+  .gate-field{ margin-bottom:16px; }
+  .gate-field label{ display:block; font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:#6b6764; margin-bottom:6px; }
+  .gate-input{ position:relative; }
+  .gate-input input{ width:100%; padding:12px 14px; font-size:15px; font-family:inherit; color:var(--text); background:#fff; border:1px solid var(--divider); transition:border-color .15s ease, box-shadow .15s ease; }
+  .gate-input input:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(184,165,98,.28); }
+  .gate-input input[type=password], .gate-input input.has-toggle{ padding-right:64px; }
+  .gate-toggle{ position:absolute; right:6px; top:50%; transform:translateY(-50%); background:none; border:0; padding:6px 8px; font-family:inherit; font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--gold-dark); cursor:pointer; }
+  .gate-toggle:hover{ color:var(--cw-green); }
+  .gate-error{ display:none; background:#fbeaea; border-left:3px solid var(--danger); color:var(--danger); font-size:13px; line-height:1.45; padding:10px 12px; margin:0 0 16px; }
+  .gate-box button.gate-submit{ width:100%; padding:13px 14px; background:var(--cw-green); color:var(--gold); border:0; font-family:'Oswald',sans-serif; font-weight:500; font-size:15px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer; transition:background .15s ease, color .15s ease; }
+  .gate-box button.gate-submit:hover:not(:disabled){ background:var(--gold); color:var(--cw-green); }
+  .gate-box button.gate-submit:disabled{ opacity:.6; cursor:not-allowed; }
+  .gate-foot{ text-align:center; font-size:12.5px; color:rgba(255,255,255,.62); line-height:1.7; }
+  .gate-foot a{ color:var(--gold); text-decoration:none; }
+  .gate-foot a:hover{ text-decoration:underline; }
 
   /* --- dashboard --- */
   #dashboard{ display:none; }
@@ -97,13 +114,28 @@
 <body>
 
 <div id="gate">
-  <form class="gate-box" id="gateForm">
-    <h1>Cornerwood Stud</h1>
-    <p>Admin access</p>
-    <input type="password" id="gatePassword" placeholder="Password" autocomplete="current-password" autofocus>
-    <div class="gate-error" id="gateError">Incorrect password.</div>
-    <button type="submit">Enter</button>
+  <img class="gate-logo" src="/assets/cornerwood-logo.svg" alt="Cornerwood Stud &amp; Sport Horses">
+  <form class="gate-box" id="gateForm" novalidate>
+    <h1>Admin sign in</h1>
+    <p class="gate-sub">Sign in to manage horses for sale.</p>
+    <div class="gate-field">
+      <label for="gateEmail">Email</label>
+      <div class="gate-input"><input type="email" id="gateEmail" autocomplete="username" required autofocus></div>
+    </div>
+    <div class="gate-field">
+      <label for="gatePassword">Password</label>
+      <div class="gate-input">
+        <input type="password" id="gatePassword" autocomplete="current-password" required>
+        <button type="button" class="gate-toggle" id="gateToggle" aria-label="Show password">Show</button>
+      </div>
+    </div>
+    <div class="gate-error" id="gateError" role="alert"></div>
+    <button type="submit" class="gate-submit" id="gateBtn">Sign in</button>
   </form>
+  <div class="gate-foot">
+    Authorised staff only<br>
+    <a href="/">&larr; Back to website</a>
+  </div>
 </div>
 
 <div id="dashboard">
@@ -111,7 +143,7 @@
     <div class="wrap">
       <div>
         <span class="sub">Cornerwood Stud</span>
-        <h1>Horses for sale — admin</h1>
+        <h1>Horses for sale, admin</h1>
       </div>
       <a class="logout" id="logoutBtn">Log out</a>
     </div>
@@ -162,7 +194,7 @@
             <label>Photos</label>
             <div class="gallery" id="gallery"></div>
             <label class="gallery-drop" id="galleryDrop" for="f-photo-input">
-              Drag &amp; drop photos here, or click to choose files — first photo is the cover. Drag thumbnails to reorder.
+              Drag &amp; drop photos here, or click to choose files, first photo is the cover. Drag thumbnails to reorder.
               <input type="file" id="f-photo-input" accept="image/*" multiple>
             </label>
           </div>
@@ -192,8 +224,6 @@
 (function(){
   var SUPABASE_URL = 'https://jioacvzzweugnacuzoyo.supabase.co';
   var SUPABASE_KEY = 'sb_publishable_AP2frH528wRVmUIq_hSgLw_f7aq5oRf';
-  var ADMIN_PASSWORD = 'Cuteplummy1!';
-  var SESSION_KEY = 'cw_admin_unlocked';
 
   var sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   var editingId = null;
@@ -212,25 +242,92 @@
     loadHorses();
   }
 
-  if (sessionStorage.getItem(SESSION_KEY) === '1') {
-    unlock();
+  function lock(){
+    dashboard.style.display = 'none';
+    gate.style.display = 'flex';
   }
+
+  sb.auth.getSession().then(function(res){
+    if (res.data && res.data.session) unlock();
+  });
+
+  sb.auth.onAuthStateChange(function(event, session){
+    if (event === 'SIGNED_OUT') lock();
+  });
+
+  var FAIL_KEY = 'cw_admin_fails';
+  var gateBtn = document.getElementById('gateBtn');
+  var lockTimer = null;
+
+  function readFails(){
+    try { return JSON.parse(localStorage.getItem(FAIL_KEY)) || { n: 0, until: 0 }; }
+    catch (e) { return { n: 0, until: 0 }; }
+  }
+  function writeFails(f){
+    try { localStorage.setItem(FAIL_KEY, JSON.stringify(f)); } catch (e) {}
+  }
+  function showGateError(msg){
+    gateError.textContent = msg;
+    gateError.style.display = msg ? 'block' : 'none';
+  }
+  function tickLock(){
+    var f = readFails();
+    var left = Math.ceil((f.until - Date.now()) / 1000);
+    if (left > 0) {
+      gateBtn.disabled = true;
+      gateBtn.textContent = 'Try again in ' + left + 's';
+      showGateError('Too many failed attempts. Please wait before trying again.');
+      lockTimer = setTimeout(tickLock, 500);
+    } else {
+      gateBtn.disabled = false;
+      gateBtn.textContent = 'Sign in';
+      if (f.until) { showGateError(''); writeFails({ n: f.n, until: 0 }); }
+    }
+  }
+  tickLock();
+
+  document.getElementById('gateToggle').addEventListener('click', function(){
+    var pw = document.getElementById('gatePassword');
+    var show = pw.type === 'password';
+    pw.type = show ? 'text' : 'password';
+    this.textContent = show ? 'Hide' : 'Show';
+    this.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+  });
 
   gateForm.addEventListener('submit', function(e){
     e.preventDefault();
-    var val = document.getElementById('gatePassword').value;
-    if (val === ADMIN_PASSWORD) {
-      sessionStorage.setItem(SESSION_KEY, '1');
-      gateError.style.display = 'none';
+    var f = readFails();
+    if (f.until > Date.now()) return;
+    var email = document.getElementById('gateEmail').value.trim();
+    var password = document.getElementById('gatePassword').value;
+    if (!email || !password) { showGateError('Please enter your email and password.'); return; }
+    gateBtn.disabled = true;
+    gateBtn.textContent = 'Signing in\u2026';
+    showGateError('');
+    sb.auth.signInWithPassword({ email: email, password: password }).then(function(res){
+      document.getElementById('gatePassword').value = '';
+      if (res.error || !res.data.session) {
+        var n = f.n + 1;
+        // 5 free tries, then 30s, 60s, 120s ... capped at 15 min
+        var wait = n >= 5 ? Math.min(900, 30 * Math.pow(2, n - 5)) : 0;
+        writeFails({ n: n, until: wait ? Date.now() + wait * 1000 : 0 });
+        var rateLimited = res.error && (res.error.status === 429 || /rate limit/i.test(res.error.message || ''));
+        showGateError(rateLimited ? 'Too many attempts. Please wait a few minutes and try again.' : 'Incorrect email or password.');
+        gateBtn.disabled = false;
+        gateBtn.textContent = 'Sign in';
+        if (wait) tickLock();
+        return;
+      }
+      writeFails({ n: 0, until: 0 });
+      showGateError('');
+      gateBtn.disabled = false;
+      gateBtn.textContent = 'Sign in';
       unlock();
-    } else {
-      gateError.style.display = 'block';
-    }
+    });
   });
 
   document.getElementById('logoutBtn').addEventListener('click', function(){
-    sessionStorage.removeItem(SESSION_KEY);
-    location.reload();
+    sb.auth.signOut();
   });
 
   function esc(s){
@@ -420,7 +517,7 @@
         }
         var horses = res.data || [];
         if (!horses.length) {
-          wrap.innerHTML = '<div class="empty">No horses yet — add one above.</div>';
+          wrap.innerHTML = '<div class="empty">No horses yet, add one above.</div>';
           return;
         }
         var rows = horses.map(function(h){
