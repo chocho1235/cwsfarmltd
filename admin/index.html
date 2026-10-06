@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
@@ -109,6 +110,38 @@
   .gallery-drop{ border:2px dashed var(--divider); padding:18px; text-align:center; font-size:13px; color:#8a8683; cursor:pointer; transition:border-color .15s ease, background .15s ease; }
   .gallery-drop:hover, .gallery-drop.drag-over{ border-color:var(--gold); background:#faf8f1; color:var(--text); }
   .gallery-drop input{ display:none; }
+
+  /* --- phones & small tablets --- */
+  html{ -webkit-text-size-adjust:100%; }
+  @media (max-width:640px){
+    main{ padding:20px 0 60px; }
+    .wrap{ padding:0 14px; }
+    .form-grid{ grid-template-columns:1fr; padding:16px; }
+    .field input[type=text], .field textarea, .gate-input input{ font-size:16px; padding:11px 12px; }
+    .field.checkbox input{ width:22px; height:22px; }
+    .form-actions{ padding:14px 16px; }
+    .form-actions .btn{ flex:1; justify-content:center; min-height:46px; }
+    .panel-head{ padding:14px 16px; }
+    .hint{ padding:0 16px 14px; }
+    .btn-small{ padding:9px 12px; font-size:12px; }
+    header.top a.logout{ display:inline-flex; align-items:center; min-height:44px; }
+    .gate-box{ padding:28px 20px 24px; }
+    .gallery{ grid-template-columns:repeat(auto-fill, minmax(84px, 1fr)); }
+    .gallery-item .remove-btn{ width:28px; height:28px; font-size:16px; }
+    /* horse list as stacked cards */
+    #tableWrap table, #tableWrap tbody, #tableWrap tr, #tableWrap td{ display:block; width:100%; }
+    #tableWrap thead{ display:none; }
+    #tableWrap tr{ position:relative; padding:14px 16px 14px 80px; min-height:92px; border-bottom:1px solid var(--divider); }
+    #tableWrap tr:last-child{ border-bottom:0; }
+    #tableWrap td{ padding:2px 0; border:0; font-size:14px; }
+    #tableWrap td:first-child{ position:absolute; left:16px; top:16px; width:auto; padding:0; }
+    #tableWrap .thumb{ width:52px; height:52px; }
+    #tableWrap td:nth-child(3):not(:empty)::before{ content:"Age: "; color:#8a8683; }
+    #tableWrap td:nth-child(4):not(:empty)::before{ content:"Price: "; color:#8a8683; }
+    #tableWrap td:nth-child(5){ margin-top:4px; }
+    #tableWrap .row-actions{ flex-wrap:wrap; margin-top:8px; }
+    #tableWrap .row-actions .btn{ min-height:40px; }
+  }
 </style>
 </head>
 <body>

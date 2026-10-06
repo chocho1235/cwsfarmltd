@@ -1,21 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <base href="/">
+<title>Cornerwood Stud &amp; Sport Horses | Horses for Sale, East Sussex</title>
+<meta name="description" content="Family-run stud in Battle, East Sussex. Handpicked sport horses for sale, sales livery, producing and schooling, and agency for breeders across Europe and Ireland.">
+<link rel="canonical" href="https://www.cornerwoodstud.co.uk/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cornerwood Stud &amp; Sport Horses">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Cornerwood Stud &amp; Sport Horses | Horses for Sale, East Sussex">
+<meta property="og:description" content="Family-run stud in Battle, East Sussex. Handpicked sport horses for sale, sales livery, producing and schooling, and agency for breeders across Europe and Ireland.">
+<meta property="og:url" content="https://www.cornerwoodstud.co.uk/">
+<meta property="og:image" content="https://www.cornerwoodstud.co.uk/assets/hickstead-jump.jpg">
+<meta property="og:image:alt" content="Horse and rider jumping at Hickstead">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cornerwood Stud &amp; Sport Horses | Horses for Sale, East Sussex">
+<meta name="twitter:description" content="Family-run stud in Battle, East Sussex. Handpicked sport horses for sale, sales livery, producing and schooling, and agency for breeders across Europe and Ireland.">
+<meta name="twitter:image" content="https://www.cornerwoodstud.co.uk/assets/hickstead-jump.jpg">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#0e2b26">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://www.cornerwoodstud.co.uk/#business",
+      "name": "Cornerwood Stud & Sport Horses",
+      "alternateName": "Cornerwood Stud",
+      "description": "Family-run stud in Battle, East Sussex, producing and selling quality handpicked sport horses, offering sales livery, producing and schooling, and acting as agent for breeders across Europe and Ireland.",
+      "url": "https://www.cornerwoodstud.co.uk/",
+      "logo": "https://www.cornerwoodstud.co.uk/assets/cornerwood-logo.png",
+      "image": ["https://www.cornerwoodstud.co.uk/assets/aerial-yard.jpg", "https://www.cornerwoodstud.co.uk/assets/hickstead-jump.jpg", "https://www.cornerwoodstud.co.uk/assets/facilities-stables.jpg"],
+      "telephone": "+44 1424 614191",
+      "email": "info@cornerwoodstud.co.uk",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Battle",
+        "addressRegion": "East Sussex",
+        "addressCountry": "GB"
+      },
+      "areaServed": ["GB", "IE", "Europe"],
+      "knowsAbout": ["Sport horses", "Horses for sale", "Sales livery", "Producing and schooling horses", "Horse breeding", "Horse transport"],
+      "sameAs": ["https://www.facebook.com/cornerwoodstud"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.cornerwoodstud.co.uk/#website",
+      "url": "https://www.cornerwoodstud.co.uk/",
+      "name": "Cornerwood Stud & Sport Horses",
+      "inLanguage": "en-GB",
+      "publisher": { "@id": "https://www.cornerwoodstud.co.uk/#business" }
+    }
+  ]
+}
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <helmet>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cornerwood Stud &amp; Sport Horses</title>
 <link rel="stylesheet" href="_ds/modernist-1ca8d532-5af8-4808-84b9-07885c1f434c/styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,39 +80,55 @@
   --cw-green:#0e2b26; --cw-green-light:#153f37;
   --font-heading:'Fraunces', serif; --font-heading-weight:600; }
 h1,h2,h3,.f-title,.stat-num,.split-title{ letter-spacing:0.005em; }
-body{ margin:0; text-wrap:pretty; overflow-x:hidden; }
+/* The runtime pins html/body/root to 100% height, which makes the page scroll inside a
+   fixed-height box and breaks the sticky header. Let the document scroll normally. */
+html, body{ height:auto !important; }
+#dc-root, #dc-root > .sc-host{ height:auto !important; min-height:100vh; }
+html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+body{ margin:0; text-wrap:pretty; overflow-x:hidden; overflow-x:clip; -webkit-tap-highlight-color:color-mix(in srgb, var(--color-accent) 25%, transparent); }
+img{ max-width:100%; }
 a{ color:var(--color-accent-700); text-decoration:none; }
 a:hover{ color:var(--color-accent); text-decoration:underline; }
-.wrap{ max-width:1280px; margin:0 auto; padding:0 var(--edge); }
+.wrap{ max-width:1280px; margin:0 auto; padding:0 max(var(--edge), env(safe-area-inset-right)) 0 max(var(--edge), env(safe-area-inset-left)); }
 .rule2{ height:2px; border:0; margin:0; background:var(--color-divider); }
 .kicker{ display:block; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700; margin:0 0 var(--half); }
 .pagehead{ padding:calc(2.5*var(--leading)) 0 var(--leading); }
 .pagehead h1{ font-family:'Oswald', sans-serif; font-weight:500; font-size:clamp(30px,4.2vw,52px); line-height:1.05; letter-spacing:-0.005em; margin:0 0 var(--half); }
 .pagehead p{ font-size:17px; line-height:var(--leading); max-width:var(--measure); color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:0; }
-.topbar{ position:sticky; top:0; z-index:20; }
+.topbar{ position:sticky; top:0; z-index:40; }
 .topbar-top{ background:var(--cw-green); }
-.topbar-top .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px 24px; padding-top:14px; padding-bottom:14px; flex-wrap:wrap; }
+.topbar-top .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px 24px; padding-top:14px; padding-bottom:14px; }
+.logo-link{ display:block; flex-shrink:0; line-height:0; }
+.logo-img{ display:block; height:120px; width:auto; }
 .keep-touch{ text-align:right; }
 .keep-touch-title{ display:block; font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--color-accent); margin:0 0 6px; }
 .keep-touch-line{ display:flex; align-items:center; justify-content:flex-end; gap:7px; font-size:15px; font-weight:600; color:var(--color-accent); line-height:1.7; }
 .keep-touch-line svg{ flex-shrink:0; }
-@media (max-width:520px){ .keep-touch-line{ justify-content:flex-start; } }
 .keep-touch-line:hover{ color:#fff; text-decoration:none; }
+.mobile-actions{ display:none; align-items:center; gap:8px; }
+.icon-btn{ display:inline-flex; align-items:center; justify-content:center; width:46px; height:46px; padding:0; border:1px solid color-mix(in srgb, var(--color-accent) 55%, transparent); border-radius:0; background:transparent; color:var(--color-accent); cursor:pointer; transition:color .15s ease, border-color .15s ease; }
+.icon-btn:hover{ color:#fff; border-color:var(--color-accent); text-decoration:none; }
+.icon-btn svg{ width:20px; height:20px; }
+.menu-bars, .menu-bars::before, .menu-bars::after{ display:block; width:20px; height:2px; background:currentColor; transition:transform .2s ease, background .2s ease; }
+.menu-bars{ position:relative; }
+.menu-bars::before, .menu-bars::after{ content:""; position:absolute; left:0; }
+.menu-bars::before{ top:-6px; }
+.menu-bars::after{ top:6px; }
+.menu-btn[aria-expanded="true"] .menu-bars{ background:transparent; }
+.menu-btn[aria-expanded="true"] .menu-bars::before{ transform:translateY(6px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] .menu-bars::after{ transform:translateY(-6px) rotate(-45deg); }
+@media (prefers-reduced-motion:reduce){ .menu-bars, .menu-bars::before, .menu-bars::after{ transition:none; } }
 .topbar-nav{ background:var(--color-bg); border-top:3px solid var(--color-accent); border-bottom:3px solid var(--color-accent); }
-.topbar-nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px 16px; padding-top:4px; padding-bottom:4px; flex-wrap:wrap; }
+.topbar-nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px 16px; padding-top:4px; padding-bottom:4px; }
 .brand{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:22px; letter-spacing:-0.01em; color:#fff; }
 .brand small{ display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:400; color:color-mix(in srgb, #fff 65%, transparent); }
 .navrow{ display:flex; align-items:center; gap:13px 22px; flex-wrap:wrap; flex:1 1 auto; min-width:0; }
 .navrow a{ font-size:14px; letter-spacing:.02em; text-transform:uppercase; font-weight:600; color:var(--color-text); white-space:nowrap; }
 .navrow a:hover{ color:var(--color-accent); text-decoration:none; }
-.nav-dropdown-menu a{ color:#fff; }
-@media (max-width:1180px){
-  .topbar-nav .wrap{ justify-content:flex-start; }
-  .topbar-nav .btn{ order:1; }
-  .navrow{ order:2; flex:1 1 100%; padding-top:6px; }
-  .topbar-top img{ height:84px !important; }
-}
-@media (max-width:520px){ .topbar-top img{ height:64px !important; } .keep-touch{ text-align:left; } }
+.nav-cta{ flex-shrink:0; font-size:14px; padding:12px 24px; }
+a.btn:hover{ text-decoration:none; }
+a.btn-primary, a.btn-primary:hover{ color:var(--color-bg); }
+.nav-contact{ display:none; }
 .nav-dropdown{ position:relative; }
 .nav-dropdown > .nav-dropdown-toggle{ display:inline-flex; align-items:center; gap:5px; cursor:pointer; }
 .nav-dropdown > .nav-dropdown-toggle::after{ content:""; width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid currentColor; opacity:.85; }
@@ -70,25 +137,45 @@ a:hover{ color:var(--color-accent); text-decoration:underline; }
 .nav-dropdown-menu.is-open,
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown:focus-within .nav-dropdown-menu{ display:flex; }
-.nav-dropdown-menu a{ padding:11px 20px; font-size:13px; letter-spacing:.02em; text-transform:none; font-weight:600; white-space:nowrap; }
+.nav-dropdown-menu a{ color:#fff; padding:11px 20px; font-size:13px; letter-spacing:.02em; text-transform:none; font-weight:600; white-space:nowrap; }
 .nav-dropdown-menu a:hover{ background:color-mix(in srgb, var(--color-accent) 12%, transparent); text-decoration:none; }
-@media (max-width:1180px){
-  .nav-dropdown{ flex:1 1 100%; order:2; }
-  .nav-dropdown-menu{ position:static; transform:none; margin-top:8px; margin-left:14px; background:transparent; border:0; border-left:2px solid var(--cw-green-light); box-shadow:none; padding:2px 0 2px 14px; }
+/* Phones and tablets: compact bar with a menu button, links in a drop-down panel */
+@media (max-width:960px){
+  .topbar-top{ border-bottom:3px solid var(--color-accent); }
+  .topbar-top .wrap{ padding-top:10px; padding-bottom:10px; }
+  .logo-img{ height:64px; }
+  .keep-touch{ display:none; }
+  .mobile-actions{ display:flex; }
+  .topbar-nav{ display:none; border-top:0; max-height:calc(100vh - 90px); max-height:calc(100dvh - 90px); overflow-y:auto; overscroll-behavior:contain; box-shadow:0 18px 32px rgba(0,0,0,.22); }
+  .topbar-nav.is-open{ display:block; }
+  .topbar-nav .wrap{ flex-direction:column; align-items:stretch; gap:0; padding-top:6px; padding-bottom:22px; }
+  .navrow{ flex-direction:column; align-items:stretch; flex-wrap:nowrap; gap:0; flex:none; }
+  .navrow a{ display:flex; align-items:center; min-height:50px; font-size:15px; white-space:normal; border-bottom:1px solid var(--color-divider); }
+  .nav-dropdown > .nav-dropdown-toggle{ display:flex; }
   .nav-dropdown > .nav-dropdown-toggle::after{ display:none; }
+  .nav-dropdown-menu, .nav-dropdown:hover .nav-dropdown-menu{ display:flex; position:static; transform:none; margin:0; min-width:0; background:transparent; border:0; box-shadow:none; padding:0 0 0 18px; }
+  .nav-dropdown-menu::before{ display:none; }
+  .nav-dropdown-menu a{ color:var(--color-text); padding:0; font-size:15px; min-height:46px; }
+  .nav-dropdown-menu a:hover{ background:none; color:var(--color-accent); }
+  .nav-cta{ width:100%; min-height:52px; margin-top:20px; font-size:16px; }
+  .nav-contact{ display:flex; flex-direction:column; margin-top:14px; }
+  .nav-contact a{ display:flex; align-items:center; gap:10px; min-height:44px; font-size:15px; font-weight:600; color:var(--color-accent-700); }
 }
+@media (max-width:520px){ .logo-img{ height:52px; } }
+/* Desktop: the logo row scrolls away and only the nav strip stays pinned (logo 120px + 28px padding) */
+@media (min-width:961px){ .topbar{ top:-148px; } }
 .hero{ position:relative; height:min(60vh,480px); border-bottom:2px solid var(--color-accent); background:var(--cw-green); }
 .hero image-slot{ position:absolute; inset:0; }
 .hero-band{ background:var(--cw-green); }
 .hero-band .wrap{ padding-top:calc(1.8*var(--leading)); padding-bottom:calc(1.8*var(--leading)); }
 .hero-band .rule-gold{ width:64px; height:3px; background:var(--color-accent); margin:0 0 var(--half); }
-.hero-band h1{ font-family:'Oswald', sans-serif; font-weight:500; color:#fff; font-size:clamp(22px,3.6vw,50px); line-height:1.05; letter-spacing:-0.005em; margin:0 0 10px; white-space:nowrap; }
-@media (max-width:640px){ .hero-band h1{ white-space:normal; font-size:clamp(26px,8vw,34px); line-height:1.12; } }
+.hero-band h1{ font-family:'Oswald', sans-serif; font-weight:500; color:#fff; font-size:clamp(22px,3.6vw,50px); line-height:1.08; letter-spacing:-0.005em; margin:0 0 10px; text-wrap:balance; }
+@media (max-width:640px){ .hero-band h1{ font-size:clamp(26px,8vw,34px); line-height:1.12; } .hero-band p{ font-size:17px; } }
 .hero-band .hero-btn{ padding:18px 44px; font-size:18px; min-height:60px; letter-spacing:.01em; }
 .hero-band .hero-btn-outline{ color:#fff; background:transparent; border:1px solid color-mix(in srgb, #fff 70%, transparent); transition:background .15s ease, color .15s ease, border-color .15s ease; }
 .hero-band .hero-btn-outline:hover{ background:var(--color-accent); border-color:var(--color-accent); color:var(--cw-green); }
 .hero-band .hero-btn-row{ display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
-@media (max-width:520px){ .hero-band .hero-btn{ width:100%; padding:16px 24px; font-size:17px; } }
+@media (max-width:520px){ .hero-band .hero-btn{ width:100%; padding:16px 24px; font-size:17px; min-height:54px; } }
 .hero-band p{ color:color-mix(in srgb, #fff 88%, transparent); font-size:19px; margin:0; max-width:60ch; }
 
 .split{ display:grid; grid-template-columns:minmax(0,6fr) minmax(0,6fr); gap:var(--leading) clamp(24px,5vw,96px); align-items:center; padding:calc(2.5*var(--leading)) 0; }
@@ -98,7 +185,7 @@ a:hover{ color:var(--color-accent); text-decoration:underline; }
 .teasers{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:2px solid var(--color-accent); border-bottom:2px solid var(--color-accent); }
 .teasers > div{ padding:calc(2*var(--leading)) clamp(20px,3vw,40px); border-left:2px solid var(--color-accent); display:flex; flex-direction:column; gap:12px; }
 .teasers > div:first-child{ border-left:0; padding-left:0; }
-.teasers h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:26px; margin:0; letter-spacing:-0.01em; }
+.teasers h2{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:26px; margin:0; letter-spacing:-0.01em; }
 .teasers p{ font-size:15.5px; line-height:1.65; color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:0; }
 .teasers a{ font-size:13px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-top:auto; }
 @media (max-width:880px){ .teasers{ grid-template-columns:1fr; } .teasers > div{ border-left:0; padding-left:0; border-top:2px solid var(--color-accent); } .teasers > div:first-child{ border-top:0; } }
@@ -135,14 +222,15 @@ a:hover{ color:var(--color-accent); text-decoration:underline; }
 .tc-slide .testimonial-card figcaption{ display:block; width:auto; margin:28px 0 0; padding:0; border:0; text-align:center; }
 .tc-slide .testimonial-card figcaption::before{ content:""; display:block; width:44px; height:1px; background:#c9b47e; margin:0 auto 16px; }
 .tc-slide .testimonial-name{ font-family:'Work Sans',sans-serif; font-size:12px; font-weight:500; letter-spacing:.3em; text-transform:uppercase; color:#c9b47e; }
-.tc-controls{ display:flex; align-items:center; justify-content:center; gap:clamp(18px,4vw,36px); margin-top:calc(1.5*var(--leading)); }
-.tc-arrow{ width:auto; height:auto; border:0; border-radius:0; background:none; padding:6px 2px; font-family:'Work Sans',sans-serif; font-size:11.5px; font-weight:500; letter-spacing:.3em; text-transform:uppercase; color:#c9b47e; cursor:pointer; position:relative; transition:color .15s ease; }
-.tc-arrow::after{ content:""; position:absolute; left:0; right:.3em; bottom:0; height:1px; background:#c9b47e; transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
+.tc-controls{ display:flex; align-items:center; justify-content:center; gap:clamp(10px,4vw,36px); margin-top:calc(1*var(--leading)); }
+@media (max-width:380px){ .tc-dot{ width:22px; } .tc-dots{ gap:6px; } }
+.tc-arrow{ width:auto; height:auto; min-height:44px; border:0; border-radius:0; background:none; padding:6px 4px; font-family:'Work Sans',sans-serif; font-size:11.5px; font-weight:500; letter-spacing:.3em; text-transform:uppercase; color:#c9b47e; cursor:pointer; position:relative; transition:color .15s ease; }
+.tc-arrow::after{ content:""; position:absolute; left:4px; right:calc(.3em + 4px); bottom:10px; height:1px; background:#c9b47e; transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
 .tc-arrow:hover{ color:#ece5d3; background:none; }
 .tc-arrow:hover::after{ transform:scaleX(1); }
 .tc-dots{ display:flex; gap:8px; }
-.tc-dot{ width:30px; height:14px; padding:0; border:0; border-radius:0; background:none; cursor:pointer; position:relative; transform:none; }
-.tc-dot::before{ content:""; position:absolute; left:0; right:0; top:6px; height:2px; background:rgba(201,180,126,.3); transition:background .25s ease; }
+.tc-dot{ width:30px; height:44px; padding:0; border:0; border-radius:0; background:none; cursor:pointer; position:relative; transform:none; }
+.tc-dot::before{ content:""; position:absolute; left:0; right:0; top:21px; height:2px; background:rgba(201,180,126,.3); transition:background .25s ease; }
 .tc-dot:hover::before{ background:rgba(201,180,126,.7); }
 .tc-dot.is-active{ background:none; transform:none; }
 .tc-dot.is-active::before{ background:#c9b47e; }
@@ -190,8 +278,8 @@ a:hover{ color:var(--color-accent); text-decoration:underline; }
 .sale-card-link{ cursor:pointer; transition:border-color .15s ease; }
 .sale-card-link:hover{ border-color:var(--color-accent); }
 .sale-photo{ display:block; width:100%; margin:0; aspect-ratio:1; }
-.sale-name{ background:var(--cw-green-light); border-left:3px solid var(--color-accent); padding:9px 14px; margin:20px 0 18px; }
-.sale-name span{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:#fff; }
+.sale-name{ font-size:inherit; line-height:1.3; background:var(--cw-green-light); border-left:3px solid var(--color-accent); padding:9px 14px; margin:20px 0 18px; }
+.sale-name a{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:#fff; }
 .sale-specs{ display:flex; flex-direction:column; gap:9px; }
 .detail-specs{ display:flex; flex-direction:row; flex-wrap:wrap; gap:8px 20px; margin-bottom:calc(1.2*var(--leading)); }
 .detail-specs div{ font-size:13px; letter-spacing:.03em; text-transform:uppercase; color:var(--color-accent-700); }
@@ -202,6 +290,8 @@ a:hover{ color:var(--color-accent); text-decoration:underline; }
 .sold-flag i{ position:absolute; top:26px; right:-34px; width:150px; text-align:center; transform:rotate(45deg); background:var(--color-accent); color:var(--cw-green); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-style:normal; padding:5px 0; }
 .flag-emoji{ font-size:14px; letter-spacing:0; margin-left:2px; display:inline-block; }
 .horse-detail-layout{ grid-template-columns:minmax(0,5fr) minmax(0,7fr); }
+.horse-detail-layout > .split-figure{ container-type:inline-size; }
+.horse-detail-layout .photo-nav{ top:calc(50cqi - 22px); }
 @media (max-width:880px){ .horse-detail-layout{ grid-template-columns:1fr; } }
 .horse-videos{ margin-top:calc(1.2*var(--leading)); padding-top:calc(1.2*var(--leading)); border-top:2px solid var(--color-divider); max-width:64ch; display:flex; flex-direction:column; gap:16px; }
 .video-frame{ position:relative; width:100%; aspect-ratio:16/9; background:#000; }
@@ -233,30 +323,36 @@ a:hover{ color:var(--color-accent); text-decoration:underline; }
 .cw-badge-text{ display:flex; flex-direction:column; align-items:flex-start; gap:7px; min-width:0; }
 .cw-badges .cw-title{ margin:0; font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:clamp(21px,1.9vw,26px); line-height:1.1; letter-spacing:0; color:var(--cw-gold); }
 @media (max-width:1100px){ .cw-badges{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media (max-width:520px){
-  .cw-badges{ grid-template-columns:1fr; gap:10px; }
-  .cw-badge-inner{ padding:12px 14px; gap:14px; }
+@media (max-width:560px){
+  .cw-badges{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .cw-badge-inner{ flex-direction:column; align-items:center; text-align:center; gap:10px; padding:20px 8px 16px; }
+  .cw-badge-text{ align-items:center; }
   .cw-badges .cw-icon{ width:46px; height:46px; }
   .cw-badges .cw-icon svg{ width:24px; height:24px; }
-  .cw-badges .cw-num,   .cw-badge-text{ gap:3px; }
+  .cw-badges .cw-title{ font-size:18px; }
 }
 .photo-thumbstrip{ display:flex; flex-wrap:nowrap; overflow-x:auto; gap:8px; margin-top:8px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
 .photo-thumb{ display:block; flex:0 0 auto; width:64px; aspect-ratio:1; padding:0; border:2px solid transparent; background:none; cursor:pointer; opacity:.65; transition:opacity .15s ease, border-color .15s ease; }
 .photo-thumb:hover{ opacity:1; }
 .photo-thumb.is-active{ opacity:1; border-color:var(--color-accent); }
-.photo-nav{ position:absolute; top:calc(50% - 20px); width:40px; height:40px; border-radius:50%; border:0; background:color-mix(in srgb, var(--cw-green) 70%, transparent); color:#fff; font-size:22px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; z-index:2; transition:background .15s ease; }
+.photo-nav{ position:absolute; top:calc(50% - 22px); width:44px; height:44px; border-radius:50%; border:0; background:color-mix(in srgb, var(--cw-green) 70%, transparent); color:#fff; font-size:22px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; z-index:2; transition:background .15s ease; }
 .photo-nav:hover{ background:var(--color-accent); }
 .photo-nav-prev{ left:8px; }
 .photo-nav-next{ right:8px; }
-@media (max-width:520px){ .photo-nav{ width:34px; height:34px; font-size:18px; top:calc(50% - 17px); } .photo-thumb{ width:56px; } }
+@media (max-width:520px){ .photo-nav{ width:44px; height:44px; font-size:22px; } .photo-thumb{ width:58px; } }
 .team-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:calc(1.4*var(--leading)) var(--leading); padding:var(--leading) 0 calc(2.5*var(--leading)); }
 .team-card{ display:flex; flex-direction:column; }
 .team-card-link{ cursor:pointer; padding:10px; margin:-10px; transition:background .15s ease; }
 .team-card-link:hover{ background:color-mix(in srgb, var(--cw-green) 10%, transparent); }
-.team-card-link:hover h3{ color:var(--color-accent-700); }
+.team-card-link:hover h3, .team-card-link:hover h3 a{ color:var(--color-accent-700); }
+.card-link, .card-link:hover{ color:inherit; text-decoration:none; }
+.back-link{ display:inline-flex; align-items:center; min-height:44px; font-size:13px; font-weight:600; letter-spacing:.02em; text-transform:uppercase; }
 .team-photo{ width:100%; aspect-ratio:4/5; overflow:hidden; background:#e7e5e1; margin-bottom:14px; }
 .team-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
 .team-photo-detail{ width:220px; aspect-ratio:1; margin-bottom:0; }
+.member-detail{ display:grid; grid-template-columns:220px minmax(0,1fr); gap:var(--leading) clamp(24px,4vw,64px); align-items:start; padding:calc(1.5*var(--leading)) 0 calc(2.5*var(--leading)); }
+.member-detail h1{ margin-bottom:4px; font-size:clamp(32px,4vw,42px); }
+@media (max-width:640px){ .member-detail{ grid-template-columns:1fr; padding-top:0; } .team-photo-detail{ width:min(260px,100%); } }
 .team-card h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:21px; margin:0 0 3px; letter-spacing:-0.01em; }
 .team-card .role{ font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700; margin:0 0 10px; }
 .team-card p.bio{ font-size:14px; line-height:1.6; color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:0; }
@@ -286,59 +382,90 @@ a:hover{ color:var(--color-accent); text-decoration:underline; }
 .close h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(28px,3.4vw,42px); margin:0; letter-spacing:-0.015em; }
 .close .btn-ghost{ color:var(--color-bg); border-color:var(--color-bg); }
 .contact-grid{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:calc(2*var(--leading)); padding:var(--leading) 0 calc(2.5*var(--leading)); }
+.contact-grid .field .input{ min-height:48px; padding:10px 14px; font-size:16px; }
+.contact-grid textarea.input{ min-height:150px; }
+.contact-grid form .btn{ min-height:50px; padding:12px 28px; font-size:15px; }
+.form-note{ font-size:13px; color:color-mix(in srgb, var(--color-text) 65%, transparent); margin:4px 0 0; }
 .contact-grid form{ display:flex; flex-direction:column; gap:var(--half); }
 .contact-side p{ font-size:16px; line-height:1.7; margin:0 0 var(--half); }
 .contact-side h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:18px; margin:calc(1.5*var(--leading)) 0 var(--half); }
 .contact-side h3:first-child{ margin-top:0; }
 .contact-side image-slot{ width:100%; aspect-ratio:16/9; margin-top:var(--half); }
-@media (max-width:880px){ .contact-grid{ grid-template-columns:1fr; } .split{ grid-template-columns:1fr; } .stats .grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:880px){ .contact-grid{ grid-template-columns:minmax(0,1fr); } .split{ grid-template-columns:minmax(0,1fr); } .stats .grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:520px){ .contact-grid form .btn{ width:100%; align-self:stretch !important; } }
+@media (max-width:640px){
+  .pagehead{ padding:calc(1.6*var(--leading)) 0 calc(.8*var(--leading)); }
+  .split{ padding:calc(1.6*var(--leading)) 0; }
+  .quote-banner, .testimonial-band{ padding:calc(1.8*var(--leading)) 0; }
+  .close .wrap{ padding-top:calc(1.8*var(--leading)); padding-bottom:calc(1.8*var(--leading)); }
+  .close .btn{ width:100%; min-height:52px; }
+  .service-cta .btn{ flex:1 1 100%; min-height:50px; }
+  .teasers > div{ padding:calc(1.4*var(--leading)) 0; }
+  .feature{ padding:var(--leading) 0; }
+  .service-lead{ font-size:17px; }
+  .pager{ gap:10px; }
+  .pager .btn-small{ min-height:44px; padding:8px 12px; }
+  .sale-card{ padding:16px 16px 20px; }
+  .horse-videos{ max-width:none; }
+}
 footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-accent); }
 .foot-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--leading); padding:calc(2*var(--leading)) 0 var(--leading); }
-.foot-grid h4{ font-size:13px; letter-spacing:.08em; text-transform:uppercase; margin:0 0 var(--half); color:var(--color-accent); }
+.foot-grid .foot-h{ font-family:inherit; font-weight:700; line-height:1.4; font-size:13px; letter-spacing:.08em; text-transform:uppercase; margin:0 0 var(--half); color:var(--color-accent); }
 .foot-grid p, .foot-grid a{ display:block; font-size:14.5px; line-height:1.8; color:#fff; }
 .foot-grid a:hover{ color:var(--color-accent); }
 .foot-bottom{ border-top:2px solid var(--cw-green-light); padding:20px 0; font-size:13px; color:color-mix(in srgb, #fff 65%, transparent); }
-@media (max-width:720px){ .foot-grid{ grid-template-columns:1fr; } }
+@media (max-width:900px){ .foot-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:calc(1.2*var(--leading)) var(--leading); } }
+@media (max-width:480px){ .foot-grid{ grid-template-columns:1fr; } }
+@media (max-width:720px){ .foot-grid a{ padding:5px 0; } .foot-bottom{ padding-bottom:max(20px, env(safe-area-inset-bottom)); } }
 </style>
 </helmet>
 
-<div class="topbar">
+<header class="topbar">
   <div class="topbar-top">
     <div class="wrap">
-      <a href="#" onClick="{{ goHome }}" style="display:block; flex-shrink:0; line-height:0;">
-        <img src="assets/cornerwood-logo.svg" alt="Cornerwood Stud &amp; Sport Horses" style="height:120px; width:auto; display:block;">
+      <a href="/" class="logo-link" onClick="{{ goHome }}" aria-label="Cornerwood Stud &amp; Sport Horses, home">
+        <img src="assets/cornerwood-logo.svg" alt="Cornerwood Stud &amp; Sport Horses" class="logo-img" width="224" height="120">
       </a>
       <div class="keep-touch">
         <span class="keep-touch-title">Keep in touch</span>
-        <a href="tel:+441424614191" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 (0) 1424 614191</a>
-        <a href="mailto:info@cornerwoodstud.co.uk" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>info@cornerwoodstud.co.uk</a>
+        <a href="tel:+441424614191" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 (0) 1424 614191</a>
+        <a href="mailto:info@cornerwoodstud.co.uk" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>info@cornerwoodstud.co.uk</a>
+      </div>
+      <div class="mobile-actions">
+        <a href="tel:+441424614191" class="icon-btn" aria-label="Call us on +44 1424 614191"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
+        <button type="button" class="icon-btn menu-btn" aria-controls="site-nav" aria-expanded="{{ menuExpanded }}" aria-label="{{ menuLabel }}" onClick="{{ toggleMenu }}"><span class="menu-bars"></span></button>
       </div>
     </div>
   </div>
-  <div class="topbar-nav">
+  <div class="{{ navPanelClass }}" id="site-nav">
     <div class="wrap">
-      <nav class="navrow">
+      <nav class="navrow" aria-label="Main">
         <sc-for list="{{ navItemsBefore }}" as="item" hint-placeholder-count="2">
-          <a href="#" onClick="{{ item.select }}" style="{{ item.style }}">{{ item.label }}</a>
+          <a href="{{ item.href }}" onClick="{{ item.select }}" style="{{ item.style }}">{{ item.label }}</a>
         </sc-for>
         <div class="nav-dropdown">
-          <a href="#" class="nav-dropdown-toggle" onClick="{{ selectServices }}" style="{{ servicesNavStyle }}">Services</a>
+          <a href="/services" class="nav-dropdown-toggle" onClick="{{ selectServices }}" style="{{ servicesNavStyle }}">Services</a>
           <div class="{{ servicesMenuClass }}">
-            <a href="#" onClick="{{ goServices }}">Overview</a>
+            <a href="/services" onClick="{{ goServices }}" class="nav-overview">Overview</a>
             <sc-for list="{{ serviceNavItems }}" as="item" hint-placeholder-count="4">
-              <a href="#" onClick="{{ item.select }}">{{ item.label }}</a>
+              <a href="{{ item.href }}" onClick="{{ item.select }}" style="{{ item.subStyle }}">{{ item.label }}</a>
             </sc-for>
           </div>
         </div>
         <sc-for list="{{ navItemsAfter }}" as="item" hint-placeholder-count="3">
-          <a href="#" onClick="{{ item.select }}" style="{{ item.style }}">{{ item.label }}</a>
+          <a href="{{ item.href }}" onClick="{{ item.select }}" style="{{ item.style }}">{{ item.label }}</a>
         </sc-for>
       </nav>
-      <button type="button" class="btn btn-primary" style="flex-shrink:0; font-size:14px; padding:12px 24px;" onClick="{{ goContact }}">Contact us</button>
+      <a href="/contact" class="btn btn-primary nav-cta" onClick="{{ goContact }}">Contact us</a>
+      <div class="nav-contact">
+        <a href="tel:+441424614191"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 (0) 1424 614191</a>
+        <a href="mailto:info@cornerwoodstud.co.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>info@cornerwoodstud.co.uk</a>
+      </div>
     </div>
   </div>
-</div>
+</header>
 
+<main id="main">
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <section class="hero-band">
   <div class="wrap">
@@ -413,24 +540,24 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       </div>
     </div>
     <figure class="split-figure" style="margin:0;">
-      <image-slot id="home-split" shape="rect" src="assets/hickstead-jump.jpg" placeholder="Drop a photo of horse and rider"></image-slot>
+      <image-slot id="home-split" alt="Horse and rider jumping at Hickstead" shape="rect" src="assets/hickstead-jump.jpg" placeholder="Drop a photo of horse and rider"></image-slot>
     </figure>
   </section>
   <section class="teasers">
     <div>
-      <h3>Stallions at Stud</h3>
+      <h2>Stallions at Stud</h2>
       <p>A small, carefully chosen selection standing for the current season, with limited bookings for outside mares.</p>
-      <a href="#" onClick="{{ goStallions }}">See the stallions &#8594;</a>
+      <a href="/stallions" onClick="{{ goStallions }}">See the stallions &#8594;</a>
     </div>
     <div>
-      <h3>Horses for Sale</h3>
+      <h2>Horses for Sale</h2>
       <p>From pleasure rides to top-class performance prospects, handpicked for ability and temperament.</p>
-      <a href="#" onClick="{{ goSale }}">Browse horses &#8594;</a>
+      <a href="/horses" onClick="{{ goSale }}">Browse horses &#8594;</a>
     </div>
     <div>
-      <h3>Services</h3>
+      <h2>Services</h2>
       <p>Sales livery, agency work, producing and schooling, tailored to your horse and your goals.</p>
-      <a href="#" onClick="{{ goServices }}">What we offer &#8594;</a>
+      <a href="/services" onClick="{{ goServices }}">What we offer &#8594;</a>
     </div>
   </section>
 </div>
@@ -533,18 +660,18 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       <p>Cornerwood has worked hard to build a name it's proud of, with many satisfied clients who return and recommend the yard to others.</p>
     </div>
     <figure class="split-figure" style="margin:0;">
-      <image-slot id="about-split" shape="rect" src="assets/aerial-yard.jpg" placeholder="Drop a photo of the yard or facilities"></image-slot>
+      <image-slot id="about-split" alt="Aerial view of the Cornerwood Stud yard in Battle, East Sussex" shape="rect" src="assets/aerial-yard.jpg" placeholder="Drop a photo of the yard or facilities"></image-slot>
     </figure>
   </section>
   <hr class="rule2">
   <section class="founder">
-    <div class="team-photo founder-photo"><img src="assets/harriet.jpg" alt="Harriet" loading="lazy"></div>
+    <div class="team-photo founder-photo"><img src="assets/harriet.jpg" alt="Harriet, founder of Cornerwood Stud" loading="lazy" width="832" height="1250"></div>
     <div class="founder-body">
       <span class="kicker">Meet the founder</span>
       <h2 class="founder-name">Harriet</h2>
       <p class="founder-role">Founder &amp; Producer</p>
       <p class="f-copy">Produces and sells quality sport horses, and works as an agent for trusted breeders across Europe and Ireland.</p>
-      <a href="#" class="founder-link" onClick="{{ goTeam }}">Meet the full team &#8594;</a>
+      <a href="/team" class="founder-link" onClick="{{ goTeam }}">Meet the full team &#8594;</a>
     </div>
   </section>
 </div>
@@ -560,9 +687,9 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
   <div class="team-grid">
     <sc-for list="{{ team }}" as="item" hint-placeholder-count="3">
       <article class="team-card team-card-link" onClick="{{ item.select }}">
-        <div class="team-photo"><img src="{{ item.photo }}" alt="{{ item.name }}" loading="lazy"></div>
+        <div class="team-photo"><img src="{{ item.photo }}" alt="{{ item.alt }}" loading="lazy" width="400" height="500"></div>
         <div>
-          <h3>{{ item.name }}</h3>
+          <h3><a href="{{ item.href }}" class="card-link">{{ item.name }}</a></h3>
           <p class="role">{{ item.role }}</p>
           <p class="bio">{{ item.bio }}</p>
         </div>
@@ -575,14 +702,12 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
 <sc-if value="{{ isTeamMember }}" hint-placeholder-val="{{ false }}">
 <div class="wrap">
   <div class="pagehead">
-    <a href="#" onClick="{{ goTeam }}" style="font-size:13px; font-weight:600; letter-spacing:.02em; text-transform:uppercase;">&#8592; Back to team</a>
+    <a href="/team" onClick="{{ goTeam }}" class="back-link">&#8592; Back to team</a>
   </div>
-  <section class="feature" style="border-top:0; grid-template-columns:220px minmax(0,1fr);">
-    <div class="split-figure" style="grid-column:1; width:220px;">
-      <div class="team-photo team-photo-detail"><img src="{{ selectedTeamMember.photo }}" alt="{{ selectedTeamMember.name }}"></div>
-    </div>
+  <section class="member-detail">
+    <div class="team-photo team-photo-detail"><img src="{{ selectedTeamMember.photo }}" alt="{{ selectedTeamMember.alt }}" width="400" height="400"></div>
     <div>
-      <h1 style="margin-bottom:4px;">{{ selectedTeamMember.name }}</h1>
+      <h1>{{ selectedTeamMember.name }}</h1>
       <p class="role" style="font-size:13px;">{{ selectedTeamMember.role }}</p>
       <p class="f-copy" style="margin-top:var(--half); max-width:60ch;">{{ selectedTeamMember.detailBio }}</p>
       <sc-if value="{{ selectedTeamMember.favouriteMoment }}" hint-placeholder-val="{{ false }}">
@@ -631,8 +756,8 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
   <div class="sale-grid">
     <sc-for list="{{ horsesForSale }}" as="item" hint-placeholder-count="6">
       <article class="sale-card sale-card-link" onClick="{{ item.select }}">
-        <div class="sale-photo"><image-slot style="width:100%; height:100%;" id="{{ item.id }}" shape="rect" fit="contain" src="{{ item.photo }}" placeholder="Photo"></image-slot></div>
-        <div class="sale-name"><span>{{ item.name }}</span></div>
+        <div class="sale-photo"><image-slot style="width:100%; height:100%;" id="{{ item.id }}" shape="rect" fit="contain" src="{{ item.photo }}" alt="{{ item.alt }}" placeholder="Photo"></image-slot></div>
+        <h2 class="sale-name"><a href="{{ item.href }}" class="card-link">{{ item.name }}</a></h2>
         <div class="sale-specs">
           <div>Age &middot; <b>{{ item.age }}</b></div>
           <div>Breed &middot; <b>{{ item.breed }}</b></div>
@@ -660,11 +785,11 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
 <sc-if value="{{ isHorseDetail }}" hint-placeholder-val="{{ false }}">
 <div class="wrap">
   <div class="pagehead">
-    <a href="#" onClick="{{ goSale }}" style="font-size:13px; font-weight:600; letter-spacing:.02em; text-transform:uppercase;">&#8592; Back to horses for sale</a>
+    <a href="/horses" onClick="{{ goSale }}" class="back-link">&#8592; Back to horses for sale</a>
   </div>
   <section class="feature horse-detail-layout" style="border-top:0; align-items:start;">
     <div class="split-figure" style="grid-column:1; position:relative;">
-      <image-slot id="{{ selectedHorse.id }}-detail" shape="rect" fit="contain" src="{{ selectedHorse.activePhoto }}" placeholder="Photo" style="width:100%; aspect-ratio:1;"></image-slot>
+      <image-slot id="{{ selectedHorse.id }}-detail" shape="rect" fit="contain" src="{{ selectedHorse.activePhoto }}" alt="{{ selectedHorse.alt }}" placeholder="Photo" style="width:100%; aspect-ratio:1;"></image-slot>
       <sc-if value="{{ selectedHorse.sold }}" hint-placeholder-val="{{ false }}">
         <div class="sold-flag"><i>Sold <sc-if value="{{ selectedHorse.exported_us }}" hint-placeholder-val="{{ false }}"><span class="flag-emoji">&#127482;&#127480;</span></sc-if></i></div>
       </sc-if>
@@ -673,7 +798,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
         <button type="button" class="photo-nav photo-nav-next" onClick="{{ photoNext }}" aria-label="Next photo">&#8250;</button>
         <div class="photo-thumbstrip">
           <sc-for list="{{ selectedHorseGallery }}" as="item" hint-placeholder-count="3">
-            <button type="button" class="{{ item.thumbClass }}" onClick="{{ item.select }}">
+            <button type="button" class="{{ item.thumbClass }}" onClick="{{ item.select }}" aria-label="{{ item.label }}">
               <image-slot id="{{ item.key }}" shape="rect" fit="cover" src="{{ item.url }}" placeholder="" style="width:100%; height:100%;"></image-slot>
             </button>
           </sc-for>
@@ -700,7 +825,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
         <div class="horse-videos">
           <span class="kicker">Video</span>
           <sc-for list="{{ selectedHorseVideos }}" as="video" hint-placeholder-count="1">
-            <div class="video-frame"><iframe src="{{ video.src }}" title="Video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+            <div class="video-frame"><iframe src="{{ video.src }}" title="{{ video.title }}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
           </sc-for>
         </div>
       </sc-if>
@@ -711,7 +836,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
         <button type="button" class="btn btn-primary" onClick="{{ goContact }}">Enquire about {{ selectedHorse.name }}</button>
         <button type="button" class="btn btn-secondary" onClick="{{ goSale }}">See other horses</button>
       </div>
-      <p class="f-copy distance-note">Buying without viewing in person? Distance selling rules apply, including a 14 day right to cancel for consumers. See our <a href="#" onClick="{{ goTerms }}">Terms &amp; Conditions</a>.</p>
+      <p class="f-copy distance-note">Buying without viewing in person? Distance selling rules apply, including a 14 day right to cancel for consumers. See our <a href="/terms" onClick="{{ goTerms }}">Terms &amp; Conditions</a>.</p>
     </div>
   </section>
 </div>
@@ -800,7 +925,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
   </div>
   <section class="split">
     <figure class="split-figure" style="margin:0;">
-      <image-slot id="facilities-split" shape="rect" src="assets/facilities-stables.jpg" placeholder="Drop a photo of the arena or stabling"></image-slot>
+      <image-slot id="facilities-split" alt="Stables at Cornerwood Stud" shape="rect" src="assets/facilities-stables.jpg" placeholder="Drop a photo of the arena or stabling"></image-slot>
     </figure>
     <div class="split-copy">
       <p>From the floodlit arena to spacious stabling and secure turnout, every part of the yard is set up to keep horses happy, healthy and progressing.</p>
@@ -814,7 +939,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       </sc-for>
     </ul>
     <figure style="margin:0;">
-      <image-slot id="facilities-pavilion" shape="rect" src="assets/facilities-pavilion.jpg" placeholder="Drop a photo of the pavilion" style="width:100%; aspect-ratio:4/3;"></image-slot>
+      <image-slot id="facilities-pavilion" alt="Pavilion overlooking the floodlit arena" shape="rect" src="assets/facilities-pavilion.jpg" placeholder="Drop a photo of the pavilion" style="width:100%; aspect-ratio:4/3;"></image-slot>
     </figure>
   </div>
   <hr class="rule2">
@@ -831,7 +956,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       </div>
     </div>
     <figure style="margin:0;">
-      <image-slot id="facilities-battle-abbey" shape="rect" src="assets/battle-abbey.webp" placeholder="Drop a photo of Battle Abbey" style="width:100%; aspect-ratio:4/3;"></image-slot>
+      <image-slot id="facilities-battle-abbey" alt="Battle Abbey, next to Cornerwood Stud" shape="rect" src="assets/battle-abbey.webp" placeholder="Drop a photo of Battle Abbey" style="width:100%; aspect-ratio:4/3;"></image-slot>
     </figure>
   </div>
 </div>
@@ -847,7 +972,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
   <sc-for list="{{ services }}" as="item" hint-placeholder-count="4">
     <div class="feature">
       <p class="f-num">{{ item.num }}</p>
-      <h2 class="f-title"><a href="#" class="service-title-link" onClick="{{ item.goto }}">{{ item.title }} &#8594;</a></h2>
+      <h2 class="f-title"><a href="{{ item.href }}" class="service-title-link" onClick="{{ item.goto }}">{{ item.title }} &#8594;</a></h2>
       <p class="f-copy">{{ item.copy }}</p>
     </div>
   </sc-for>
@@ -879,17 +1004,17 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       </div>
     </div>
     <div class="collage-grid">
-      <img class="big" src="assets/sale-collage/sale-4.jpg" alt="Horse at Cornerwood">
-      <img src="assets/sale-collage/sale-1.jpg" alt="Horse at Cornerwood">
-      <img src="assets/sale-collage/sale-7.jpg" alt="Horse at Cornerwood">
-      <img src="assets/sale-collage/sale-3.jpg" alt="Horse at Cornerwood">
-      <img src="assets/sale-collage/sale-9.jpg" alt="Horse at Cornerwood">
-      <img class="big" src="assets/sale-collage/sale-11.jpg" alt="Horse at Cornerwood">
-      <img src="assets/sale-collage/sale-6.jpg" alt="Horse at Cornerwood">
-      <img src="assets/sale-collage/sale-2.jpg" alt="Horse at Cornerwood">
-      <img src="assets/sale-collage/sale-10.jpg" alt="Horse at Cornerwood">
-      <img src="assets/sale-collage/sale-8.jpg" alt="Horse at Cornerwood">
-      <img src="assets/sale-collage/sale-5.jpg" alt="Horse at Cornerwood">
+      <img class="big" src="assets/sale-collage/sale-4.jpg" alt="Sport horse for sale at Cornerwood Stud" loading="lazy" decoding="async">
+      <img src="assets/sale-collage/sale-1.jpg" alt="Horse being shown in hand at Cornerwood" loading="lazy" decoding="async">
+      <img src="assets/sale-collage/sale-7.jpg" alt="Young horse at Cornerwood Stud" loading="lazy" decoding="async">
+      <img src="assets/sale-collage/sale-3.jpg" alt="Horse sold through Cornerwood Stud" loading="lazy" decoding="async">
+      <img src="assets/sale-collage/sale-9.jpg" alt="Horse ready for viewing at Cornerwood" loading="lazy" decoding="async">
+      <img class="big" src="assets/sale-collage/sale-11.jpg" alt="Sport horse at Cornerwood Stud, East Sussex" loading="lazy" decoding="async">
+      <img src="assets/sale-collage/sale-6.jpg" alt="Horse in the arena at Cornerwood" loading="lazy" decoding="async">
+      <img src="assets/sale-collage/sale-2.jpg" alt="Horse for sale in East Sussex" loading="lazy" decoding="async">
+      <img src="assets/sale-collage/sale-10.jpg" alt="Cornerwood horse on the yard" loading="lazy" decoding="async">
+      <img src="assets/sale-collage/sale-8.jpg" alt="Irish sport horse at Cornerwood" loading="lazy" decoding="async">
+      <img src="assets/sale-collage/sale-5.jpg" alt="Horse sold by Cornerwood Stud" loading="lazy" decoding="async">
     </div>
   </div>
 </div>
@@ -1018,11 +1143,13 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
     <p>For enquiries about stallions, horses for sale, or our services, call, email, or send a message below.</p>
   </div>
   <div class="contact-grid">
-    <form onSubmit="{{ handleSubmit }}">
-      <div class="field"><label>Name</label><input class="input" type="text" placeholder="Your name"></div>
-      <div class="field"><label>Email</label><input class="input" type="email" placeholder="you@example.com"></div>
-      <div class="field"><label>Message</label><input class="input" type="text" placeholder="Tell us what you're looking for"></div>
+    <form onSubmit="{{ handleSubmit }}" aria-label="Contact form">
+      <div class="field"><label for="cf-name">Name</label><input class="input" id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your name" required></div>
+      <div class="field"><label for="cf-email">Email</label><input class="input" id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required></div>
+      <div class="field"><label for="cf-phone">Phone (optional)</label><input class="input" id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Your phone number"></div>
+      <div class="field"><label for="cf-message">Message</label><textarea class="input" id="cf-message" name="message" rows="5" placeholder="Tell us what you're looking for" required></textarea></div>
       <button type="submit" class="btn btn-primary" style="align-self:flex-start; margin-top:8px;">Send message</button>
+      <p class="form-note">This opens your email app with your message ready to send.</p>
     </form>
     <div class="contact-side">
       <h3>Phone</h3>
@@ -1030,51 +1157,53 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       <h3>Email</h3>
       <p><a href="mailto:info@cornerwoodstud.co.uk">info@cornerwoodstud.co.uk</a></p>
       <h3>Location</h3>
-      <p>East Sussex, England</p>
+      <p>Battle, East Sussex, England</p>
       <h3>Facebook</h3>
       <p><a href="https://www.facebook.com/cornerwoodstud" target="_blank" rel="noopener">Follow us on Facebook</a></p>
-      <image-slot id="contact-map" shape="rect" placeholder="Drop a map or yard photo"></image-slot>
+      <image-slot id="contact-map" shape="rect" src="assets/aerial-yard.jpg" alt="Aerial view of the Cornerwood Stud yard" placeholder="Drop a map or yard photo"></image-slot>
     </div>
   </div>
 </div>
 </sc-if>
 
+</main>
+
 <footer class="sitefoot">
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <h4>Information</h4>
-        <a href="#" onClick="{{ goAbout }}">About</a>
-        <a href="#" onClick="{{ goTeam }}">Team</a>
-        <a href="#" onClick="{{ goFacilities }}">Facilities</a>
-        <a href="#" onClick="{{ goServices }}">Services</a>
-        <a href="#" onClick="{{ goTerms }}">Terms &amp; Conditions</a>
+        <h2 class="foot-h">Information</h2>
+        <a href="/about" onClick="{{ goAbout }}">About</a>
+        <a href="/team" onClick="{{ goTeam }}">Team</a>
+        <a href="/facilities" onClick="{{ goFacilities }}">Facilities</a>
+        <a href="/services" onClick="{{ goServices }}">Services</a>
+        <a href="/terms" onClick="{{ goTerms }}">Terms &amp; Conditions</a>
       </div>
       <div>
-        <h4>Horses</h4>
-        <a href="#" onClick="{{ goStallions }}">Stallions at Stud</a>
-        <a href="#" onClick="{{ goSale }}">Horses for Sale</a>
+        <h2 class="foot-h">Horses</h2>
+        <a href="/stallions" onClick="{{ goStallions }}">Stallions at Stud</a>
+        <a href="/horses" onClick="{{ goSale }}">Horses for Sale</a>
       </div>
       <div>
-        <h4>Follow us</h4>
+        <h2 class="foot-h">Follow us</h2>
         <a href="https://www.facebook.com/cornerwoodstud" target="_blank" rel="noopener">Facebook &#8594;</a>
         <p style="color:color-mix(in srgb, #fff 65%, transparent); font-size:13.5px; max-width:34ch;">New horses and yard updates are posted on Facebook first, many sell before reaching the website.</p>
       </div>
       <div>
-        <h4>Contact</h4>
-        <p>+44 (0) 1424 614191</p>
-        <p>info@cornerwoodstud.co.uk</p>
-        <p>East Sussex, England</p>
+        <h2 class="foot-h">Contact</h2>
+        <a href="tel:+441424614191">+44 (0) 1424 614191</a>
+        <a href="mailto:info@cornerwoodstud.co.uk">info@cornerwoodstud.co.uk</a>
+        <p>Battle, East Sussex, England</p>
       </div>
     </div>
-    <div class="foot-bottom">© 2026 Cornerwood Stud &amp; Sport Horses. All rights reserved.</div>
+    <div class="foot-bottom">© {{ year }} Cornerwood Stud &amp; Sport Horses. All rights reserved.</div>
   </div>
 </footer>
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { page: 'home', servicesOpen: false, teamMemberId: null, horses: [], horsesLoading: true, horsesError: false, horsesPage: 1, horseId: null, activePhoto: null };
+  state = { page: 'home', servicesOpen: false, menuOpen: false, teamMemberId: null, horses: [], horsesLoading: true, horsesError: false, horsesPage: 1, horseId: null, activePhoto: null };
 
   // ---- routing ----------------------------------------------------------
   // Static pages map 1:1 to a path. Detail pages (team-member, horse-detail)
@@ -1116,21 +1245,39 @@ class Component extends DCLogic {
   navigate = (page, extra) => {
     extra = extra || {};
     const path = this.pathForPage(page, extra);
-    if (location.pathname !== path) {
+    const changed = location.pathname !== path;
+    if (changed) {
       history.pushState({ page, ...extra }, '', path);
     }
-    this.setState({ page, servicesOpen: false, ...extra });
+    this.setState({ page, servicesOpen: false, menuOpen: false, ...extra });
+    if (changed) window.scrollTo(0, 0);
   };
+
+  // Links have real hrefs (for search engines and "open in new tab"). A plain
+  // click is handled in-app; ctrl/cmd/shift/middle clicks keep browser behaviour.
+  spa = (e) => {
+    if (!e) return true;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || (e.button && e.button !== 0)) return false;
+    e.preventDefault && e.preventDefault();
+    return true;
+  };
+
+  link = (page, extra) => (e) => { if (this.spa(e)) this.navigate(page, extra); };
 
   onPopState = (e) => {
     const parsed = e.state || this.parsePath(location.pathname);
-    this.setState({ page: parsed.page, servicesOpen: false, teamMemberId: parsed.teamMemberId || null, horseId: parsed.horseId || null });
+    this.setState({ page: parsed.page, servicesOpen: false, menuOpen: false, teamMemberId: parsed.teamMemberId || null, horseId: parsed.horseId || null });
+  };
+
+  toggleMenu = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState((s) => ({ menuOpen: !s.menuOpen, servicesOpen: false }));
   };
 
   selectHorse = (id, e) => {
-    e && e.preventDefault && e.preventDefault();
+    if (!this.spa(e)) return;
     this.navigate('horse-detail', { horseId: id, activePhoto: null });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   selectPhoto = (url, e) => {
@@ -1194,12 +1341,12 @@ class Component extends DCLogic {
   setPage = (p) => this.navigate(p);
 
   selectTeamMember = (id, e) => {
-    e && e.preventDefault && e.preventDefault();
+    if (!this.spa(e)) return;
     this.navigate('team-member', { teamMemberId: id });
   };
 
   selectServices = (e) => {
-    e.preventDefault();
+    if (!this.spa(e)) return;
     e.stopPropagation();
     if (this.state.page === 'services' && this.state.servicesOpen) {
       this.setState({ servicesOpen: false });
@@ -1212,6 +1359,10 @@ class Component extends DCLogic {
   closeServices = () => this.setState({ servicesOpen: false });
 
   onKeyDown = (e) => {
+    if (e.key === 'Escape' && (this.state.menuOpen || this.state.servicesOpen)) {
+      this.setState({ menuOpen: false, servicesOpen: false });
+      return;
+    }
     if (this.state.page !== 'horse-detail') return;
     const tag = (e.target && e.target.tagName) || '';
     if (tag === 'INPUT' || tag === 'TEXTAREA') return;
@@ -1260,7 +1411,10 @@ class Component extends DCLogic {
   _tcResume = (e) => { if (e.target.closest && e.target.closest('.tc')) this._tcPaused = false; };
 
   componentDidMount() {
-    this._onDocClick = () => this.closeServices();
+    this._onDocClick = (e) => {
+      if (this.state.servicesOpen) this.closeServices();
+      if (this.state.menuOpen && !(e.target.closest && e.target.closest('.topbar'))) this.setState({ menuOpen: false });
+    };
     document.addEventListener('click', this._onDocClick);
     window.addEventListener('popstate', this.onPopState);
     document.addEventListener('keydown', this.onKeyDown);
@@ -1285,6 +1439,84 @@ class Component extends DCLogic {
     history.replaceState({ page: initial.page, teamMemberId: initial.teamMemberId, horseId: initial.horseId }, '', this.pathForPage(initial.page, initial));
     this.setState({ page: initial.page, teamMemberId: initial.teamMemberId || null, horseId: initial.horseId || null });
     this.loadHorses();
+    this.applySeo();
+  }
+
+  componentDidUpdate() {
+    this.applySeo();
+  }
+
+  // ---- SEO ----------------------------------------------------------------
+  // The live domain. Canonical links, social cards and the sitemap use it.
+  SITE_URL = 'https://www.cornerwoodstud.co.uk';
+  SITE_NAME = 'Cornerwood Stud';
+
+  SEO = {
+    home: ['Cornerwood Stud & Sport Horses | Horses for Sale, East Sussex', 'Family-run stud in Battle, East Sussex. Handpicked sport horses for sale, sales livery, producing and schooling, and agency for breeders across Europe and Ireland.'],
+    about: ['About Us | Cornerwood Stud, Battle, East Sussex', 'Cornerwood Stud & Sport Horses is a family-run yard in Battle, East Sussex, producing, sourcing and selling quality sport horses for clients across the UK, Europe and Ireland.'],
+    team: ['Meet the Team | Cornerwood Stud', 'Meet the small, hands-on team at Cornerwood Stud who look after every horse on the yard, from producing and sales to grooming, transport and admin.'],
+    stallions: ['Stallions at Stud | Cornerwood Stud', 'Cornerwood Stud will soon stand an elite stallion and offer top class stallion semen from around the world, including showjumpers, eventers and dressage stallions.'],
+    sale: ['Horses for Sale in East Sussex | Cornerwood Stud', 'Browse quality, handpicked sport horses for sale at Cornerwood Stud in Battle, East Sussex. Allrounders, hunters, eventers and competition prospects. Viewings by appointment.'],
+    facilities: ['Facilities | Floodlit Arena, Stabling & Hacking | Cornerwood Stud', 'A floodlit 20x40 arena, show jumps, cross country fences, horse walker, spacious stabling and safe off-road hacking next to Battle Abbey in East Sussex.'],
+    services: ['Equestrian Services | Sales, Livery & Schooling | Cornerwood Stud', 'Horse sales and agency, sales livery, producing and schooling, and breeding services from Cornerwood Stud in Battle, East Sussex.'],
+    'service-sales-agency': ['Horse Sales & Agency | Cornerwood Stud', 'Quality, handpicked horses sourced and sold with honest advice. Cornerwood also acts as agent for trusted breeders and private owners across Europe and Ireland.'],
+    'service-sales-livery': ['Sales Livery in East Sussex | Cornerwood Stud', 'Selling a horse? Our sales livery covers producing, photos, video, advertising, viewings, vettings and the sale itself, with regular updates for owners.'],
+    'service-producing': ['Producing & Schooling Horses | Cornerwood Stud', 'Correct, sympathetic schooling for young and green horses in East Sussex. Starting, confidence building, flatwork, poles and jumping with regular feedback for owners.'],
+    'service-breeding': ['Breeding & Stud Services | Cornerwood Stud', 'A small, carefully chosen stallion line up each season with limited bookings for outside mares, plus guidance on suitability and covering arrangements.'],
+    contact: ['Contact Us | Cornerwood Stud, Battle, East Sussex', 'Get in touch with Cornerwood Stud about horses for sale, sales livery, schooling or stallions. Call +44 (0) 1424 614191 or email info@cornerwoodstud.co.uk.'],
+    terms: ['Terms & Conditions of Sale | Cornerwood Stud', 'Conditions of sale for horses bought from Cornerwood Stud & Sport Horses, including deposits, vetting, returns, sales livery and distance selling rights.']
+  };
+
+  seoFor(page) {
+    let [title, desc] = this.SEO[page] || this.SEO.home;
+    let image = null;
+    if (page === 'horse-detail') {
+      const h = this.state.horses.find((x) => x.id === this.state.horseId);
+      if (h && h.name) {
+        const facts = [h.age && ('born ' + h.age), h.breed, h.sex, h.height && (h.height + 'hh')].filter(Boolean).join(', ');
+        title = h.name + (h.breed ? ', ' + h.breed : '') + (h.sold ? ' (Sold)' : ' for Sale') + ' | ' + this.SITE_NAME;
+        desc = (h.sold ? h.name + ' has been sold by Cornerwood Stud. ' : h.name + ' is for sale at Cornerwood Stud, East Sussex. ') + (facts ? facts.charAt(0).toUpperCase() + facts.slice(1) + '. ' : '') + (h.categories ? 'Suits ' + String(h.categories).split('//').map((c) => c.trim()).filter(Boolean).join(', ') + '.' : '');
+        image = h.photo || (h.photos && h.photos[0]) || null;
+      } else {
+        [title, desc] = this.SEO.sale;
+      }
+    } else if (page === 'team-member') {
+      const t = this.teamData().find((x) => x.id === this.state.teamMemberId);
+      if (t) {
+        title = t.name + ', ' + t.role + ' | ' + this.SITE_NAME;
+        desc = t.bio;
+        image = t.photo;
+      } else {
+        [title, desc] = this.SEO.team;
+      }
+    }
+    return { title, desc: desc.length > 160 ? desc.slice(0, 157).replace(/\s+\S*$/, '') + '...' : desc, image };
+  }
+
+  _meta(attr, key, value) {
+    let el = document.head.querySelector('meta[' + attr + '="' + key + '"]');
+    if (!el) { el = document.createElement('meta'); el.setAttribute(attr, key); document.head.appendChild(el); }
+    if (el.getAttribute('content') !== value) el.setAttribute('content', value);
+  }
+
+  applySeo() {
+    const page = this.state.page;
+    const { title, desc, image } = this.seoFor(page);
+    const url = this.SITE_URL + this.pathForPage(page, this.state);
+    const abs = (src) => /^https?:/.test(src) ? src : this.SITE_URL + '/' + String(src).replace(/^\/+/, '');
+    const img = abs(image || 'assets/hickstead-jump.jpg');
+    if (document.title !== title) document.title = title;
+    this._meta('name', 'description', desc);
+    this._meta('property', 'og:title', title);
+    this._meta('property', 'og:description', desc);
+    this._meta('property', 'og:url', url);
+    this._meta('property', 'og:image', img);
+    this._meta('name', 'twitter:title', title);
+    this._meta('name', 'twitter:description', desc);
+    this._meta('name', 'twitter:image', img);
+    let canon = document.head.querySelector('link[rel="canonical"]');
+    if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
+    if (canon.getAttribute('href') !== url) canon.setAttribute('href', url);
   }
 
   componentWillUnmount() {
@@ -1303,6 +1535,18 @@ class Component extends DCLogic {
     clearInterval(this._tcTimer);
   }
 
+  teamData() {
+    return [
+      { id: 'team-1', name: 'Harriet', role: 'Founder & Producer', bio: 'Runs the day-to-day of the yard, producing and selling handpicked horses and working as agent for trusted breeders across Europe and Ireland.', photo: 'assets/harriet.jpg' },
+      { id: 'team-2-holly', photo: 'assets/holly.jpg', name: 'Holly', role: 'Yard Manager', bio: 'Oversees the daily care of every horse on the yard, from feeding and turnout to keeping the facilities running smoothly.' },
+      { id: 'team-3-henry', name: 'Henry', role: 'Accounts & Administration', bio: 'Looks after the yard\u2019s accounts and invoicing, along with bookings, paperwork and passports, keeping the business side of Cornerwood running smoothly and every client properly looked after.', detailBio: 'Henry is often the first point of contact when clients call, so he is a familiar voice on the end of the phone. He is working towards qualifying as a solicitor and is currently studying for an LLB (Hons) in Law at the University of Kent. Alongside his degree he volunteers as a General Adviser at Citizens Advice, which gives him a good working grasp of the rules and legal requirements that affect our clients.', favouriteMoment: '', photo: 'assets/henry.jpg' },
+      { id: 'team-4-catherine', photo: 'assets/catherine.jpg', name: 'Catherine', role: 'Sales & Client Liaison', bio: 'Handles enquiries, viewings and sales livery clients, keeping every buyer and seller well looked after.' },
+      { id: 'team-5-rajpal', name: 'Rajpal', role: 'Groom', bio: 'A valued member of the yard team, assisting with the daily care of our horses, from mucking out and feeding to turnout and general stable management.', photo: 'assets/rajpal.jpg' },
+      { id: 'team-7-peter', photo: 'assets/peter.jpg', name: 'Peter', role: 'Transport', bio: 'Handles horse transport to and from the yard, viewings, vettings and deliveries across the UK and to the Continent.' },
+      { id: 'team-6-leah', photo: 'assets/leah.jpg', name: 'Leah', role: 'Grooms & Yard Support', bio: 'Supports day-to-day yard duties, keeping horses turned out, tacked up and ready for work.' }
+    ];
+  }
+
   renderVals() {
     const page = this.state.page;
     const servicePages = ['services', 'service-sales-agency', 'service-sales-livery', 'service-producing', 'service-breeding'];
@@ -1314,8 +1558,10 @@ class Component extends DCLogic {
     ];
     const mkNavItem = ([key,label]) => ({
       label, key,
-      select: (e) => { e.preventDefault(); this.setPage(key); },
-      style: { color: page === key ? 'var(--color-accent)' : 'var(--color-text)' }
+      href: this.pathForPage(key, {}),
+      select: this.link(key),
+      style: { color: page === key ? 'var(--color-accent)' : 'var(--color-text)' },
+      subStyle: page === key ? { color: 'var(--color-accent)' } : undefined
     });
     const navItemsBefore = pagesBefore.map(mkNavItem);
     const navItemsAfter = pagesAfter.map(mkNavItem);
@@ -1328,17 +1574,11 @@ class Component extends DCLogic {
     ];
     const serviceNavItems = serviceSubPages.map(mkNavItem);
 
-    const team = [
-      { id: 'team-1', name: 'Harriet', role: 'Founder & Producer', bio: 'Runs the day-to-day of the yard, producing and selling handpicked horses and working as agent for trusted breeders across Europe and Ireland.', photo: 'assets/harriet.jpg' },
-      { id: 'team-2-holly', photo: 'assets/holly.jpg', name: 'Holly', role: 'Yard Manager', bio: 'Oversees the daily care of every horse on the yard, from feeding and turnout to keeping the facilities running smoothly.' },
-      { id: 'team-3-henry', name: 'Henry', role: 'Accounts & Administration', bio: 'Looks after the yard\u2019s accounts and invoicing, along with bookings, paperwork and passports, keeping the business side of Cornerwood running smoothly and every client properly looked after.', detailBio: 'Henry is often the first point of contact when clients call, so he is a familiar voice on the end of the phone. He is working towards qualifying as a solicitor and is currently studying for an LLB (Hons) in Law at the University of Kent. Alongside his degree he volunteers as a General Adviser at Citizens Advice, which gives him a good working grasp of the rules and legal requirements that affect our clients.', favouriteMoment: '', photo: 'assets/henry.jpg' },
-      { id: 'team-4-catherine', photo: 'assets/catherine.jpg', name: 'Catherine', role: 'Sales & Client Liaison', bio: 'Handles enquiries, viewings and sales livery clients, keeping every buyer and seller well looked after.' },
-      { id: 'team-5-rajpal', name: 'Rajpal', role: 'Groom', bio: 'A valued member of the yard team, assisting with the daily care of our horses, from mucking out and feeding to turnout and general stable management.', photo: 'assets/rajpal.jpg' },
-      { id: 'team-7-peter', photo: 'assets/peter.jpg', name: 'Peter', role: 'Transport', bio: 'Handles horse transport to and from the yard, viewings, vettings and deliveries across the UK and to the Continent.' },
-      { id: 'team-6-leah', photo: 'assets/leah.jpg', name: 'Leah', role: 'Grooms & Yard Support', bio: 'Supports day-to-day yard duties, keeping horses turned out, tacked up and ready for work.' }
-    ];
+    const team = this.teamData();
     team.forEach((t) => {
       t.select = (e) => this.selectTeamMember(t.id, e);
+      t.href = this.pathForPage('team-member', { teamMemberId: t.id });
+      t.alt = t.name + ', ' + t.role + ' at Cornerwood Stud';
       if (!t.detailBio) t.detailBio = t.bio;
     });
 
@@ -1360,20 +1600,32 @@ class Component extends DCLogic {
       navItemsBefore, navItemsAfter, serviceNavItems, servicesNavStyle,
       selectServices: this.selectServices,
       servicesMenuClass: 'nav-dropdown-menu' + (this.state.servicesOpen ? ' is-open' : ''),
-      goHome: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('home'); },
-      goContact: () => this.setPage('contact'),
-      goAbout: (e) => { e.preventDefault(); this.setPage('about'); },
-      goTeam: (e) => { e.preventDefault(); this.setPage('team'); },
-      goStallions: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('stallions'); },
-      goSale: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('sale'); },
-      goFacilities: (e) => { e.preventDefault(); this.setPage('facilities'); },
-      goTerms: (e) => { e.preventDefault(); this.setPage('terms'); },
-      goServices: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('services'); },
-      goServiceSalesAgency: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('service-sales-agency'); },
-      goServiceSalesLivery: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('service-sales-livery'); },
-      goServiceProducing: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('service-producing'); },
-      goServiceBreeding: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('service-breeding'); },
-      handleSubmit: (e) => { e.preventDefault(); },
+      menuExpanded: this.state.menuOpen ? 'true' : 'false',
+      menuLabel: this.state.menuOpen ? 'Close menu' : 'Open menu',
+      toggleMenu: this.toggleMenu,
+      navPanelClass: 'topbar-nav' + (this.state.menuOpen ? ' is-open' : ''),
+      year: new Date().getFullYear(),
+      goHome: this.link('home'),
+      goContact: this.link('contact'),
+      goAbout: this.link('about'),
+      goTeam: this.link('team'),
+      goStallions: this.link('stallions'),
+      goSale: this.link('sale'),
+      goFacilities: this.link('facilities'),
+      goTerms: this.link('terms'),
+      goServices: this.link('services'),
+      goServiceSalesAgency: this.link('service-sales-agency'),
+      goServiceSalesLivery: this.link('service-sales-livery'),
+      goServiceProducing: this.link('service-producing'),
+      goServiceBreeding: this.link('service-breeding'),
+      // No mail backend yet, so the form hands the message to the visitor's email app.
+      handleSubmit: (e) => {
+        e.preventDefault();
+        const f = e.target;
+        const v = (n) => (f.elements[n] && f.elements[n].value || '').trim();
+        const body = v('message') + '\n\n' + v('name') + (v('phone') ? '\n' + v('phone') : '') + '\n' + v('email');
+        location.href = 'mailto:info@cornerwoodstud.co.uk?subject=' + encodeURIComponent('Website enquiry from ' + (v('name') || 'a visitor')) + '&body=' + encodeURIComponent(body);
+      },
       homeNews: allNews.slice(0, 2),
       featuredNews: allNews[0],
       secondNews: allNews[1],
@@ -1387,7 +1639,7 @@ class Component extends DCLogic {
       horsesForSale: this.state.horses.slice(
         (this.state.horsesPage - 1) * this.HORSES_PER_PAGE,
         this.state.horsesPage * this.HORSES_PER_PAGE
-      ).map((h) => ({ ...h, select: (e) => this.selectHorse(h.id, e) })),
+      ).map((h) => ({ ...h, select: (e) => this.selectHorse(h.id, e), href: this.pathForPage('horse-detail', { horseId: h.id }), alt: [h.name, h.breed, h.sold ? '(sold)' : 'for sale'].filter(Boolean).join(' ') })),
       horsesLoading: this.state.horsesLoading,
       horsesError: this.state.horsesError && this.state.horses.length === 0,
       horsesEmpty: !this.state.horsesLoading && !this.state.horsesError && this.state.horses.length === 0,
@@ -1402,7 +1654,7 @@ class Component extends DCLogic {
       selectedHorse: (() => {
         const h = this.state.horses.find((h) => h.id === this.state.horseId) || {};
         const gallery = (h.photos && h.photos.length ? h.photos : (h.photo ? [h.photo] : []));
-        return { ...h, activePhoto: this.state.activePhoto || h.photo || gallery[0] };
+        return { ...h, activePhoto: this.state.activePhoto || h.photo || gallery[0], alt: [h.name, h.breed, h.sold ? '(sold)' : 'for sale at Cornerwood Stud'].filter(Boolean).join(' ') };
       })(),
       selectedHorseNoDesc: !(this.state.horses.find((h) => h.id === this.state.horseId) || {}).desc,
       selectedHorseGallery: (() => {
@@ -1410,7 +1662,7 @@ class Component extends DCLogic {
         const gallery = (h.photos && h.photos.length ? h.photos : (h.photo ? [h.photo] : []));
         const active = this.state.activePhoto || h.photo || gallery[0];
         return gallery.map((url, i) => ({
-          url, key: h.id + '-' + i,
+          url, key: h.id + '-' + i, label: 'Show photo ' + (i + 1) + ' of ' + gallery.length,
           thumbClass: 'photo-thumb' + (active === url ? ' is-active' : ''),
           select: (e) => this.selectPhoto(url, e)
         }));
@@ -1421,7 +1673,7 @@ class Component extends DCLogic {
       })(),
       selectedHorseVideos: (() => {
         const h = this.state.horses.find((h) => h.id === this.state.horseId) || {};
-        return (h.videos || []).map((url, i) => ({ key: h.id + '-v' + i, src: url.split('?')[0] + '?rel=0' }));
+        return (h.videos || []).map((url, i) => ({ key: h.id + '-v' + i, src: url.split('?')[0] + '?rel=0', title: 'Video of ' + (h.name || 'this horse') + (h.videos.length > 1 ? ' (' + (i + 1) + ')' : '') }));
       })(),
       selectedHorseHasVideos: (() => {
         const h = this.state.horses.find((h) => h.id === this.state.horseId) || {};
@@ -1456,10 +1708,10 @@ class Component extends DCLogic {
         { num: '07', title: 'Keeping owners informed', copy: 'You get regular updates on how the horse is going and on every serious enquiry, with as much or as little day-to-day involvement as you want.' }
       ],
       services: [
-        { num: '01', title: 'Horse Sales', copy: 'Sourcing and selling quality, handpicked horses, and acting as agent for reputable breeders across Europe and Ireland.', goto: (e) => { e.preventDefault(); this.setPage('service-sales-agency'); } },
-        { num: '02', title: 'Sales Livery', copy: 'Taking horses on a sales livery basis, advertising, enquiries and viewings handled for you, with as much or as little involvement as you like.', goto: (e) => { e.preventDefault(); this.setPage('service-sales-livery'); } },
-        { num: '03', title: 'Producing & Schooling', copy: 'Bringing young or green horses on with correct, sympathetic schooling to bring out their best.', goto: (e) => { e.preventDefault(); this.setPage('service-producing'); } },
-        { num: '04', title: 'Breeding & Stud Services', copy: 'Stallions standing at stud each season, with a small number of spaces for outside mares.', goto: (e) => { e.preventDefault(); this.setPage('service-breeding'); } }
+        { num: '01', title: 'Horse Sales', copy: 'Sourcing and selling quality, handpicked horses, and acting as agent for reputable breeders across Europe and Ireland.', href: this.pathForPage('service-sales-agency', {}), goto: this.link('service-sales-agency') },
+        { num: '02', title: 'Sales Livery', copy: 'Taking horses on a sales livery basis, advertising, enquiries and viewings handled for you, with as much or as little involvement as you like.', href: this.pathForPage('service-sales-livery', {}), goto: this.link('service-sales-livery') },
+        { num: '03', title: 'Producing & Schooling', copy: 'Bringing young or green horses on with correct, sympathetic schooling to bring out their best.', href: this.pathForPage('service-producing', {}), goto: this.link('service-producing') },
+        { num: '04', title: 'Breeding & Stud Services', copy: 'Stallions standing at stud each season, with a small number of spaces for outside mares.', href: this.pathForPage('service-breeding', {}), goto: this.link('service-breeding') }
       ]
     };
   }
