@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cornerwood Stud &amp; Sport Horses</title>
+<link rel="stylesheet" href="_ds/modernist-1ca8d532-5af8-4808-84b9-07885c1f434c/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+<script src="_ds/modernist-1ca8d532-5af8-4808-84b9-07885c1f434c/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+:root{ --leading:28px; --half:14px; --edge:clamp(20px,5vw,72px); --measure:62ch;
+  --color-accent:#b8a562; --color-accent-600:#a4924f; --color-accent-700:#8f7d46; --color-accent-800:#6e5f35;
+  --cw-green:#0e2b26; --cw-green-light:#153f37;
+  --font-heading:'Fraunces', serif; --font-heading-weight:600; }
+h1,h2,h3,.f-title,.stat-num,.split-title{ letter-spacing:0.005em; }
+body{ margin:0; text-wrap:pretty; overflow-x:hidden; }
+a{ color:var(--color-accent-700); text-decoration:none; }
+a:hover{ color:var(--color-accent); text-decoration:underline; }
+.wrap{ max-width:1280px; margin:0 auto; padding:0 var(--edge); }
+.rule2{ height:2px; border:0; margin:0; background:var(--color-divider); }
+.kicker{ display:block; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700; margin:0 0 var(--half); }
+.pagehead{ padding:calc(2.5*var(--leading)) 0 var(--leading); }
+.pagehead h1{ font-family:'Oswald', sans-serif; font-weight:500; font-size:clamp(30px,4.2vw,52px); line-height:1.05; letter-spacing:-0.005em; margin:0 0 var(--half); }
+.pagehead p{ font-size:17px; line-height:var(--leading); max-width:var(--measure); color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:0; }
+.topbar{ position:sticky; top:0; z-index:20; }
+.topbar-top{ background:var(--cw-green); }
+.topbar-top .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px 24px; padding-top:14px; padding-bottom:14px; flex-wrap:wrap; }
+.keep-touch{ text-align:right; }
+.keep-touch-title{ display:block; font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--color-accent); margin:0 0 6px; }
+.keep-touch-line{ display:flex; align-items:center; justify-content:flex-end; gap:7px; font-size:15px; font-weight:600; color:var(--color-accent); line-height:1.7; }
+.keep-touch-line svg{ flex-shrink:0; }
+@media (max-width:520px){ .keep-touch-line{ justify-content:flex-start; } }
+.keep-touch-line:hover{ color:#fff; text-decoration:none; }
+.topbar-nav{ background:var(--color-bg); border-top:3px solid var(--color-accent); border-bottom:3px solid var(--color-accent); }
+.topbar-nav .wrap{ display:flex; align-items:center; justify-content:space-between; gap:12px 16px; padding-top:4px; padding-bottom:4px; flex-wrap:wrap; }
+.brand{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:22px; letter-spacing:-0.01em; color:#fff; }
+.brand small{ display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:400; color:color-mix(in srgb, #fff 65%, transparent); }
+.navrow{ display:flex; align-items:center; gap:13px 22px; flex-wrap:wrap; flex:1 1 auto; min-width:0; }
+.navrow a{ font-size:14px; letter-spacing:.02em; text-transform:uppercase; font-weight:600; color:var(--color-text); white-space:nowrap; }
+.navrow a:hover{ color:var(--color-accent); text-decoration:none; }
+.nav-dropdown-menu a{ color:#fff; }
+@media (max-width:1180px){
+  .topbar-nav .wrap{ justify-content:flex-start; }
+  .topbar-nav .btn{ order:1; }
+  .navrow{ order:2; flex:1 1 100%; padding-top:6px; }
+  .topbar-top img{ height:84px !important; }
+}
+@media (max-width:520px){ .topbar-top img{ height:64px !important; } .keep-touch{ text-align:left; } }
+.nav-dropdown{ position:relative; }
+.nav-dropdown > .nav-dropdown-toggle{ display:inline-flex; align-items:center; gap:5px; cursor:pointer; }
+.nav-dropdown > .nav-dropdown-toggle::after{ content:""; width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid currentColor; opacity:.85; }
+.nav-dropdown-menu{ display:none; flex-direction:column; position:absolute; top:100%; left:50%; transform:translateX(-50%); margin-top:14px; min-width:230px; background:var(--cw-green); border:1px solid var(--cw-green-light); border-top:2px solid var(--color-accent); box-shadow:var(--shadow-lg); padding:6px 0; z-index:30; }
+.nav-dropdown-menu::before{ content:""; position:absolute; top:-14px; left:0; right:0; height:14px; }
+.nav-dropdown-menu.is-open,
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown:focus-within .nav-dropdown-menu{ display:flex; }
+.nav-dropdown-menu a{ padding:11px 20px; font-size:13px; letter-spacing:.02em; text-transform:none; font-weight:600; white-space:nowrap; }
+.nav-dropdown-menu a:hover{ background:color-mix(in srgb, var(--color-accent) 12%, transparent); text-decoration:none; }
+@media (max-width:1180px){
+  .nav-dropdown{ flex:1 1 100%; order:2; }
+  .nav-dropdown-menu{ position:static; transform:none; margin-top:8px; margin-left:14px; background:transparent; border:0; border-left:2px solid var(--cw-green-light); box-shadow:none; padding:2px 0 2px 14px; }
+  .nav-dropdown > .nav-dropdown-toggle::after{ display:none; }
+}
+.hero{ position:relative; height:min(60vh,480px); border-bottom:2px solid var(--color-accent); background:var(--cw-green); }
+.hero image-slot{ position:absolute; inset:0; }
+.hero-band{ background:var(--cw-green); }
+.hero-band .wrap{ padding-top:calc(1.8*var(--leading)); padding-bottom:calc(1.8*var(--leading)); }
+.hero-band .rule-gold{ width:64px; height:3px; background:var(--color-accent); margin:0 0 var(--half); }
+.hero-band h1{ font-family:'Oswald', sans-serif; font-weight:500; color:#fff; font-size:clamp(22px,3.6vw,50px); line-height:1.05; letter-spacing:-0.005em; margin:0 0 10px; white-space:nowrap; }
+.hero-band p{ color:color-mix(in srgb, #fff 88%, transparent); font-size:19px; margin:0; max-width:60ch; }
+
+.split{ display:grid; grid-template-columns:minmax(0,6fr) minmax(0,6fr); gap:var(--leading) clamp(24px,5vw,96px); align-items:center; padding:calc(2.5*var(--leading)) 0; }
+.split-figure image-slot{ width:100%; aspect-ratio:4/3; }
+.home-welcome{ grid-template-columns:minmax(0,6fr) minmax(0,6fr); }
+.home-welcome .split-figure image-slot{ aspect-ratio:5/4; }
+.hero-stats{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); margin-top:calc(1.8*var(--leading)); }
+.hero-stats > div{ padding:calc(1.2*var(--leading)) clamp(14px,2.5vw,28px) 0; }
+.hero-stats > div:first-child{ padding-left:0; }
+.hero-stats .n{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(20px,2.1vw,27px); color:var(--color-accent); margin:0; }
+.hero-stats .l{ font-size:12.5px; letter-spacing:.06em; text-transform:uppercase; color:color-mix(in srgb, #fff 72%, transparent); margin:8px 0 0; }
+@media (max-width:800px){ .hero-stats{ grid-template-columns:repeat(2,1fr); row-gap:var(--leading); } .hero-stats > div:nth-child(3){ padding-left:0; } }
+.teasers{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:2px solid var(--color-accent); border-bottom:2px solid var(--color-accent); }
+.teasers > div{ padding:calc(2*var(--leading)) clamp(20px,3vw,40px); border-left:2px solid var(--color-accent); display:flex; flex-direction:column; gap:12px; }
+.teasers > div:first-child{ border-left:0; padding-left:0; }
+.teasers h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:26px; margin:0; letter-spacing:-0.01em; }
+.teasers p{ font-size:15.5px; line-height:1.65; color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:0; }
+.teasers a{ font-size:13px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; margin-top:auto; }
+@media (max-width:880px){ .teasers{ grid-template-columns:1fr; } .teasers > div{ border-left:0; padding-left:0; border-top:2px solid var(--color-accent); } .teasers > div:first-child{ border-top:0; } }
+.quote-banner{ background:var(--color-bg); text-align:center; padding:calc(3*var(--leading)) 0; }
+.quote-banner .rule-gold{ width:64px; height:3px; background:var(--color-accent); margin:0 auto var(--leading); }
+.quote-banner blockquote{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(26px,3.2vw,38px); line-height:1.4; max-width:26ch; margin:0 auto; letter-spacing:-0.01em; }
+.quote-banner figcaption{ font-size:14px; letter-spacing:.06em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 65%, transparent); margin-top:var(--leading); }
+.teasers > div{ transition:background .15s ease; }
+.teasers > div:hover{ background:color-mix(in srgb, var(--color-accent) 7%, transparent); }
+.affil{ display:flex; align-items:center; justify-content:space-between; gap:clamp(16px,4vw,56px); flex-wrap:wrap; padding:calc(1.6*var(--leading)) 0; border-bottom:2px solid var(--color-divider); }
+.affil span{ font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 55%, transparent); font-weight:600; }
+.testimonial-band{ background:var(--cw-green); padding:calc(2.5*var(--leading)) 0; border-top:2px solid var(--color-accent); border-bottom:2px solid var(--color-accent); }
+.testimonial-band .section-head{ text-align:center; margin-bottom:calc(1.8*var(--leading)); }
+.testimonial-band .section-head .kicker{ margin-bottom:8px; }
+.testimonial-band .section-head h2{ font-family:'Oswald', sans-serif; font-weight:500; color:#fff; font-size:clamp(26px,3.2vw,38px); margin:0; letter-spacing:-0.005em; }
+.testimonials{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--leading); }
+.testimonial-card{ margin:0; background:var(--color-bg); padding:calc(1.5*var(--leading)); display:flex; flex-direction:column; gap:14px; box-shadow:var(--shadow-md); position:relative; overflow:hidden; }
+.testimonial-card::before{ content:"\201C"; position:absolute; top:-18px; right:14px; font-family:'Fraunces', serif; font-size:110px; line-height:1; color:color-mix(in srgb, var(--color-accent) 16%, transparent); pointer-events:none; }
+.testimonial-card .stars{ display:flex; gap:3px; }
+.testimonial-card .stars svg{ width:14px; height:14px; fill:var(--color-accent); }
+.testimonial-card blockquote{ position:relative; margin:0; font-size:15.5px; line-height:1.65; color:var(--color-text); }
+.testimonial-card figcaption{ display:flex; align-items:center; gap:10px; margin-top:auto; padding-top:8px; }
+.testimonial-avatar{ width:38px; height:38px; border-radius:50%; background:var(--cw-green); color:var(--color-accent); display:flex; align-items:center; justify-content:center; font-family:'Oswald', sans-serif; font-weight:500; font-size:14px; flex-shrink:0; }
+.testimonial-name{ font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 70%, transparent); }
+@media (max-width:880px){ .testimonials{ grid-template-columns:1fr; } }
+.reveal{ opacity:1; transform:none; }
+.news-row{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--leading); padding:var(--leading) 0 calc(2.5*var(--leading)); }
+@media (max-width:880px){ .news-row{ grid-template-columns:1fr; } }
+.split-copy p{ font-size:16px; line-height:var(--leading); color:color-mix(in srgb, var(--color-text) 80%, transparent); margin:0 0 var(--half); max-width:var(--measure); }
+.stats{ padding:calc(1.5*var(--leading)) 0 calc(2.5*var(--leading)); }
+.stats .grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:calc(1.5*var(--leading)) var(--leading); border-top:2px solid var(--color-divider); padding-top:calc(1.5*var(--leading)); }
+.stat-num{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(30px,3.2vw,44px); color:var(--color-accent); margin:0; }
+.stat-label{ font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:var(--half) 0 0; }
+.feature{ display:grid; grid-template-columns:minmax(64px,120px) minmax(0,360px) minmax(0,1fr); gap:var(--leading) clamp(24px,4vw,64px); align-items:baseline; padding:calc(1.5*var(--leading)) 0; }
+.feature + .feature{ border-top:2px solid var(--color-divider); }
+.f-num{ position:relative; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px; color:var(--color-text); margin:0; }
+.f-num::before{ content:""; position:absolute; left:-24px; top:calc(0.5cap - 5px); width:10px; height:10px; background:var(--color-accent); }
+@media (max-width:1200px){ .f-num::before{ display:none; } .feature{ grid-template-columns:1fr; gap:var(--half); } }
+.f-title{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:22px; margin:0; letter-spacing:-0.01em; }
+.service-title-link{ color:var(--color-accent-700); text-decoration:underline; text-underline-offset:4px; text-decoration-thickness:2px; text-decoration-color:color-mix(in srgb, var(--color-accent-700) 45%, transparent); }
+.service-title-link:hover{ color:var(--color-accent); text-decoration-color:var(--color-accent); }
+.f-copy{ font-size:15.5px; line-height:var(--leading); margin:0; color:color-mix(in srgb, var(--color-text) 78%, transparent); max-width:56ch; }
+.service-lead{ font-size:19px; line-height:1.6; max-width:var(--measure); margin:0 0 var(--leading); color:color-mix(in srgb, var(--color-text) 85%, transparent); }
+.service-body p{ font-size:16px; line-height:var(--leading); max-width:var(--measure); color:color-mix(in srgb, var(--color-text) 80%, transparent); margin:0 0 var(--half); }
+.checklist{ list-style:none; margin:calc(1.2*var(--leading)) 0 0; padding:0; display:flex; flex-direction:column; gap:16px; max-width:60ch; }
+.checklist li{ position:relative; padding-left:30px; font-size:15.5px; line-height:1.6; color:color-mix(in srgb, var(--color-text) 85%, transparent); }
+.checklist li::before{ content:""; position:absolute; left:0; top:6px; width:13px; height:13px; background:var(--color-accent); }
+.service-cta{ display:flex; gap:12px; margin-top:calc(1.8*var(--leading)); flex-wrap:wrap; padding-bottom:calc(2.5*var(--leading)); }
+.service-links{ display:flex; flex-direction:column; gap:10px; margin-top:calc(1.5*var(--leading)); padding-top:calc(1.5*var(--leading)); border-top:2px solid var(--color-divider); }
+.service-links a{ font-size:14px; font-weight:600; letter-spacing:.02em; text-transform:uppercase; }
+.service-split{ display:grid; grid-template-columns:minmax(0,6fr) minmax(0,6fr); gap:var(--leading) clamp(24px,4vw,64px); align-items:start; padding-bottom:calc(2.5*var(--leading)); }
+.collage-grid{ display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:110px; grid-auto-flow:dense; gap:8px; margin-top:calc(1.6*var(--leading)); position:sticky; top:calc(2*var(--leading)); }
+.collage-grid img{ width:100%; height:100%; object-fit:cover; display:block; border:1px solid var(--color-divider); box-shadow:var(--shadow-sm); }
+.collage-grid .big{ grid-column:span 2; grid-row:span 2; }
+@media (max-width:880px){ .service-split{ grid-template-columns:1fr; } .collage-grid{ position:static; grid-template-columns:repeat(4,1fr); grid-auto-rows:130px; } }
+@media (max-width:560px){ .collage-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; } .collage-grid .big{ grid-column:span 2; grid-row:span 1; } }
+.card-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:var(--leading); padding:var(--leading) 0 calc(2.5*var(--leading)); }
+.sale-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:calc(1.2*var(--leading)); padding:var(--leading) 0 calc(1.5*var(--leading)); }
+@media (max-width:980px){ .sale-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px){ .sale-grid{ grid-template-columns:1fr; } }
+.pager{ display:flex; align-items:center; justify-content:center; gap:20px; padding:0 0 calc(2.5*var(--leading)); }
+.pager .btn-small{ padding:8px 16px; font-size:13px; }
+.pager .btn[disabled]{ opacity:.4; cursor:not-allowed; pointer-events:none; }
+.pager-status{ font-size:13px; letter-spacing:.04em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 60%, transparent); font-weight:600; }
+.sale-card{ position:relative; background:var(--cw-green); border:2px solid var(--cw-green-light); padding:22px 22px 26px; overflow:hidden; }
+.sale-card-link{ cursor:pointer; transition:border-color .15s ease; }
+.sale-card-link:hover{ border-color:var(--color-accent); }
+.sale-photo{ display:block; width:100%; margin:0; aspect-ratio:1; }
+.sale-name{ background:var(--cw-green-light); border-left:3px solid var(--color-accent); padding:9px 14px; margin:20px 0 18px; }
+.sale-name span{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:15px; letter-spacing:.06em; text-transform:uppercase; color:#fff; }
+.sale-specs{ display:flex; flex-direction:column; gap:9px; }
+.detail-specs{ display:flex; flex-direction:row; flex-wrap:wrap; gap:8px 20px; margin-bottom:calc(1.2*var(--leading)); }
+.detail-specs div{ font-size:13px; letter-spacing:.03em; text-transform:uppercase; color:var(--color-accent-700); }
+.detail-specs div b{ color:var(--color-text); font-weight:600; text-transform:none; letter-spacing:normal; }
+.sale-specs div{ font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--color-accent); line-height:1.5; }
+.sale-specs div b{ color:color-mix(in srgb, #fff 78%, transparent); font-weight:400; }
+.sold-flag{ position:absolute; top:0; right:0; width:120px; height:120px; overflow:hidden; pointer-events:none; }
+.sold-flag i{ position:absolute; top:26px; right:-34px; width:150px; text-align:center; transform:rotate(45deg); background:var(--color-accent); color:var(--cw-green); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-style:normal; padding:5px 0; }
+.flag-emoji{ font-size:14px; letter-spacing:0; margin-left:2px; display:inline-block; }
+.horse-detail-layout{ grid-template-columns:minmax(0,5fr) minmax(0,7fr); }
+@media (max-width:880px){ .horse-detail-layout{ grid-template-columns:1fr; } }
+.horse-videos{ margin-top:calc(1.2*var(--leading)); padding-top:calc(1.2*var(--leading)); border-top:2px solid var(--color-divider); max-width:64ch; display:flex; flex-direction:column; gap:16px; }
+.video-frame{ position:relative; width:100%; aspect-ratio:16/9; background:#000; }
+.video-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+.photo-thumbstrip{ display:flex; flex-wrap:nowrap; overflow-x:auto; gap:8px; margin-top:8px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
+.photo-thumb{ display:block; flex:0 0 auto; width:64px; aspect-ratio:1; padding:0; border:2px solid transparent; background:none; cursor:pointer; opacity:.65; transition:opacity .15s ease, border-color .15s ease; }
+.photo-thumb:hover{ opacity:1; }
+.photo-thumb.is-active{ opacity:1; border-color:var(--color-accent); }
+.photo-nav{ position:absolute; top:calc(50% - 20px); width:40px; height:40px; border-radius:50%; border:0; background:color-mix(in srgb, var(--cw-green) 70%, transparent); color:#fff; font-size:22px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; z-index:2; transition:background .15s ease; }
+.photo-nav:hover{ background:var(--color-accent); }
+.photo-nav-prev{ left:8px; }
+.photo-nav-next{ right:8px; }
+@media (max-width:520px){ .photo-nav{ width:34px; height:34px; font-size:18px; top:calc(50% - 17px); } .photo-thumb{ width:56px; } }
+.team-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:calc(1.4*var(--leading)) var(--leading); padding:var(--leading) 0 calc(2.5*var(--leading)); }
+.team-card{ display:flex; flex-direction:column; }
+.team-card-link{ cursor:pointer; padding:10px; margin:-10px; transition:background .15s ease; }
+.team-card-link:hover{ background:color-mix(in srgb, var(--cw-green) 10%, transparent); }
+.team-card-link:hover h3{ color:var(--color-accent-700); }
+.team-card image-slot{ width:100%; aspect-ratio:1; margin-bottom:14px; }
+.team-card h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:21px; margin:0 0 3px; letter-spacing:-0.01em; }
+.team-card .role{ font-size:11.5px; letter-spacing:.07em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700; margin:0 0 10px; }
+.team-card p.bio{ font-size:14px; line-height:1.6; color:color-mix(in srgb, var(--color-text) 78%, transparent); margin:0; }
+@media (max-width:1080px){ .team-grid{ grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media (max-width:760px){ .team-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:480px){ .team-grid{ grid-template-columns:1fr; } }
+.h-card{ background:var(--color-bg); border:2px solid var(--color-divider); box-shadow:var(--shadow-sm); transition:box-shadow .15s ease; }
+.h-card:hover{ box-shadow:var(--shadow-md); }
+.h-card image-slot{ width:100%; aspect-ratio:4/3; }
+.h-card-body{ padding:20px; }
+.h-card-body h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:20px; margin:0 0 6px; }
+.h-card-meta{ font-size:13px; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:0 0 12px; }
+.h-card-body p{ font-size:15px; line-height:1.6; margin:0; color:color-mix(in srgb, var(--color-text) 82%, transparent); }
+.news-list{ display:flex; flex-direction:column; padding:var(--leading) 0 calc(2.5*var(--leading)); }
+.news-item{ display:grid; grid-template-columns:180px minmax(0,1fr); gap:var(--leading); padding:var(--leading) 0; }
+.news-item + .news-item{ border-top:2px solid var(--color-divider); }
+.news-date{ font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--color-accent-700); font-weight:700; }
+.news-item h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:22px; margin:0 0 8px; }
+.news-item p{ font-size:15.5px; line-height:1.6; margin:0; color:color-mix(in srgb, var(--color-text) 80%, transparent); max-width:64ch; }
+@media (max-width:640px){ .news-item{ grid-template-columns:1fr; } }
+.quote{ padding:calc(2*var(--leading)) 0 calc(2.5*var(--leading)); border-top:2px solid var(--color-divider); }
+.quote blockquote{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(22px,2.4vw,30px); line-height:1.5; max-width:36ch; margin:0; letter-spacing:-0.01em; }
+.quote figcaption{ font-size:15px; color:color-mix(in srgb, var(--color-text) 70%, transparent); margin:var(--half) 0 0; }
+.close{ background:var(--cw-green); color:#fff; }
+.close .f-title, .close h3{ color:#fff; }
+.close .wrap{ padding-top:calc(2.5*var(--leading)); padding-bottom:calc(2.5*var(--leading)); display:flex; align-items:center; justify-content:space-between; gap:var(--leading); flex-wrap:wrap; }
+.close h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(28px,3.4vw,42px); margin:0; letter-spacing:-0.015em; }
+.close .btn-ghost{ color:var(--color-bg); border-color:var(--color-bg); }
+.contact-grid{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:calc(2*var(--leading)); padding:var(--leading) 0 calc(2.5*var(--leading)); }
+.contact-grid form{ display:flex; flex-direction:column; gap:var(--half); }
+.contact-side p{ font-size:16px; line-height:1.7; margin:0 0 var(--half); }
+.contact-side h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:18px; margin:calc(1.5*var(--leading)) 0 var(--half); }
+.contact-side h3:first-child{ margin-top:0; }
+.contact-side image-slot{ width:100%; aspect-ratio:16/9; margin-top:var(--half); }
+@media (max-width:880px){ .contact-grid{ grid-template-columns:1fr; } .split{ grid-template-columns:1fr; } .stats .grid{ grid-template-columns:repeat(2,1fr); } }
+footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-accent); }
+.foot-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:var(--leading); padding:calc(2*var(--leading)) 0 var(--leading); }
+.foot-grid h4{ font-size:13px; letter-spacing:.08em; text-transform:uppercase; margin:0 0 var(--half); color:var(--color-accent); }
+.foot-grid p, .foot-grid a{ display:block; font-size:14.5px; line-height:1.8; color:#fff; }
+.foot-grid a:hover{ color:var(--color-accent); }
+.foot-bottom{ border-top:2px solid var(--cw-green-light); padding:20px 0; font-size:13px; color:color-mix(in srgb, #fff 65%, transparent); }
+@media (max-width:720px){ .foot-grid{ grid-template-columns:1fr; } }
+</style>
+</helmet>
+
+<div class="topbar">
+  <div class="topbar-top">
+    <div class="wrap">
+      <a href="#" onClick="{{ goHome }}" style="display:block; flex-shrink:0; line-height:0;">
+        <img src="assets/cornerwood-logo.svg" alt="Cornerwood Stud &amp; Sport Horses" style="height:120px; width:auto; display:block;">
+      </a>
+      <div class="keep-touch">
+        <span class="keep-touch-title">Keep in touch</span>
+        <a href="tel:+441424614191" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 (0) 1424 614191</a>
+        <a href="mailto:info@cornerwoodstud.co.uk" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>info@cornerwoodstud.co.uk</a>
+      </div>
+    </div>
+  </div>
+  <div class="topbar-nav">
+    <div class="wrap">
+      <nav class="navrow">
+        <sc-for list="{{ navItemsBefore }}" as="item" hint-placeholder-count="2">
+          <a href="#" onClick="{{ item.select }}" style="{{ item.style }}">{{ item.label }}</a>
+        </sc-for>
+        <div class="nav-dropdown">
+          <a href="#" class="nav-dropdown-toggle" onClick="{{ selectServices }}" style="{{ servicesNavStyle }}">Services</a>
+          <div class="{{ servicesMenuClass }}">
+            <a href="#" onClick="{{ goServices }}">Overview</a>
+            <sc-for list="{{ serviceNavItems }}" as="item" hint-placeholder-count="4">
+              <a href="#" onClick="{{ item.select }}">{{ item.label }}</a>
+            </sc-for>
+          </div>
+        </div>
+        <sc-for list="{{ navItemsAfter }}" as="item" hint-placeholder-count="3">
+          <a href="#" onClick="{{ item.select }}" style="{{ item.style }}">{{ item.label }}</a>
+        </sc-for>
+      </nav>
+      <button type="button" class="btn btn-primary" style="flex-shrink:0; font-size:14px; padding:12px 24px;" onClick="{{ goContact }}">Enquire</button>
+    </div>
+  </div>
+</div>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<section class="hero-band">
+  <div class="wrap">
+    <div class="rule-gold"></div>
+    <h1>Welcome To Cornerwood Stud &amp; Sport Horses</h1>
+    <p>Producing and sourcing quality sport horses in East Sussex — for clients across Britain, Europe and Ireland and beyond.</p>
+    <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
+      <button type="button" class="btn btn-primary" onClick="{{ goSale }}">View horses for sale</button>
+      <button type="button" class="btn btn-ghost" style="color:#fff; border-color:#fff;" onClick="{{ goStallions }}">Stallions at stud</button>
+    </div>
+    <div class="hero-stats">
+      <div><p class="n">Sourcing</p><p class="l">Ireland, Europe &amp; the UK</p></div>
+      <div><p class="n">Producing</p><p class="l">Young &amp; green horses brought on</p></div>
+      <div><p class="n">Sales livery</p><p class="l">Advertising, viewings &amp; vettings handled</p></div>
+      <div><p class="n">Transport</p><p class="l">Delivery arranged door to door</p></div>
+    </div>
+  </div>
+</section>
+<div class="wrap">
+  <section class="split home-welcome">
+    <div class="split-copy">
+      <span class="kicker">Welcome</span>
+      <p>Cornerwood is a family-run business with excellent facilities, offering a wide range of services. We specialise in producing and selling quality, handpicked horses for their ability and temperament, and act as agent for some of the most reputable breeders and private owners in Europe and Ireland.</p>
+      <p>We keep a real variety of horses in at any time, from pleasure rides through to top-class performance prospects — and we've worked hard to build a name our clients trust and keep coming back to.</p>
+      <div class="btn-row" style="display:flex; gap:12px; margin-top:var(--half);">
+        <button type="button" class="btn btn-secondary" onClick="{{ goAbout }}">More about us</button>
+      </div>
+    </div>
+    <figure class="split-figure" style="margin:0;">
+      <image-slot id="home-split" shape="rect" src="assets/hickstead-jump.jpg" placeholder="Drop a photo of horse and rider"></image-slot>
+    </figure>
+  </section>
+  <section class="teasers">
+    <div>
+      <h3>Stallions at Stud</h3>
+      <p>A small, carefully chosen selection standing for the current season, with limited bookings for outside mares.</p>
+      <a href="#" onClick="{{ goStallions }}">See the stallions &#8594;</a>
+    </div>
+    <div>
+      <h3>Horses for Sale</h3>
+      <p>From pleasure rides to top-class performance prospects, handpicked for ability and temperament.</p>
+      <a href="#" onClick="{{ goSale }}">Browse horses &#8594;</a>
+    </div>
+    <div>
+      <h3>Services</h3>
+      <p>Sales livery, agency work, producing and schooling — tailored to your horse and your goals.</p>
+      <a href="#" onClick="{{ goServices }}">What we offer &#8594;</a>
+    </div>
+  </section>
+</div>
+<section class="testimonial-band">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker" style="color:var(--color-accent);">What clients say</span>
+      <h2>Trusted by buyers and sellers alike</h2>
+    </div>
+    <div class="testimonials">
+      <figure class="testimonial-card">
+        <div class="stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+        </div>
+        <blockquote>I sent a 5 year old to Harriet on sales livery and in 3 weeks she has found him a lovely forever home. She always kept us up to date with how he was going and with any viewings, which was really reassuring. Would 100% recommend Harriet, she made this hard decision as pain-free and stress-free as possible!</blockquote>
+        <figcaption>
+          <span class="testimonial-avatar">LC</span>
+          <span class="testimonial-name">Lucy Collinge</span>
+        </figcaption>
+      </figure>
+      <figure class="testimonial-card">
+        <div class="stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+        </div>
+        <blockquote>I have recently purchased a lovely gelding from Harriet at Cornerwood Stud. I am delighted with him and cannot praise Harriet enough for her professionalism and super helpful attitude. The whole buying process was made extremely easy for me. Highly, highly recommend.</blockquote>
+        <figcaption>
+          <span class="testimonial-avatar">LM</span>
+          <span class="testimonial-name">Lauren Marks</span>
+        </figcaption>
+      </figure>
+      <figure class="testimonial-card">
+        <div class="stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+        </div>
+        <blockquote>I brought my horse from Cornerwood Stud. Harriet was brilliant. Excellent facilities for trying horses. Open and very honest to deal with. Highly recommended. Over the moon with my Keato.</blockquote>
+        <figcaption>
+          <span class="testimonial-avatar">TM</span>
+          <span class="testimonial-name">Tina Merchant</span>
+        </figcaption>
+      </figure>
+      <figure class="testimonial-card">
+        <div class="stars">
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1.5l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.2-5.4 3.2 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+        </div>
+        <blockquote>I brought a 4 year old Irish Draught from Harriet in June 2014. Honest and genuine, he was everything she said he was. If I was looking for another horse, I would go back to Harriet. All top quality horses!</blockquote>
+        <figcaption>
+          <span class="testimonial-avatar">NH</span>
+          <span class="testimonial-name">Nicky Hounsell</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+<section class="close">
+  <div class="wrap">
+    <h3>Looking for your next horse?</h3>
+    <button type="button" class="btn btn-ghost" onClick="{{ goContact }}">Get in touch</button>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">About</span>
+    <h1>A family-run stud in East Sussex</h1>
+    <p>Two decades of producing, sourcing and selling sport horses for clients across the UK, Europe and Ireland.</p>
+  </div>
+  <section class="split">
+    <div class="split-copy">
+      <p>Cornerwood Stud &amp; Sport Horses is run by Harriet, who specialises in producing and selling handpicked horses for their ability and temperament. Cornerwood also acts as an agent for some of the most reputable breeders and private owners in Europe and Ireland, helping clients find the right horse for their goals.</p>
+      <p>As well as her own horses for sale, Harriet takes horses on a sales livery basis — handling advertising, enquiries and viewings, with owners as involved as they'd like to be.</p>
+      <p>Cornerwood has worked hard to build a name it's proud of, with many satisfied clients who return and recommend the yard to others.</p>
+    </div>
+    <figure class="split-figure" style="margin:0;">
+      <image-slot id="about-split" shape="rect" src="assets/aerial-yard.jpg" placeholder="Drop a photo of the yard or facilities"></image-slot>
+    </figure>
+  </section>
+  <hr class="rule2">
+  <section class="feature" style="border-top:0; grid-template-columns:180px minmax(0,360px) minmax(0,1fr);">
+    <div class="split-figure" style="grid-column:1; width:180px;">
+      <image-slot id="about-portrait" shape="rect" src="assets/harriet.jpg" placeholder="Portrait" style="width:180px; height:180px; aspect-ratio:1;"></image-slot>
+    </div>
+    <div>
+      <h2 class="f-title">Harriet</h2>
+      <p class="f-copy" style="margin-top:6px;">Founder &amp; Producer</p>
+    </div>
+    <p class="f-copy">Produces and sells quality sport horses, and works as an agent for trusted breeders across Europe and Ireland.</p>
+  </section>
+  <div style="padding-bottom:var(--leading);">
+    <a href="#" onClick="{{ goTeam }}" style="font-size:14px; font-weight:600; letter-spacing:.02em; text-transform:uppercase;">Meet the full team &#8594;</a>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTeam }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">Team</span>
+    <h1>The people behind Cornerwood</h1>
+    <p>A small, hands-on team looking after every horse on the yard, day in and day out.</p>
+  </div>
+  <div class="team-grid">
+    <sc-for list="{{ team }}" as="item" hint-placeholder-count="3">
+      <article class="team-card team-card-link" onClick="{{ item.select }}">
+        <image-slot id="{{ item.id }}" shape="rect" src="{{ item.photo }}" placeholder="Portrait"></image-slot>
+        <div>
+          <h3>{{ item.name }}</h3>
+          <p class="role">{{ item.role }}</p>
+          <p class="bio">{{ item.bio }}</p>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTeamMember }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <a href="#" onClick="{{ goTeam }}" style="font-size:13px; font-weight:600; letter-spacing:.02em; text-transform:uppercase;">&#8592; Back to team</a>
+  </div>
+  <section class="feature" style="border-top:0; grid-template-columns:220px minmax(0,1fr);">
+    <div class="split-figure" style="grid-column:1; width:220px;">
+      <image-slot id="{{ selectedTeamMember.id }}-detail" shape="rect" src="{{ selectedTeamMember.photo }}" placeholder="Portrait" style="width:220px; height:220px; aspect-ratio:1;"></image-slot>
+    </div>
+    <div>
+      <h1 style="margin-bottom:4px;">{{ selectedTeamMember.name }}</h1>
+      <p class="role" style="font-size:13px;">{{ selectedTeamMember.role }}</p>
+      <p class="f-copy" style="margin-top:var(--half); max-width:60ch;">{{ selectedTeamMember.detailBio }}</p>
+      <sc-if value="{{ selectedTeamMember.favouriteMoment }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:calc(1.2*var(--leading)); padding-top:calc(1.2*var(--leading)); border-top:2px solid var(--color-divider); max-width:60ch;">
+          <span class="kicker">Favourite yard moment</span>
+          <p class="f-copy" style="margin:0;">{{ selectedTeamMember.favouriteMoment }}</p>
+        </div>
+      </sc-if>
+      <div class="service-cta" style="margin-top:calc(1.4*var(--leading)); padding-bottom:0;">
+        <button type="button" class="btn btn-primary" onClick="{{ goContact }}">Enquire</button>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isStallions }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">Stallions at Stud</span>
+    <h1>Standing at Cornerwood</h1>
+    <p>A small, carefully chosen selection of stallions standing at stud for the current season. Limited bookings available — enquire early.</p>
+  </div>
+  <div class="card-grid">
+    <sc-for list="{{ stallions }}" as="item" hint-placeholder-count="3">
+      <article class="h-card">
+        <image-slot id="{{ item.id }}" shape="rect" src="{{ item.photo }}" placeholder="Drop a photo of the stallion"></image-slot>
+        <div class="h-card-body">
+          <h3>{{ item.name }}</h3>
+          <p class="h-card-meta">{{ item.meta }}</p>
+          <p>{{ item.blurb }}</p>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isSale }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">Horses for Sale</span>
+    <h1>Current horses for sale</h1>
+    <p>A variety of horses, from pleasure rides to top-class performance prospects. Viewings by appointment.</p>
+  </div>
+  <sc-if value="{{ horsesLoading }}" hint-placeholder-val="{{ false }}">
+    <p style="padding:calc(1.5*var(--leading)) 0; color:color-mix(in srgb, var(--color-text) 60%, transparent);">Loading horses…</p>
+  </sc-if>
+  <sc-if value="{{ horsesError }}" hint-placeholder-val="{{ false }}">
+    <p style="padding:calc(1.5*var(--leading)) 0; color:#a33b3b;">Couldn't load horses right now — please refresh, or call us on +44 (0) 1424 614191.</p>
+  </sc-if>
+  <sc-if value="{{ horsesEmpty }}" hint-placeholder-val="{{ false }}">
+    <p style="padding:calc(1.5*var(--leading)) 0; color:color-mix(in srgb, var(--color-text) 60%, transparent);">No horses listed right now — check back soon, or give us a call.</p>
+  </sc-if>
+  <div class="sale-grid">
+    <sc-for list="{{ horsesForSale }}" as="item" hint-placeholder-count="6">
+      <article class="sale-card sale-card-link" onClick="{{ item.select }}">
+        <div class="sale-photo"><image-slot style="width:100%; height:100%;" id="{{ item.id }}" shape="rect" fit="contain" src="{{ item.photo }}" placeholder="Photo"></image-slot></div>
+        <div class="sale-name"><span>{{ item.name }}</span></div>
+        <div class="sale-specs">
+          <div>Age &middot; <b>{{ item.age }}</b></div>
+          <div>Breed &middot; <b>{{ item.breed }}</b></div>
+          <div>Sex &middot; <b>{{ item.sex }}</b></div>
+          <div>Categories &middot; <b>{{ item.categories }}</b></div>
+          <div>Height &middot; <b>{{ item.height }}</b></div>
+          <div>Price &middot; <b>{{ item.price }}</b></div>
+        </div>
+        <sc-if value="{{ item.sold }}" hint-placeholder-val="{{ false }}">
+          <div class="sold-flag"><i>Sold <sc-if value="{{ item.exported_us }}" hint-placeholder-val="{{ false }}"><span class="flag-emoji">&#127482;&#127480;</span></sc-if></i></div>
+        </sc-if>
+      </article>
+    </sc-for>
+  </div>
+  <sc-if value="{{ showHorsesPager }}" hint-placeholder-val="{{ false }}">
+    <nav class="pager">
+      <button type="button" class="btn btn-ghost btn-small" onClick="{{ horsesPrevPage }}" disabled="{{ horsesOnFirstPage }}">&#8592; Previous</button>
+      <span class="pager-status">Page {{ horsesPageDisplay }} of {{ horsesPageCount }}</span>
+      <button type="button" class="btn btn-ghost btn-small" onClick="{{ horsesNextPage }}" disabled="{{ horsesOnLastPage }}">Next &#8594;</button>
+    </nav>
+  </sc-if>
+</div>
+</sc-if>
+
+<sc-if value="{{ isHorseDetail }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <a href="#" onClick="{{ goSale }}" style="font-size:13px; font-weight:600; letter-spacing:.02em; text-transform:uppercase;">&#8592; Back to horses for sale</a>
+  </div>
+  <section class="feature horse-detail-layout" style="border-top:0; align-items:start;">
+    <div class="split-figure" style="grid-column:1; position:relative;">
+      <image-slot id="{{ selectedHorse.id }}-detail" shape="rect" fit="contain" src="{{ selectedHorse.activePhoto }}" placeholder="Photo" style="width:100%; aspect-ratio:1;"></image-slot>
+      <sc-if value="{{ selectedHorse.sold }}" hint-placeholder-val="{{ false }}">
+        <div class="sold-flag"><i>Sold <sc-if value="{{ selectedHorse.exported_us }}" hint-placeholder-val="{{ false }}"><span class="flag-emoji">&#127482;&#127480;</span></sc-if></i></div>
+      </sc-if>
+      <sc-if value="{{ selectedHorseHasMultiplePhotos }}" hint-placeholder-val="{{ false }}">
+        <button type="button" class="photo-nav photo-nav-prev" onClick="{{ photoPrev }}" aria-label="Previous photo">&#8249;</button>
+        <button type="button" class="photo-nav photo-nav-next" onClick="{{ photoNext }}" aria-label="Next photo">&#8250;</button>
+        <div class="photo-thumbstrip">
+          <sc-for list="{{ selectedHorseGallery }}" as="item" hint-placeholder-count="3">
+            <button type="button" class="{{ item.thumbClass }}" onClick="{{ item.select }}">
+              <image-slot id="{{ item.key }}" shape="rect" fit="cover" src="{{ item.url }}" placeholder="" style="width:100%; height:100%;"></image-slot>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+    </div>
+    <div>
+      <h1 style="margin-bottom:var(--half);">{{ selectedHorse.name }}</h1>
+      <div class="detail-specs">
+        <div>Age &middot; <b>{{ selectedHorse.age }}</b></div>
+        <div>Breed &middot; <b>{{ selectedHorse.breed }}</b></div>
+        <div>Sex &middot; <b>{{ selectedHorse.sex }}</b></div>
+        <div>Height &middot; <b>{{ selectedHorse.height }}</b></div>
+        <div>Price &middot; <b>{{ selectedHorse.price }}</b></div>
+      </div>
+      <p class="f-copy" style="margin-bottom:var(--half);"><b>Categories</b> &middot; {{ selectedHorse.categories }}</p>
+      <sc-if value="{{ selectedHorse.desc }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:calc(1.2*var(--leading)); padding-top:calc(1.2*var(--leading)); border-top:2px solid var(--color-divider); max-width:64ch;">
+          <span class="kicker">About {{ selectedHorse.name }}</span>
+          <p class="f-copy" style="margin:0; white-space:pre-line;">{{ selectedHorse.desc }}</p>
+        </div>
+      </sc-if>
+      <sc-if value="{{ selectedHorseHasVideos }}" hint-placeholder-val="{{ false }}">
+        <div class="horse-videos">
+          <span class="kicker">Video</span>
+          <sc-for list="{{ selectedHorseVideos }}" as="video" hint-placeholder-count="1">
+            <div class="video-frame"><iframe src="{{ video.src }}" title="Video" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
+          </sc-for>
+        </div>
+      </sc-if>
+      <sc-if value="{{ selectedHorseNoDesc }}" hint-placeholder-val="{{ false }}">
+        <p class="f-copy" style="margin-top:calc(1.2*var(--leading)); padding-top:calc(1.2*var(--leading)); border-top:2px solid var(--color-divider);">Get in touch for the full description, history and viewing availability for {{ selectedHorse.name }}.</p>
+      </sc-if>
+      <div class="service-cta">
+        <button type="button" class="btn btn-primary" onClick="{{ goContact }}">Enquire about {{ selectedHorse.name }}</button>
+        <button type="button" class="btn btn-secondary" onClick="{{ goSale }}">See other horses</button>
+      </div>
+    </div>
+  </section>
+</div>
+</sc-if>
+
+<sc-if value="{{ isFacilities }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">Facilities</span>
+    <h1>Everything a horse in work needs</h1>
+    <p>Cornerwood offers excellent facilities for producing, schooling and keeping horses in top condition.</p>
+  </div>
+  <section class="split">
+    <figure class="split-figure" style="margin:0;">
+      <image-slot id="facilities-split" shape="rect" src="assets/facilities-stables.jpg" placeholder="Drop a photo of the arena or stabling"></image-slot>
+    </figure>
+    <div class="split-copy">
+      <p>From the floodlit arena to spacious stabling and secure turnout, every part of the yard is set up to keep horses happy, healthy and progressing.</p>
+    </div>
+  </section>
+  <hr class="rule2">
+  <div class="service-split" style="padding-top:calc(1.8*var(--leading));">
+    <ul class="checklist">
+      <sc-for list="{{ facilities }}" as="item" hint-placeholder-count="15">
+        <li>{{ item.copy }}</li>
+      </sc-for>
+    </ul>
+    <figure style="margin:0;">
+      <image-slot id="facilities-pavilion" shape="rect" src="assets/facilities-pavilion.jpg" placeholder="Drop a photo of the pavilion" style="width:100%; aspect-ratio:4/3;"></image-slot>
+    </figure>
+  </div>
+  <hr class="rule2">
+  <div class="service-split" style="padding-top:calc(1.8*var(--leading)); padding-bottom:calc(2.5*var(--leading));">
+    <div class="service-split-text">
+      <div class="pagehead" style="padding-top:0;">
+        <span class="kicker">Location &amp; Setting</span>
+        <h2 style="font-family:'Oswald', sans-serif; font-weight:500; font-size:clamp(24px,2.8vw,34px); line-height:1.1; letter-spacing:-0.005em; margin:0;">Set in an Area of Outstanding Natural Beauty</h2>
+      </div>
+      <div class="service-body">
+        <p>Cornerwood Stud lies in the historic town of Battle, within an Area of Outstanding Natural Beauty. The yard is reached directly from the A21 and is an hour from Gatwick and around an hour and a half from London.</p>
+        <p>It sits behind the grounds of 1066 Battle Abbey on 30 acres of well kept grazing. The property includes 5 acres of ancient woodland bordering the RSPB's Fore Wood, where hundreds of acres of woodland and a network of good tracks make for safe and peaceful hacking.</p>
+        <p>Beyond the woods there are quiet country lanes with open fields and bridleways to explore.</p>
+      </div>
+    </div>
+    <figure style="margin:0;">
+      <image-slot id="facilities-battle-abbey" shape="rect" src="assets/battle-abbey.webp" placeholder="Drop a photo of Battle Abbey" style="width:100%; aspect-ratio:4/3;"></image-slot>
+    </figure>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">Services</span>
+    <h1>How we can help</h1>
+    <p>Whether you're buying, selling or breeding, Cornerwood offers a full range of services tailored to your horse and your goals.</p>
+  </div>
+  <sc-for list="{{ services }}" as="item" hint-placeholder-count="4">
+    <div class="feature">
+      <p class="f-num">{{ item.num }}</p>
+      <h2 class="f-title"><a href="#" class="service-title-link" onClick="{{ item.goto }}">{{ item.title }} &#8594;</a></h2>
+      <p class="f-copy">{{ item.copy }}</p>
+    </div>
+  </sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{ isServiceSalesAgency }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="service-split">
+    <div class="service-split-text">
+      <div class="pagehead" style="padding-top:calc(1.6*var(--leading));">
+        <span class="kicker">Services</span>
+        <h1>Horse Sales</h1>
+        <p class="service-lead">Sourcing and selling quality, handpicked horses — and representing trusted breeders and private owners across Europe and Ireland.</p>
+      </div>
+      <div class="service-body">
+        <p>We pick horses on how they go and how they behave, not on what they cost. Every horse is ridden by us before it's advertised, so we can tell you honestly what it's like. Viewings are by appointment, so you get the time to try the horse properly.</p>
+        <p>When we're acting as agent, we're working for the breeder or private seller, and our job is to put the right buyer and the right horse together. If a horse isn't right for you, we'll say so.</p>
+      </div>
+      <ul class="checklist">
+        <li>Handpicked horses assessed for ability and temperament</li>
+        <li>Agency representation for breeders across Europe &amp; Ireland</li>
+        <li>Viewings, trials and vettings arranged for serious buyers</li>
+        <li>Honest guidance on suitability, not just a sale</li>
+      </ul>
+      <div class="service-cta">
+        <button type="button" class="btn btn-primary" onClick="{{ goSale }}">Browse horses for sale</button>
+        <button type="button" class="btn btn-secondary" onClick="{{ goContact }}">Enquire</button>
+      </div>
+    </div>
+    <div class="collage-grid">
+      <img class="big" src="assets/sale-collage/sale-4.jpg" alt="Horse at Cornerwood">
+      <img src="assets/sale-collage/sale-1.jpg" alt="Horse at Cornerwood">
+      <img src="assets/sale-collage/sale-7.jpg" alt="Horse at Cornerwood">
+      <img src="assets/sale-collage/sale-3.jpg" alt="Horse at Cornerwood">
+      <img src="assets/sale-collage/sale-9.jpg" alt="Horse at Cornerwood">
+      <img class="big" src="assets/sale-collage/sale-11.jpg" alt="Horse at Cornerwood">
+      <img src="assets/sale-collage/sale-6.jpg" alt="Horse at Cornerwood">
+      <img src="assets/sale-collage/sale-2.jpg" alt="Horse at Cornerwood">
+      <img src="assets/sale-collage/sale-10.jpg" alt="Horse at Cornerwood">
+      <img src="assets/sale-collage/sale-8.jpg" alt="Horse at Cornerwood">
+      <img src="assets/sale-collage/sale-5.jpg" alt="Horse at Cornerwood">
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isServiceSalesLivery }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">Services</span>
+    <h1>Sales Livery</h1>
+    <p class="service-lead">Taking horses on a sales livery basis — advertising, enquiries and viewings handled for you, with as much or as little involvement as you like.</p>
+  </div>
+  <div class="service-body">
+    <p>We take a small number of horses on sales livery at any one time, so every horse gets proper attention rather than being lost in a big yard. Owners stay as involved as they'd like to be — from hands-off through to regular updates.</p>
+  </div>
+  <div class="pagehead" style="padding-top:calc(1.8*var(--leading));">
+    <span class="kicker">In detail</span>
+    <h2 style="font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(28px,3.4vw,42px); line-height:1.1; letter-spacing:-0.015em; margin:0 0 var(--half);">How sales livery works</h2>
+  </div>
+  <sc-for list="{{ salesLiverySteps }}" as="item" hint-placeholder-count="6">
+    <div class="feature">
+      <p class="f-num">{{ item.num }}</p>
+      <h3 class="f-title">{{ item.title }}</h3>
+      <p class="f-copy">{{ item.copy }}</p>
+    </div>
+  </sc-for>
+  <div class="affil" style="border-top:2px solid var(--color-divider); margin-top:calc(1.5*var(--leading));">
+    <span>Weekly livery rate — on application</span>
+    <span>Commission on sale — agreed in advance</span>
+    <span>No sale, no commission</span>
+  </div>
+</div>
+<section class="close">
+  <div class="wrap">
+    <h3>Thinking of selling a horse?</h3>
+    <button type="button" class="btn btn-ghost" onClick="{{ goContact }}">Talk to us about sales livery</button>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isServiceProducing }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">Services</span>
+    <h1>Producing &amp; Schooling</h1>
+    <p class="service-lead">Bringing young or green horses on with correct, sympathetic schooling to bring out their best.</p>
+  </div>
+  <div class="service-body">
+    <p>Whether a horse is just backed or already competing, we take the time to build confidence and correct the basics before asking for more — no shortcuts, no rushing.</p>
+    <p>Horses are ridden and assessed regularly throughout their time with us, so progress is honest and owners always know exactly where they stand.</p>
+  </div>
+  <ul class="checklist">
+    <li>Starting young or green horses from scratch</li>
+    <li>Correcting confidence or schooling issues</li>
+    <li>Flatwork, poles and jumping fundamentals</li>
+    <li>Regular ridden assessment and feedback for owners</li>
+  </ul>
+  <div class="service-cta">
+    <button type="button" class="btn btn-primary" onClick="{{ goFacilities }}">See where the work happens</button>
+    <button type="button" class="btn btn-secondary" onClick="{{ goContact }}">Enquire</button>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isServiceBreeding }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">Services</span>
+    <h1>Breeding &amp; Stud Services</h1>
+    <p class="service-lead">Stallions standing at stud each season, with a small number of spaces for outside mares.</p>
+  </div>
+  <div class="service-body">
+    <p>We keep a small, carefully chosen stallion line-up each season rather than a long list — quality over quantity, with limited bookings so every mare gets proper attention.</p>
+  </div>
+  <ul class="checklist">
+    <li>A small, carefully chosen stallion line-up each season</li>
+    <li>Limited bookings for outside mares</li>
+    <li>Guidance on suitability and covering arrangements</li>
+    <li>Full breeding details available on enquiry</li>
+  </ul>
+  <div class="service-cta">
+    <button type="button" class="btn btn-primary" onClick="{{ goStallions }}">See the stallions standing this season</button>
+    <button type="button" class="btn btn-secondary" onClick="{{ goContact }}">Enquire</button>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ false }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">Latest News</span>
+    <h1>News from the yard</h1>
+    <p>Stallion availability, sales updates and news from Cornerwood.</p>
+  </div>
+  <section class="split" style="padding-top:0;">
+    <figure class="split-figure" style="margin:0;">
+      <image-slot id="{{ featuredNews.id }}" shape="rect" placeholder="Drop a photo for this story"></image-slot>
+    </figure>
+    <div class="split-copy">
+      <span class="news-date">{{ featuredNews.date }}</span>
+      <h2 class="f-title" style="font-size:30px; margin-top:8px;">{{ featuredNews.title }}</h2>
+      <p style="margin-top:12px;">{{ featuredNews.body }}</p>
+    </div>
+  </section>
+  <hr class="rule2">
+  <div class="card-grid">
+    <sc-for list="{{ restNews }}" as="item" hint-placeholder-count="2">
+      <article class="h-card">
+        <image-slot id="{{ item.id }}" shape="rect" placeholder="Drop a photo for this story"></image-slot>
+        <div class="h-card-body">
+          <p class="h-card-meta" style="color:var(--color-accent-700); font-weight:700; text-transform:uppercase; letter-spacing:.04em; font-size:12px;">{{ item.date }}</p>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.body }}</p>
+        </div>
+      </article>
+    </sc-for>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+<div class="wrap">
+  <div class="pagehead">
+    <span class="kicker">Contact</span>
+    <h1>Get in touch</h1>
+    <p>For enquiries about stallions, horses for sale, or our services — call, email, or send a message below.</p>
+  </div>
+  <div class="contact-grid">
+    <form onSubmit="{{ handleSubmit }}">
+      <div class="field"><label>Name</label><input class="input" type="text" placeholder="Your name"></div>
+      <div class="field"><label>Email</label><input class="input" type="email" placeholder="you@example.com"></div>
+      <div class="field"><label>Message</label><input class="input" type="text" placeholder="Tell us what you're looking for"></div>
+      <button type="submit" class="btn btn-primary" style="align-self:flex-start; margin-top:8px;">Send message</button>
+    </form>
+    <div class="contact-side">
+      <h3>Phone</h3>
+      <p><a href="tel:+441424614191">+44 (0) 1424 614191</a></p>
+      <h3>Email</h3>
+      <p><a href="mailto:info@cornerwoodstud.co.uk">info@cornerwoodstud.co.uk</a></p>
+      <h3>Location</h3>
+      <p>East Sussex, England</p>
+      <h3>Facebook</h3>
+      <p><a href="https://www.facebook.com/cornerwoodstud" target="_blank" rel="noopener">Follow us on Facebook</a></p>
+      <image-slot id="contact-map" shape="rect" placeholder="Drop a map or yard photo"></image-slot>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<footer class="sitefoot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Information</h4>
+        <a href="#" onClick="{{ goAbout }}">About</a>
+        <a href="#" onClick="{{ goTeam }}">Team</a>
+        <a href="#" onClick="{{ goFacilities }}">Facilities</a>
+        <a href="#" onClick="{{ goServices }}">Services</a>
+      </div>
+      <div>
+        <h4>Horses</h4>
+        <a href="#" onClick="{{ goStallions }}">Stallions at Stud</a>
+        <a href="#" onClick="{{ goSale }}">Horses for Sale</a>
+      </div>
+      <div>
+        <h4>Follow us</h4>
+        <a href="https://www.facebook.com/cornerwoodstud" target="_blank" rel="noopener">Facebook &#8594;</a>
+        <p style="color:color-mix(in srgb, #fff 65%, transparent); font-size:13.5px; max-width:34ch;">New horses and yard updates are posted on Facebook first — many sell before reaching the website.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>+44 (0) 1424 614191</p>
+        <p>info@cornerwoodstud.co.uk</p>
+        <p>East Sussex, England</p>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Cornerwood Stud &amp; Sport Horses. All rights reserved.</div>
+  </div>
+</footer>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { page: 'home', servicesOpen: false, teamMemberId: null, horses: [], horsesLoading: true, horsesError: false, horsesPage: 1, horseId: null, activePhoto: null };
+
+  // ---- routing ----------------------------------------------------------
+  // Static pages map 1:1 to a path. Detail pages (team-member, horse-detail)
+  // build their path from the extra id passed to navigate().
+  ROUTES = {
+    home: '/', about: '/about', team: '/team', stallions: '/stallions',
+    sale: '/horses', facilities: '/facilities', services: '/services',
+    'service-sales-agency': '/services/sales-agency',
+    'service-sales-livery': '/services/sales-livery',
+    'service-producing': '/services/producing',
+    'service-breeding': '/services/breeding',
+    contact: '/contact'
+  };
+
+  pathForPage(page, extra) {
+    if (page === 'team-member') return '/team/' + (extra.teamMemberId || '');
+    if (page === 'horse-detail') return '/horses/' + (extra.horseId || '');
+    return this.ROUTES[page] || '/';
+  }
+
+  parsePath(pathname) {
+    const parts = pathname.replace(/^\/+|\/+$/g, '').split('/').filter(Boolean);
+    if (parts.length === 0) return { page: 'home' };
+    if (parts[0] === 'team' && parts[1]) return { page: 'team-member', teamMemberId: parts[1] };
+    if (parts[0] === 'horses' && parts[1]) return { page: 'horse-detail', horseId: parts[1] };
+    if (parts[0] === 'services' && parts[1]) {
+      const svc = { 'sales-agency': 'service-sales-agency', 'sales-livery': 'service-sales-livery', 'producing': 'service-producing', 'breeding': 'service-breeding' }[parts[1]];
+      if (svc) return { page: svc };
+    }
+    for (const [page, path] of Object.entries(this.ROUTES)) {
+      if (path === '/' + parts.join('/')) return { page };
+    }
+    return { page: 'home' };
+  }
+
+  // Navigates to a page, pushing a real browser history entry/URL.
+  // `extra` carries page-specific ids (teamMemberId / horseId) that also
+  // need to land in state alongside `page`.
+  navigate = (page, extra) => {
+    extra = extra || {};
+    const path = this.pathForPage(page, extra);
+    if (location.pathname !== path) {
+      history.pushState({ page, ...extra }, '', path);
+    }
+    this.setState({ page, servicesOpen: false, ...extra });
+  };
+
+  onPopState = (e) => {
+    const parsed = e.state || this.parsePath(location.pathname);
+    this.setState({ page: parsed.page, servicesOpen: false, teamMemberId: parsed.teamMemberId || null, horseId: parsed.horseId || null });
+  };
+
+  selectHorse = (id, e) => {
+    e && e.preventDefault && e.preventDefault();
+    this.navigate('horse-detail', { horseId: id, activePhoto: null });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  selectPhoto = (url, e) => {
+    e && e.preventDefault && e.preventDefault();
+    this.setState({ activePhoto: url });
+  };
+
+  stepPhoto = (dir) => {
+    const h = this.state.horses.find((h) => h.id === this.state.horseId) || {};
+    const gallery = (h.photos && h.photos.length ? h.photos : (h.photo ? [h.photo] : []));
+    if (gallery.length < 2) return;
+    const current = this.state.activePhoto || h.photo || gallery[0];
+    const idx = gallery.indexOf(current);
+    const next = gallery[(((idx === -1 ? 0 : idx) + dir) % gallery.length + gallery.length) % gallery.length];
+    this.setState({ activePhoto: next });
+  };
+
+  photoPrev = (e) => { e && e.preventDefault && e.preventDefault(); this.stepPhoto(-1); };
+  photoNext = (e) => { e && e.preventDefault && e.preventDefault(); this.stepPhoto(1); };
+
+  HORSES_PER_PAGE = 9;
+
+  horsesPrevPage = (e) => { e && e.preventDefault && e.preventDefault(); this.setState((s) => ({ horsesPage: Math.max(1, s.horsesPage - 1) })); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  horsesNextPage = (e) => {
+    e && e.preventDefault && e.preventDefault();
+    const maxPage = Math.max(1, Math.ceil(this.state.horses.length / this.HORSES_PER_PAGE));
+    this.setState((s) => ({ horsesPage: Math.min(maxPage, s.horsesPage + 1) }));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  SUPABASE_URL = 'https://jioacvzzweugnacuzoyo.supabase.co';
+  SUPABASE_KEY = 'sb_publishable_AP2frH528wRVmUIq_hSgLw_f7aq5oRf';
+
+  FALLBACK_HORSES = [
+    { id: 'horse-laddy', name: 'Laddy', age: '2019', breed: 'Irish Cob', sex: 'Gelding', categories: 'Allrounder // Riding Club // Hacking // Hunting', height: '14.2', price: 'POA', sold: true, photo: 'assets/laddy.jpg' },
+    { id: 'horse-mouse', name: 'Mouse', age: '2021', breed: 'Irish Sport Horse', sex: 'Gelding', categories: 'Allrounder // Eventer // Dressage // Riding Club', height: '16', price: 'POA', sold: true, photo: 'assets/mouse.jpg', desc: 'Sold before hitting the open market. Please WhatsApp or call us for the latest horses, many of which sell before reaching our website.' },
+    { id: 'horse-3', name: 'Horse Three', age: '2021', breed: 'Irish Cob', sex: 'Gelding', categories: 'Allrounder // Hacking // Riding Club', height: '15', price: 'POA', sold: true },
+    { id: 'horse-4', name: 'Horse Four', age: '2021', breed: 'Irish Sport Horse', sex: 'Gelding', categories: 'Allrounder // Riding Club // Hacking // Hunting // Eventer', height: '16', price: 'POA', sold: false },
+    { id: 'horse-5', name: 'Horse Five', age: '2017', breed: 'Irish Sport Horse', sex: 'Gelding', categories: 'Allrounder // Riding Club // Hacking // Hunting', height: '15.2', price: 'POA', sold: false },
+    { id: 'horse-6', name: 'Horse Six', age: '2015', breed: 'Irish Draught', sex: 'Gelding', categories: 'Allrounder // Riding Club // Hunting // Eventer', height: '16.3', price: 'POA', sold: false }
+  ];
+
+  loadHorses = () => {
+    if (!window.supabase) { this.setState({ horses: this.FALLBACK_HORSES, horsesLoading: false, horsesError: true }); return; }
+    const sb = window.supabase.createClient(this.SUPABASE_URL, this.SUPABASE_KEY);
+    sb.from('horses').select('*')
+      .order('sort_order', { ascending: true })
+      .order('created_at', { ascending: true })
+      .then((res) => {
+        if (res.error) { this.setState({ horses: this.FALLBACK_HORSES, horsesLoading: false, horsesError: true }); return; }
+        const horses = (res.data || []).map((h) => ({
+          id: h.id, name: h.name, age: h.age, breed: h.breed, sex: h.sex,
+          categories: h.categories, height: h.height, price: h.price,
+          sold: h.sold, photo: h.photo, desc: h.description,
+          exported_us: h.exported_us, photos: h.photos, videos: h.videos
+        }));
+        this.setState({ horses, horsesLoading: false, horsesError: false });
+      });
+  };
+
+  setPage = (p) => this.navigate(p);
+
+  selectTeamMember = (id, e) => {
+    e && e.preventDefault && e.preventDefault();
+    this.navigate('team-member', { teamMemberId: id });
+  };
+
+  selectServices = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (this.state.page === 'services' && this.state.servicesOpen) {
+      this.setState({ servicesOpen: false });
+    } else {
+      this.navigate('services');
+      this.setState({ servicesOpen: true });
+    }
+  };
+
+  closeServices = () => this.setState({ servicesOpen: false });
+
+  onKeyDown = (e) => {
+    if (this.state.page !== 'horse-detail') return;
+    const tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    if (e.key === 'ArrowLeft') this.stepPhoto(-1);
+    else if (e.key === 'ArrowRight') this.stepPhoto(1);
+  };
+
+  componentDidMount() {
+    this._onDocClick = () => this.closeServices();
+    document.addEventListener('click', this._onDocClick);
+    window.addEventListener('popstate', this.onPopState);
+    document.addEventListener('keydown', this.onKeyDown);
+    const initial = this.parsePath(location.pathname);
+    history.replaceState({ page: initial.page, teamMemberId: initial.teamMemberId, horseId: initial.horseId }, '', this.pathForPage(initial.page, initial));
+    this.setState({ page: initial.page, teamMemberId: initial.teamMemberId || null, horseId: initial.horseId || null });
+    this.loadHorses();
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this._onDocClick);
+    window.removeEventListener('popstate', this.onPopState);
+    document.removeEventListener('keydown', this.onKeyDown);
+  }
+
+  renderVals() {
+    const page = this.state.page;
+    const servicePages = ['services', 'service-sales-agency', 'service-sales-livery', 'service-producing', 'service-breeding'];
+    const pagesBefore = [
+      ['home','Home'], ['sale','Horses for Sale']
+    ];
+    const pagesAfter = [
+      ['about','About'], ['team','Team'], ['facilities','Facilities']
+    ];
+    const mkNavItem = ([key,label]) => ({
+      label, key,
+      select: (e) => { e.preventDefault(); this.setPage(key); },
+      style: { color: page === key ? 'var(--color-accent)' : 'var(--color-text)' }
+    });
+    const navItemsBefore = pagesBefore.map(mkNavItem);
+    const navItemsAfter = pagesAfter.map(mkNavItem);
+    const servicesNavStyle = { color: servicePages.includes(page) ? 'var(--color-accent)' : 'var(--color-text)' };
+    const serviceSubPages = [
+      ['service-sales-agency', 'Horse Sales'],
+      ['service-sales-livery', 'Sales Livery'],
+      ['service-producing', 'Producing & Schooling'],
+      ['service-breeding', 'Breeding & Stud Services']
+    ];
+    const serviceNavItems = serviceSubPages.map(mkNavItem);
+
+    const team = [
+      { id: 'team-1', name: 'Harriet', role: 'Founder & Producer', bio: 'Runs the day-to-day of the yard, producing and selling handpicked horses and working as agent for trusted breeders across Europe and Ireland.', photo: 'assets/harriet.jpg' },
+      { id: 'team-2-holly', photo: 'assets/holly.jpg', name: 'Holly', role: 'Yard Manager', bio: 'Oversees the daily care of every horse on the yard, from feeding and turnout to keeping the facilities running smoothly.' },
+      { id: 'team-3-henry', name: 'Henry', role: 'Admin & Compliance', bio: 'Keeps the office side running — bookings, paperwork, passports and licensing — so every horse and client is properly covered.', detailBio: 'Henry is often the first point of contact when clients call, so he is a familiar voice on the end of the phone. He is working towards qualifying as a solicitor and is currently studying for an LLB (Hons) in Law at the University of Kent. Alongside his degree he volunteers as a General Adviser at Citizens Advice, which gives him a good working grasp of the rules and legal requirements that affect our clients.', favouriteMoment: '', photo: 'assets/henry.jpg' },
+      { id: 'team-4-catherine', photo: 'assets/catherine.jpg', name: 'Catherine', role: 'Sales & Client Liaison', bio: 'Handles enquiries, viewings and sales livery clients, keeping every buyer and seller well looked after.' },
+      { id: 'team-5-rajpal', name: 'Rajpal', role: 'Grooms & Stud Duties', bio: 'Looks after stallion and mare care during the covering season, alongside general yard and grooms duties.', photo: 'assets/rajpal.jpg' },
+      { id: 'team-7-peter', photo: 'assets/peter.jpg', name: 'Peter', role: 'Transport', bio: 'Handles horse transport to and from the yard — viewings, vettings and deliveries across the UK and to the Continent.' },
+      { id: 'team-6-leah', photo: 'assets/leah.jpg', name: 'Leah', role: 'Grooms & Yard Support', bio: 'Supports day-to-day yard duties, keeping horses turned out, tacked up and ready for work.' }
+    ];
+    team.forEach((t) => {
+      t.select = (e) => this.selectTeamMember(t.id, e);
+      if (!t.detailBio) t.detailBio = t.bio;
+    });
+
+    const allNews = [
+      { id: 'news-1', date: 'January 10, 2026', title: 'Standing at stud for 2026 — limited spaces available', body: 'Our stallions are now booking for the coming season. Early enquiries are recommended as spaces fill quickly.' },
+      { id: 'news-2', date: 'November 2, 2025', title: 'A few spaces left for outside mares', body: 'We have a small number of stud spaces remaining for outside mares this season — please book within the next few weeks.' },
+      { id: 'news-3', date: 'August 14, 2025', title: 'New horses in for sale', body: 'A fresh intake of quality, handpicked horses has arrived at the yard, ranging from happy hackers to competition prospects.' }
+    ];
+
+    return {
+      isHome: page === 'home', isAbout: page === 'about', isTeam: page === 'team', isStallions: page === 'stallions',
+      isSale: page === 'sale', isFacilities: page === 'facilities', isServices: page === 'services',
+      isServiceSalesAgency: page === 'service-sales-agency',
+      isServiceSalesLivery: page === 'service-sales-livery',
+      isServiceProducing: page === 'service-producing',
+      isServiceBreeding: page === 'service-breeding',
+      isTeamMember: page === 'team-member',
+      isContact: page === 'contact',
+      navItemsBefore, navItemsAfter, serviceNavItems, servicesNavStyle,
+      selectServices: this.selectServices,
+      servicesMenuClass: 'nav-dropdown-menu' + (this.state.servicesOpen ? ' is-open' : ''),
+      goHome: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('home'); },
+      goContact: () => this.setPage('contact'),
+      goAbout: (e) => { e.preventDefault(); this.setPage('about'); },
+      goTeam: (e) => { e.preventDefault(); this.setPage('team'); },
+      goStallions: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('stallions'); },
+      goSale: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('sale'); },
+      goFacilities: (e) => { e.preventDefault(); this.setPage('facilities'); },
+      goServices: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('services'); },
+      goServiceSalesAgency: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('service-sales-agency'); },
+      goServiceSalesLivery: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('service-sales-livery'); },
+      goServiceProducing: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('service-producing'); },
+      goServiceBreeding: (e) => { e && e.preventDefault && e.preventDefault(); this.setPage('service-breeding'); },
+      handleSubmit: (e) => { e.preventDefault(); },
+      homeNews: allNews.slice(0, 2),
+      featuredNews: allNews[0],
+      secondNews: allNews[1],
+      allNews,
+      restNews: allNews.slice(1),
+      team,
+      selectedTeamMember: team.find((t) => t.id === this.state.teamMemberId) || {},
+      stallions: [
+        { id: 'stallion-1', name: 'Stallion Name I', meta: 'Studbook · Height · Colour', blurb: 'A proven performance sire with excellent temperament and jump. Full breeding details available on enquiry.', photo: 'assets/stallion-1.jpg' },
+      ],
+      horsesForSale: this.state.horses.slice(
+        (this.state.horsesPage - 1) * this.HORSES_PER_PAGE,
+        this.state.horsesPage * this.HORSES_PER_PAGE
+      ).map((h) => ({ ...h, select: (e) => this.selectHorse(h.id, e) })),
+      horsesLoading: this.state.horsesLoading,
+      horsesError: this.state.horsesError && this.state.horses.length === 0,
+      horsesEmpty: !this.state.horsesLoading && !this.state.horsesError && this.state.horses.length === 0,
+      showHorsesPager: this.state.horses.length > this.HORSES_PER_PAGE,
+      horsesPrevPage: this.horsesPrevPage,
+      horsesNextPage: this.horsesNextPage,
+      horsesPageDisplay: this.state.horsesPage,
+      horsesPageCount: Math.max(1, Math.ceil(this.state.horses.length / this.HORSES_PER_PAGE)),
+      horsesOnFirstPage: this.state.horsesPage <= 1,
+      horsesOnLastPage: this.state.horsesPage >= Math.max(1, Math.ceil(this.state.horses.length / this.HORSES_PER_PAGE)),
+      isHorseDetail: page === 'horse-detail',
+      selectedHorse: (() => {
+        const h = this.state.horses.find((h) => h.id === this.state.horseId) || {};
+        const gallery = (h.photos && h.photos.length ? h.photos : (h.photo ? [h.photo] : []));
+        return { ...h, activePhoto: this.state.activePhoto || h.photo || gallery[0] };
+      })(),
+      selectedHorseNoDesc: !(this.state.horses.find((h) => h.id === this.state.horseId) || {}).desc,
+      selectedHorseGallery: (() => {
+        const h = this.state.horses.find((h) => h.id === this.state.horseId) || {};
+        const gallery = (h.photos && h.photos.length ? h.photos : (h.photo ? [h.photo] : []));
+        const active = this.state.activePhoto || h.photo || gallery[0];
+        return gallery.map((url, i) => ({
+          url, key: h.id + '-' + i,
+          thumbClass: 'photo-thumb' + (active === url ? ' is-active' : ''),
+          select: (e) => this.selectPhoto(url, e)
+        }));
+      })(),
+      selectedHorseHasMultiplePhotos: (() => {
+        const h = this.state.horses.find((h) => h.id === this.state.horseId) || {};
+        return (h.photos && h.photos.length > 1);
+      })(),
+      selectedHorseVideos: (() => {
+        const h = this.state.horses.find((h) => h.id === this.state.horseId) || {};
+        return (h.videos || []).map((url, i) => ({ key: h.id + '-v' + i, src: url.split('?')[0] + '?rel=0' }));
+      })(),
+      selectedHorseHasVideos: (() => {
+        const h = this.state.horses.find((h) => h.id === this.state.horseId) || {};
+        return !!(h.videos && h.videos.length);
+      })(),
+      photoPrev: this.photoPrev,
+      photoNext: this.photoNext,
+      facilities: [
+        { copy: '20 x 40 outdoor floodlit arena with a brand new sand and fibre mix surface' },
+        { copy: 'Full set of show jumps' },
+        { copy: 'Cross country training jumps' },
+        { copy: 'Horse walker' },
+        { copy: '5 full-size loose boxes in a courtyard layout with rubber matting and automatic waterers, plus tack room and wash bay' },
+        { copy: '10 internal stables with rubber matting and automatic waterers' },
+        { copy: '2 brand new barn-style internal stable blocks with 6 extra-large, luxurious boxes in each, with rubber matting and automatic waterers' },
+        { copy: 'Hot water wash bays' },
+        { copy: 'Individual and group turnout with brand new secure fencing' },
+        { copy: 'Pavilion with drinks facilities and seating overlooking the arena' },
+        { copy: 'CCTV cameras operating 24 hours' },
+        { copy: '24-hour supervision' },
+        { copy: 'Fantastic off-road hacking' },
+        { copy: 'Parking for horse boxes, trailers and cars' },
+        { copy: 'Close proximity to local showgrounds to suit every level' }
+      ],
+      salesLiverySteps: [
+        { num: '01', title: 'Initial conversation', copy: 'We talk through the horse — age, experience, temperament, any history — and give an honest view on what it should make and how long it is likely to take.' },
+        { num: '02', title: 'Arrival & assessment', copy: 'The horse settles in for the first week or two while we ride it and get to know it properly. Only then do we finalise how it should be presented and priced.' },
+        { num: '03', title: 'Producing & presentation', copy: 'Ridden work continues throughout, along with turnout, clipping, shoeing and anything else needed so the horse shows itself at its best on the day.' },
+        { num: '04', title: 'Photos, video & advertising', copy: 'We arrange professional photography and ridden video, write the advert, and list the horse across our own channels and the main sales platforms.' },
+        { num: '05', title: 'Enquiries & viewings', copy: 'All enquiries come to us. We filter time-wasters, host viewings at the yard, ride the horse for buyers and handle every follow-up question.' },
+        { num: '06', title: 'Trials, vetting & sale', copy: 'We coordinate trials and five-stage vettings, negotiate on the owner\u2019s behalf, and handle paperwork, passport transfer and transport arrangements through to completion.' },
+        { num: '07', title: 'Keeping owners informed', copy: 'You get regular updates on how the horse is going and on every serious enquiry \u2014 with as much or as little day-to-day involvement as you want.' }
+      ],
+      services: [
+        { num: '01', title: 'Horse Sales', copy: 'Sourcing and selling quality, handpicked horses, and acting as agent for reputable breeders across Europe and Ireland.', goto: (e) => { e.preventDefault(); this.setPage('service-sales-agency'); } },
+        { num: '02', title: 'Sales Livery', copy: 'Taking horses on a sales livery basis — advertising, enquiries and viewings handled for you, with as much or as little involvement as you like.', goto: (e) => { e.preventDefault(); this.setPage('service-sales-livery'); } },
+        { num: '03', title: 'Producing & Schooling', copy: 'Bringing young or green horses on with correct, sympathetic schooling to bring out their best.', goto: (e) => { e.preventDefault(); this.setPage('service-producing'); } },
+        { num: '04', title: 'Breeding & Stud Services', copy: 'Stallions standing at stud each season, with a small number of spaces for outside mares.', goto: (e) => { e.preventDefault(); this.setPage('service-breeding'); } }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

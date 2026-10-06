@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/((?!assets/|_ds/|admin|image-slot.js|support.js|favicon).*)", "destination": "/index.html" }
+  ]
+}

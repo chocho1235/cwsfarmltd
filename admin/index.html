@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cornerwood Stud — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Archivo:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+<style>
+  :root{
+    --cw-green:#0e2b26; --cw-green-light:#153f37;
+    --gold:#b8a562; --gold-dark:#8f7d46;
+    --bg:#f3f2f2; --text:#201e1d; --divider:#d8d5d0;
+    --danger:#a33b3b;
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  body{ margin:0; font-family:'Archivo', system-ui, sans-serif; background:var(--bg); color:var(--text); }
+  h1,h2,h3{ font-family:'Oswald', sans-serif; font-weight:500; margin:0; }
+  .wrap{ max-width:1000px; margin:0 auto; padding:0 20px; }
+
+  /* --- gate --- */
+  #gate{ min-height:100vh; display:flex; align-items:center; justify-content:center; background:var(--cw-green); padding:20px; }
+  .gate-box{ background:var(--bg); padding:40px 36px; width:100%; max-width:360px; box-shadow:0 12px 32px rgba(0,0,0,.3); }
+  .gate-box h1{ font-size:24px; margin-bottom:6px; color:var(--cw-green); }
+  .gate-box p{ font-size:14px; color:#6b6764; margin:0 0 20px; }
+  .gate-box input{ width:100%; padding:12px 14px; font-size:15px; border:1px solid var(--divider); margin-bottom:12px; font-family:inherit; }
+  .gate-box input:focus{ outline:2px solid var(--gold); outline-offset:0; border-color:var(--gold); }
+  .gate-box button{ width:100%; padding:12px 14px; background:var(--gold); color:var(--cw-green); border:0; font-family:'Oswald',sans-serif; font-weight:500; font-size:15px; letter-spacing:.02em; cursor:pointer; }
+  .gate-box button:hover{ background:var(--gold-dark); color:#fff; }
+  .gate-error{ color:var(--danger); font-size:13px; margin:-4px 0 12px; display:none; }
+
+  /* --- dashboard --- */
+  #dashboard{ display:none; }
+  header.top{ background:var(--cw-green); border-bottom:3px solid var(--gold); padding:18px 0; }
+  header.top .wrap{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  header.top h1{ color:#fff; font-size:20px; }
+  header.top .sub{ color:var(--gold); font-size:12px; text-transform:uppercase; letter-spacing:.1em; font-weight:700; display:block; margin-bottom:2px; }
+  header.top a.logout{ color:#fff; font-size:13px; text-decoration:underline; cursor:pointer; }
+
+  main{ padding:32px 0 80px; }
+  .panel{ background:#fff; border:1px solid var(--divider); margin-bottom:28px; }
+  .panel-head{ padding:16px 20px; border-bottom:1px solid var(--divider); display:flex; align-items:center; justify-content:space-between; }
+  .panel-head h2{ font-size:18px; }
+  .btn{ display:inline-flex; align-items:center; gap:6px; padding:10px 18px; font-family:'Oswald',sans-serif; font-weight:500; font-size:13px; letter-spacing:.03em; text-transform:uppercase; cursor:pointer; border:0; }
+  .btn-primary{ background:var(--gold); color:var(--cw-green); }
+  .btn-primary:hover{ background:var(--gold-dark); color:#fff; }
+  .btn-ghost{ background:transparent; border:1px solid var(--divider); color:var(--text); }
+  .btn-ghost:hover{ background:#f0efec; }
+  .btn-danger{ background:transparent; color:var(--danger); border:1px solid var(--danger); }
+  .btn-danger:hover{ background:var(--danger); color:#fff; }
+  .btn-small{ padding:6px 12px; font-size:11px; }
+
+  table{ width:100%; border-collapse:collapse; }
+  th{ text-align:left; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#8a8683; padding:10px 20px; border-bottom:1px solid var(--divider); }
+  td{ padding:12px 20px; border-bottom:1px solid var(--divider); font-size:14px; vertical-align:middle; }
+  tr:last-child td{ border-bottom:0; }
+  .thumb{ width:48px; height:48px; object-fit:cover; background:#eee; display:block; }
+  .badge{ display:inline-block; padding:3px 9px; font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
+  .badge-sold{ background:color-mix(in srgb, var(--danger) 15%, transparent); color:var(--danger); }
+  .badge-available{ background:color-mix(in srgb, #2f7d4f 15%, transparent); color:#2f7d4f; }
+  .row-actions{ display:flex; gap:8px; }
+  .empty{ padding:40px 20px; text-align:center; color:#8a8683; font-size:14px; }
+
+  /* --- form --- */
+  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:20px; }
+  .field{ display:flex; flex-direction:column; gap:5px; }
+  .field.span-2{ grid-column:1/-1; }
+  .field label{ font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:#6b6764; }
+  .field input[type=text], .field textarea{ padding:9px 11px; font-size:14px; border:1px solid var(--divider); font-family:inherit; }
+  .field input:focus, .field textarea:focus{ outline:2px solid var(--gold); outline-offset:0; border-color:var(--gold); }
+  .field textarea{ resize:vertical; min-height:70px; }
+  .field.checkbox{ flex-direction:row; align-items:center; gap:8px; }
+  .field.checkbox label{ font-size:14px; text-transform:none; font-weight:600; color:var(--text); }
+  .form-actions{ display:flex; gap:10px; padding:16px 20px; border-top:1px solid var(--divider); }
+  .status{ font-size:13px; padding:10px 20px; display:none; }
+  .status.ok{ display:block; background:#eaf5ee; color:#2f7d4f; }
+  .status.err{ display:block; background:#fbeaea; color:var(--danger); }
+  .hint{ font-size:12px; color:#8a8683; margin:0; padding:0 20px 16px; }
+
+  /* --- gallery manager --- */
+  .gallery{ display:grid; grid-template-columns:repeat(auto-fill, minmax(96px, 1fr)); gap:10px; margin-bottom:10px; }
+  .gallery-item{ position:relative; aspect-ratio:1; background:#eee; cursor:grab; border:1px solid var(--divider); }
+  .gallery-item:active{ cursor:grabbing; }
+  .gallery-item img{ width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
+  .gallery-item .cover-badge{ position:absolute; bottom:0; left:0; right:0; background:rgba(14,43,38,.85); color:var(--gold); font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; text-align:center; padding:3px 0; }
+  .gallery-item .remove-btn{ position:absolute; top:3px; right:3px; width:20px; height:20px; border:0; border-radius:50%; background:rgba(163,59,59,.9); color:#fff; font-size:13px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+  .gallery-item .remove-btn:hover{ background:var(--danger); }
+  .gallery-item.uploading{ display:flex; align-items:center; justify-content:center; font-size:10px; color:#8a8683; text-align:center; padding:4px; }
+  .gallery-drop{ border:2px dashed var(--divider); padding:18px; text-align:center; font-size:13px; color:#8a8683; cursor:pointer; transition:border-color .15s ease, background .15s ease; }
+  .gallery-drop:hover, .gallery-drop.drag-over{ border-color:var(--gold); background:#faf8f1; color:var(--text); }
+  .gallery-drop input{ display:none; }
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <form class="gate-box" id="gateForm">
+    <h1>Cornerwood Stud</h1>
+    <p>Admin access</p>
+    <input type="password" id="gatePassword" placeholder="Password" autocomplete="current-password" autofocus>
+    <div class="gate-error" id="gateError">Incorrect password.</div>
+    <button type="submit">Enter</button>
+  </form>
+</div>
+
+<div id="dashboard">
+  <header class="top">
+    <div class="wrap">
+      <div>
+        <span class="sub">Cornerwood Stud</span>
+        <h1>Horses for sale — admin</h1>
+      </div>
+      <a class="logout" id="logoutBtn">Log out</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="panel">
+      <div class="panel-head">
+        <h2 id="formTitle">Add a horse</h2>
+        <button type="button" class="btn btn-ghost btn-small" id="cancelEditBtn" style="display:none;">Cancel edit</button>
+      </div>
+      <div class="status" id="formStatus"></div>
+      <form id="horseForm">
+        <div class="form-grid">
+          <div class="field span-2">
+            <label for="f-name">Name *</label>
+            <input type="text" id="f-name" required>
+          </div>
+          <div class="field">
+            <label for="f-age">Age / year born</label>
+            <input type="text" id="f-age" placeholder="e.g. 2019">
+          </div>
+          <div class="field">
+            <label for="f-breed">Breed</label>
+            <input type="text" id="f-breed" placeholder="e.g. Irish Sport Horse">
+          </div>
+          <div class="field">
+            <label for="f-sex">Sex</label>
+            <input type="text" id="f-sex" placeholder="e.g. Gelding">
+          </div>
+          <div class="field">
+            <label for="f-height">Height</label>
+            <input type="text" id="f-height" placeholder="e.g. 16">
+          </div>
+          <div class="field span-2">
+            <label for="f-categories">Categories</label>
+            <input type="text" id="f-categories" placeholder="e.g. Allrounder // Riding Club // Hacking">
+          </div>
+          <div class="field">
+            <label for="f-price">Price</label>
+            <input type="text" id="f-price" placeholder="e.g. POA or £12,500">
+          </div>
+          <div class="field checkbox" style="align-self:end;">
+            <input type="checkbox" id="f-sold">
+            <label for="f-sold">Sold</label>
+          </div>
+          <div class="field span-2">
+            <label>Photos</label>
+            <div class="gallery" id="gallery"></div>
+            <label class="gallery-drop" id="galleryDrop" for="f-photo-input">
+              Drag &amp; drop photos here, or click to choose files — first photo is the cover. Drag thumbnails to reorder.
+              <input type="file" id="f-photo-input" accept="image/*" multiple>
+            </label>
+          </div>
+          <div class="field span-2">
+            <label for="f-description">Description (optional, shown under specs)</label>
+            <textarea id="f-description" style="min-height:140px;"></textarea>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Add horse</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head">
+        <h2>Current horses</h2>
+      </div>
+      <div id="tableWrap">
+        <div class="empty">Loading…</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+(function(){
+  var SUPABASE_URL = 'https://jioacvzzweugnacuzoyo.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_AP2frH528wRVmUIq_hSgLw_f7aq5oRf';
+  var ADMIN_PASSWORD = 'Cuteplummy1!';
+  var SESSION_KEY = 'cw_admin_unlocked';
+
+  var sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  var editingId = null;
+  var currentPhotos = [];
+  var uploadFolderId = (crypto.randomUUID ? crypto.randomUUID() : 'tmp-' + Date.now());
+  var gallerySortable = null;
+
+  var gate = document.getElementById('gate');
+  var dashboard = document.getElementById('dashboard');
+  var gateForm = document.getElementById('gateForm');
+  var gateError = document.getElementById('gateError');
+
+  function unlock(){
+    gate.style.display = 'none';
+    dashboard.style.display = 'block';
+    loadHorses();
+  }
+
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    unlock();
+  }
+
+  gateForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    var val = document.getElementById('gatePassword').value;
+    if (val === ADMIN_PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, '1');
+      gateError.style.display = 'none';
+      unlock();
+    } else {
+      gateError.style.display = 'block';
+    }
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', function(){
+    sessionStorage.removeItem(SESSION_KEY);
+    location.reload();
+  });
+
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+    });
+  }
+
+  function renderGallery(){
+    var el = document.getElementById('gallery');
+    el.innerHTML = currentPhotos.map(function(url, i){
+      return '<div class="gallery-item" data-url="' + esc(url) + '">' +
+        '<img src="' + esc(url) + '" alt="">' +
+        (i === 0 ? '<div class="cover-badge">Cover</div>' : '') +
+        '<button type="button" class="remove-btn" data-remove="' + i + '" title="Remove">&times;</button>' +
+        '</div>';
+    }).join('');
+    el.querySelectorAll('[data-remove]').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        currentPhotos.splice(parseInt(btn.getAttribute('data-remove'), 10), 1);
+        renderGallery();
+      });
+    });
+    if (!gallerySortable) {
+      gallerySortable = new Sortable(el, {
+        animation: 150,
+        onEnd: function(evt){
+          var moved = currentPhotos.splice(evt.oldIndex, 1)[0];
+          currentPhotos.splice(evt.newIndex, 0, moved);
+          renderGallery();
+        }
+      });
+    }
+  }
+
+  function addUploadingTile(){
+    var el = document.getElementById('gallery');
+    var tile = document.createElement('div');
+    tile.className = 'gallery-item uploading';
+    tile.textContent = 'Uploading…';
+    el.appendChild(tile);
+    return tile;
+  }
+
+  function uploadFiles(fileList){
+    var files = [...fileList].filter(function(f){ return f.type.indexOf('image/') === 0; });
+    files.forEach(function(file){
+      var tile = addUploadingTile();
+      var ext = (file.name.match(/\.\w+$/) || ['.jpg'])[0];
+      var path = 'horses/' + uploadFolderId + '/admin-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8) + ext;
+      sb.storage.from('horse-photos').upload(path, file, { upsert: true, contentType: file.type })
+        .then(function(res){
+          tile.remove();
+          if (res.error) {
+            showStatus('Upload failed: ' + res.error.message, false);
+            return;
+          }
+          var pub = sb.storage.from('horse-photos').getPublicUrl(path);
+          currentPhotos.push(pub.data.publicUrl);
+          renderGallery();
+        });
+    });
+  }
+
+  var galleryDrop = document.getElementById('galleryDrop');
+  var galleryInput = document.getElementById('f-photo-input');
+  galleryInput.addEventListener('change', function(){
+    uploadFiles(galleryInput.files);
+    galleryInput.value = '';
+  });
+  ['dragover','dragenter'].forEach(function(evt){
+    galleryDrop.addEventListener(evt, function(e){ e.preventDefault(); galleryDrop.classList.add('drag-over'); });
+  });
+  ['dragleave','dragend','drop'].forEach(function(evt){
+    galleryDrop.addEventListener(evt, function(e){ galleryDrop.classList.remove('drag-over'); });
+  });
+  galleryDrop.addEventListener('drop', function(e){
+    e.preventDefault();
+    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+      uploadFiles(e.dataTransfer.files);
+    }
+  });
+
+  renderGallery();
+
+  function showStatus(msg, ok){
+    var el = document.getElementById('formStatus');
+    el.textContent = msg;
+    el.className = 'status ' + (ok ? 'ok' : 'err');
+    setTimeout(function(){ el.className = 'status'; }, 4000);
+  }
+
+  function resetForm(){
+    editingId = null;
+    document.getElementById('horseForm').reset();
+    document.getElementById('formTitle').textContent = 'Add a horse';
+    document.getElementById('submitBtn').textContent = 'Add horse';
+    document.getElementById('cancelEditBtn').style.display = 'none';
+    currentPhotos = [];
+    uploadFolderId = (crypto.randomUUID ? crypto.randomUUID() : 'tmp-' + Date.now());
+    renderGallery();
+  }
+
+  document.getElementById('cancelEditBtn').addEventListener('click', resetForm);
+
+  function fillForm(h){
+    editingId = h.id;
+    document.getElementById('f-name').value = h.name || '';
+    document.getElementById('f-age').value = h.age || '';
+    document.getElementById('f-breed').value = h.breed || '';
+    document.getElementById('f-sex').value = h.sex || '';
+    document.getElementById('f-height').value = h.height || '';
+    document.getElementById('f-categories').value = h.categories || '';
+    document.getElementById('f-price').value = h.price || '';
+    document.getElementById('f-sold').checked = !!h.sold;
+    document.getElementById('f-description').value = h.description || '';
+    document.getElementById('formTitle').textContent = 'Edit ' + h.name;
+    document.getElementById('submitBtn').textContent = 'Save changes';
+    document.getElementById('cancelEditBtn').style.display = 'inline-flex';
+    currentPhotos = (h.photos && h.photos.length) ? h.photos.slice() : (h.photo ? [h.photo] : []);
+    uploadFolderId = h.id;
+    renderGallery();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.getElementById('horseForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var payload = {
+      name: document.getElementById('f-name').value.trim(),
+      age: document.getElementById('f-age').value.trim() || null,
+      breed: document.getElementById('f-breed').value.trim() || null,
+      sex: document.getElementById('f-sex').value.trim() || null,
+      height: document.getElementById('f-height').value.trim() || null,
+      categories: document.getElementById('f-categories').value.trim() || null,
+      price: document.getElementById('f-price').value.trim() || null,
+      sold: document.getElementById('f-sold').checked,
+      photo: currentPhotos[0] || null,
+      photos: currentPhotos,
+      description: document.getElementById('f-description').value.trim() || null
+    };
+    if (!payload.name) return;
+
+    var req = editingId
+      ? sb.from('horses').update(payload).eq('id', editingId)
+      : sb.from('horses').insert(payload);
+
+    req.then(function(res){
+      if (res.error) {
+        showStatus('Error: ' + res.error.message, false);
+        return;
+      }
+      showStatus(editingId ? 'Horse updated.' : 'Horse added.', true);
+      resetForm();
+      loadHorses();
+    });
+  });
+
+  function deleteHorse(id, name){
+    if (!confirm('Delete ' + name + '? This can\'t be undone.')) return;
+    sb.from('horses').delete().eq('id', id).then(function(res){
+      if (res.error) {
+        showStatus('Error: ' + res.error.message, false);
+        return;
+      }
+      loadHorses();
+    });
+  }
+
+  function toggleSold(h){
+    sb.from('horses').update({ sold: !h.sold }).eq('id', h.id).then(function(res){
+      if (res.error) {
+        showStatus('Error: ' + res.error.message, false);
+        return;
+      }
+      loadHorses();
+    });
+  }
+
+  function loadHorses(){
+    sb.from('horses').select('*').order('sort_order', { ascending: true }).order('created_at', { ascending: true })
+      .then(function(res){
+        var wrap = document.getElementById('tableWrap');
+        if (res.error) {
+          wrap.innerHTML = '<div class="empty">Error loading horses: ' + esc(res.error.message) + '</div>';
+          return;
+        }
+        var horses = res.data || [];
+        if (!horses.length) {
+          wrap.innerHTML = '<div class="empty">No horses yet — add one above.</div>';
+          return;
+        }
+        var rows = horses.map(function(h){
+          return '<tr>' +
+            '<td>' + (h.photo ? '<img class="thumb" src="' + esc(h.photo) + '" alt="">' : '<div class="thumb"></div>') + '</td>' +
+            '<td><strong>' + esc(h.name) + '</strong><br><span style="color:#8a8683;font-size:12px;">' + esc(h.breed || '') + '</span></td>' +
+            '<td>' + esc(h.age || '') + '</td>' +
+            '<td>' + esc(h.price || '') + '</td>' +
+            '<td><span class="badge ' + (h.sold ? 'badge-sold' : 'badge-available') + '" style="cursor:pointer;" data-toggle="' + h.id + '">' + (h.sold ? 'Sold' : 'Available') + '</span></td>' +
+            '<td><div class="row-actions">' +
+              '<button type="button" class="btn btn-ghost btn-small" data-edit="' + h.id + '">Edit</button>' +
+              '<button type="button" class="btn btn-danger btn-small" data-delete="' + h.id + '" data-name="' + esc(h.name) + '">Delete</button>' +
+            '</div></td>' +
+          '</tr>';
+        }).join('');
+        wrap.innerHTML =
+          '<table><thead><tr>' +
+            '<th></th><th>Name / Breed</th><th>Age</th><th>Price</th><th>Status</th><th>Actions</th>' +
+          '</tr></thead><tbody>' + rows + '</tbody></table>';
+
+        wrap.querySelectorAll('[data-edit]').forEach(function(btn){
+          btn.addEventListener('click', function(){
+            var h = horses.find(function(x){ return x.id === btn.getAttribute('data-edit'); });
+            if (h) fillForm(h);
+          });
+        });
+        wrap.querySelectorAll('[data-delete]').forEach(function(btn){
+          btn.addEventListener('click', function(){
+            deleteHorse(btn.getAttribute('data-delete'), btn.getAttribute('data-name'));
+          });
+        });
+        wrap.querySelectorAll('[data-toggle]').forEach(function(badge){
+          badge.addEventListener('click', function(){
+            var h = horses.find(function(x){ return x.id === badge.getAttribute('data-toggle'); });
+            if (h) toggleSold(h);
+          });
+        });
+      });
+  }
+})();
+</script>
+</body>
+</html>
