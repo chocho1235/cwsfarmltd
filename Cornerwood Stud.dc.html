@@ -289,7 +289,8 @@ a.btn-primary, a.btn-primary:hover{ color:var(--color-bg); }
 .sale-specs div b{ color:color-mix(in srgb, #fff 78%, transparent); font-weight:400; }
 .sold-flag{ position:absolute; top:0; right:0; width:132px; height:132px; overflow:hidden; pointer-events:none; }
 .sold-flag i{ position:absolute; top:28px; right:-44px; width:176px; display:flex; flex-direction:column; align-items:center; gap:4px; transform:rotate(45deg); background:var(--color-accent); color:var(--cw-green); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-style:normal; line-height:1.1; padding:5px 0; }
-.sold-flag .flag-us{ display:block; line-height:0; }
+.sold-flag .flag-us, .sold-flag .flag-se{ display:block; line-height:0; }
+.sold-flag .flag-se svg{ display:block; width:29px; height:18px; box-shadow:0 0 0 1px rgba(255,255,255,.7), 0 1px 3px rgba(0,0,0,.35); }
 .sold-flag .flag-us svg{ display:block; width:34px; height:18px; box-shadow:0 0 0 1px rgba(255,255,255,.7), 0 1px 3px rgba(0,0,0,.35); }
 .horse-detail-layout{ grid-template-columns:minmax(0,5fr) minmax(0,7fr); }
 .horse-detail-layout > .split-figure{ container-type:inline-size; }
@@ -314,24 +315,26 @@ a.btn-primary, a.btn-primary:hover{ color:var(--color-bg); }
 .founder-role{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; color:var(--color-accent-700); margin:0 0 var(--half); }
 .founder-link{ display:inline-block; margin-top:var(--half); font-size:14px; font-weight:600; letter-spacing:.03em; text-transform:uppercase; }
 @media (max-width:640px){ .founder{ grid-template-columns:1fr; } .founder-photo{ max-width:260px; } }
-.cw-badges{ --cw-gold:#c9b47e; --cw-cream:#ece5d3; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; margin-top:calc(1.4*var(--leading)); }
-.cw-badge{ padding:0; }
-.cw-badge-inner{ position:relative; height:100%; box-sizing:border-box; border:1px solid rgba(201,180,126,.45); display:flex; flex-direction:row; align-items:center; gap:16px; padding:20px 18px; text-align:left; transition:border-color .18s ease, background .18s ease; }
-.cw-badge-inner:hover{ border-color:var(--cw-gold); background:rgba(201,180,126,.06); }
-.cw-badges .cw-num{ position:absolute; top:8px; right:10px; font-family:'Work Sans',sans-serif; font-size:10px; letter-spacing:.24em; color:rgba(201,180,126,.75); line-height:1; }
-.cw-badges .cw-icon{ width:54px; height:54px; border-radius:50%; border:1.5px solid var(--cw-gold); display:flex; align-items:center; justify-content:center; color:var(--cw-gold); flex:none; }
-.cw-badges .cw-icon svg{ width:27px; height:27px; }
-.cw-badge-text{ display:flex; flex-direction:column; align-items:flex-start; gap:7px; min-width:0; }
-.cw-badges .cw-title{ margin:0; font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:clamp(21px,1.9vw,26px); line-height:1.1; letter-spacing:0; color:var(--cw-gold); }
-@media (max-width:1100px){ .cw-badges{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media (max-width:560px){
-  .cw-badges{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-  .cw-badge-inner{ flex-direction:column; align-items:center; text-align:center; gap:10px; padding:20px 8px 16px; }
-  .cw-badge-text{ align-items:center; }
-  .cw-badges .cw-icon{ width:46px; height:46px; }
-  .cw-badges .cw-icon svg{ width:24px; height:24px; }
-  .cw-badges .cw-title{ font-size:18px; }
+.cw-badges{ --cw-gold:#c9b47e; --cw-cream:#ece5d3; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; margin-top:calc(1.6*var(--leading)); background:rgba(201,180,126,.3); border:1px solid rgba(201,180,126,.5); }
+.cw-badge{ padding:0; background:var(--cw-green); }
+.cw-badge-inner{ position:relative; height:100%; box-sizing:border-box; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:26px 12px 24px; text-align:center; transition:background .25s ease; }
+.cw-badge-inner::after{ content:""; position:absolute; left:50%; bottom:0; width:0; height:2px; background:var(--cw-gold); transform:translateX(-50%); transition:width .3s ease; }
+.cw-badge-inner:hover{ background:rgba(201,180,126,.07); }
+.cw-badge-inner:hover::after{ width:44px; }
+.cw-badges .cw-num{ display:none; }
+.cw-badges .cw-icon{ width:auto; height:auto; border:0; border-radius:0; display:flex; align-items:center; justify-content:center; color:var(--cw-gold); flex:none; transition:color .25s ease, transform .25s ease; }
+.cw-badges .cw-icon svg{ width:32px; height:32px; stroke-width:1; }
+.cw-badges .cw-icon svg *{ vector-effect:non-scaling-stroke; }
+.cw-badge-inner:hover .cw-icon{ color:var(--cw-cream); transform:translateY(-2px); }
+.cw-badge-text{ display:flex; flex-direction:column; align-items:center; min-width:0; }
+.cw-badges .cw-title{ margin:0; font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:clamp(20px,1.9vw,25px); line-height:1.1; letter-spacing:.01em; color:var(--cw-gold); }
+@media (max-width:860px){ .cw-badges{ grid-template-columns:repeat(2,minmax(0,1fr)); } .cw-badge-inner{ padding:24px 10px 22px; } }
+@media (max-width:520px){
+  .cw-badge-inner{ gap:10px; padding:20px 8px 18px; }
+  .cw-badges .cw-icon svg{ width:28px; height:28px; }
+  .cw-badges .cw-title{ font-size:19px; }
 }
+@media (hover:none){ .cw-badge-inner:hover{ background:none; } .cw-badge-inner:hover::after{ width:0; } .cw-badge-inner:hover .cw-icon{ color:var(--cw-gold); transform:none; } }
 .photo-thumbstrip{ display:flex; flex-wrap:nowrap; overflow-x:auto; gap:8px; margin-top:8px; -webkit-overflow-scrolling:touch; scrollbar-width:thin; }
 .photo-thumb{ display:block; flex:0 0 auto; width:64px; aspect-ratio:1; padding:0; border:2px solid transparent; background:none; cursor:pointer; opacity:.65; transition:opacity .15s ease, border-color .15s ease; }
 .photo-thumb:hover{ opacity:1; }
@@ -438,7 +441,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       <div class="keep-touch">
         <span class="keep-touch-title">Keep in touch</span>
         <a href="tel:+447974941333" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 7974 941333</a>
-        <a href="tel:+441424772484" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>01424 772484</a>
+        <a href="tel:+441424772484" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 1424 772484</a>
         <a href="mailto:info@cornerwoodstud.co.uk" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>info@cornerwoodstud.co.uk</a>
       </div>
       <div class="mobile-actions">
@@ -469,7 +472,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       <a href="/contact" class="btn btn-primary nav-cta" onClick="{{ goContact }}">Contact us</a>
       <div class="nav-contact">
         <a href="tel:+447974941333"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 7974 941333</a>
-        <a href="tel:+441424772484"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>01424 772484</a>
+        <a href="tel:+441424772484"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 1424 772484</a>
         <a href="mailto:info@cornerwoodstud.co.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>info@cornerwoodstud.co.uk</a>
       </div>
     </div>
@@ -752,7 +755,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
 <div class="wrap">
   <div class="pagehead">
     <span class="kicker">Horses for Sale</span>
-    <h1>Current horses for sale</h1>
+    <h1>Current Horses &amp; Ponies For Sale</h1>
     <p>A variety of horses, from pleasure rides to top-class performance prospects. Viewings by appointment.</p>
   </div>
   <sc-if value="{{ horsesLoading }}" hint-placeholder-val="{{ false }}">
@@ -778,7 +781,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
           <div>Price &middot; <b>{{ item.price }}</b></div>
         </div>
         <sc-if value="{{ item.sold }}" hint-placeholder-val="{{ false }}">
-          <div class="sold-flag"><i><span class="sold-text">Sold</span><sc-if value="{{ item.exported_us }}" hint-placeholder-val="{{ false }}"><span class="flag-us" role="img" aria-label="Exported to the USA"><svg viewBox="0 0 38 20" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><rect y="0.000" width="38" height="1.538" fill="#b22234"/><rect y="3.077" width="38" height="1.538" fill="#b22234"/><rect y="6.154" width="38" height="1.538" fill="#b22234"/><rect y="9.231" width="38" height="1.538" fill="#b22234"/><rect y="12.308" width="38" height="1.538" fill="#b22234"/><rect y="15.385" width="38" height="1.538" fill="#b22234"/><rect y="18.462" width="38" height="1.538" fill="#b22234"/><rect width="15.2" height="10.77" fill="#3c3b6e"/><g fill="#fff"><circle cx="1.6" cy="1.6" r=".55"/><circle cx="3.6" cy="1.6" r=".55"/><circle cx="5.6" cy="1.6" r=".55"/><circle cx="7.6" cy="1.6" r=".55"/><circle cx="9.6" cy="1.6" r=".55"/><circle cx="11.6" cy="1.6" r=".55"/><circle cx="1.6" cy="3.6" r=".55"/><circle cx="3.6" cy="3.6" r=".55"/><circle cx="5.6" cy="3.6" r=".55"/><circle cx="7.6" cy="3.6" r=".55"/><circle cx="9.6" cy="3.6" r=".55"/><circle cx="11.6" cy="3.6" r=".55"/><circle cx="1.6" cy="5.6" r=".55"/><circle cx="3.6" cy="5.6" r=".55"/><circle cx="5.6" cy="5.6" r=".55"/><circle cx="7.6" cy="5.6" r=".55"/><circle cx="9.6" cy="5.6" r=".55"/><circle cx="11.6" cy="5.6" r=".55"/><circle cx="1.6" cy="7.6" r=".55"/><circle cx="3.6" cy="7.6" r=".55"/><circle cx="5.6" cy="7.6" r=".55"/><circle cx="7.6" cy="7.6" r=".55"/><circle cx="9.6" cy="7.6" r=".55"/><circle cx="11.6" cy="7.6" r=".55"/></g></svg></span></sc-if></i></div>
+          <div class="sold-flag"><i><span class="sold-text">Sold</span><sc-if value="{{ item.flag_us }}" hint-placeholder-val="{{ false }}"><span class="flag-us" role="img" aria-label="Exported to the USA"><svg viewBox="0 0 38 20" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><rect y="0.000" width="38" height="1.538" fill="#b22234"/><rect y="3.077" width="38" height="1.538" fill="#b22234"/><rect y="6.154" width="38" height="1.538" fill="#b22234"/><rect y="9.231" width="38" height="1.538" fill="#b22234"/><rect y="12.308" width="38" height="1.538" fill="#b22234"/><rect y="15.385" width="38" height="1.538" fill="#b22234"/><rect y="18.462" width="38" height="1.538" fill="#b22234"/><rect width="15.2" height="10.77" fill="#3c3b6e"/><g fill="#fff"><circle cx="1.6" cy="1.6" r=".55"/><circle cx="3.6" cy="1.6" r=".55"/><circle cx="5.6" cy="1.6" r=".55"/><circle cx="7.6" cy="1.6" r=".55"/><circle cx="9.6" cy="1.6" r=".55"/><circle cx="11.6" cy="1.6" r=".55"/><circle cx="1.6" cy="3.6" r=".55"/><circle cx="3.6" cy="3.6" r=".55"/><circle cx="5.6" cy="3.6" r=".55"/><circle cx="7.6" cy="3.6" r=".55"/><circle cx="9.6" cy="3.6" r=".55"/><circle cx="11.6" cy="3.6" r=".55"/><circle cx="1.6" cy="5.6" r=".55"/><circle cx="3.6" cy="5.6" r=".55"/><circle cx="5.6" cy="5.6" r=".55"/><circle cx="7.6" cy="5.6" r=".55"/><circle cx="9.6" cy="5.6" r=".55"/><circle cx="11.6" cy="5.6" r=".55"/><circle cx="1.6" cy="7.6" r=".55"/><circle cx="3.6" cy="7.6" r=".55"/><circle cx="5.6" cy="7.6" r=".55"/><circle cx="7.6" cy="7.6" r=".55"/><circle cx="9.6" cy="7.6" r=".55"/><circle cx="11.6" cy="7.6" r=".55"/></g></svg></span></sc-if><sc-if value="{{ item.flag_se }}" hint-placeholder-val="{{ false }}"><span class="flag-se" role="img" aria-label="Exported to Sweden"><svg viewBox="0 0 16 10" aria-hidden="true"><rect width="16" height="10" fill="#006aa7"/><rect x="5" width="2" height="10" fill="#fecc00"/><rect y="4" width="16" height="2" fill="#fecc00"/></svg></span></sc-if></i></div>
         </sc-if>
       </article>
     </sc-for>
@@ -802,7 +805,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
     <div class="split-figure" style="grid-column:1; position:relative;">
       <image-slot id="{{ selectedHorse.id }}-detail" shape="rect" fit="contain" src="{{ selectedHorse.activePhoto }}" alt="{{ selectedHorse.alt }}" placeholder="Photo" style="width:100%; aspect-ratio:1;"></image-slot>
       <sc-if value="{{ selectedHorse.sold }}" hint-placeholder-val="{{ false }}">
-        <div class="sold-flag"><i><span class="sold-text">Sold</span><sc-if value="{{ selectedHorse.exported_us }}" hint-placeholder-val="{{ false }}"><span class="flag-us" role="img" aria-label="Exported to the USA"><svg viewBox="0 0 38 20" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><rect y="0.000" width="38" height="1.538" fill="#b22234"/><rect y="3.077" width="38" height="1.538" fill="#b22234"/><rect y="6.154" width="38" height="1.538" fill="#b22234"/><rect y="9.231" width="38" height="1.538" fill="#b22234"/><rect y="12.308" width="38" height="1.538" fill="#b22234"/><rect y="15.385" width="38" height="1.538" fill="#b22234"/><rect y="18.462" width="38" height="1.538" fill="#b22234"/><rect width="15.2" height="10.77" fill="#3c3b6e"/><g fill="#fff"><circle cx="1.6" cy="1.6" r=".55"/><circle cx="3.6" cy="1.6" r=".55"/><circle cx="5.6" cy="1.6" r=".55"/><circle cx="7.6" cy="1.6" r=".55"/><circle cx="9.6" cy="1.6" r=".55"/><circle cx="11.6" cy="1.6" r=".55"/><circle cx="1.6" cy="3.6" r=".55"/><circle cx="3.6" cy="3.6" r=".55"/><circle cx="5.6" cy="3.6" r=".55"/><circle cx="7.6" cy="3.6" r=".55"/><circle cx="9.6" cy="3.6" r=".55"/><circle cx="11.6" cy="3.6" r=".55"/><circle cx="1.6" cy="5.6" r=".55"/><circle cx="3.6" cy="5.6" r=".55"/><circle cx="5.6" cy="5.6" r=".55"/><circle cx="7.6" cy="5.6" r=".55"/><circle cx="9.6" cy="5.6" r=".55"/><circle cx="11.6" cy="5.6" r=".55"/><circle cx="1.6" cy="7.6" r=".55"/><circle cx="3.6" cy="7.6" r=".55"/><circle cx="5.6" cy="7.6" r=".55"/><circle cx="7.6" cy="7.6" r=".55"/><circle cx="9.6" cy="7.6" r=".55"/><circle cx="11.6" cy="7.6" r=".55"/></g></svg></span></sc-if></i></div>
+        <div class="sold-flag"><i><span class="sold-text">Sold</span><sc-if value="{{ selectedHorse.flag_us }}" hint-placeholder-val="{{ false }}"><span class="flag-us" role="img" aria-label="Exported to the USA"><svg viewBox="0 0 38 20" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><rect y="0.000" width="38" height="1.538" fill="#b22234"/><rect y="3.077" width="38" height="1.538" fill="#b22234"/><rect y="6.154" width="38" height="1.538" fill="#b22234"/><rect y="9.231" width="38" height="1.538" fill="#b22234"/><rect y="12.308" width="38" height="1.538" fill="#b22234"/><rect y="15.385" width="38" height="1.538" fill="#b22234"/><rect y="18.462" width="38" height="1.538" fill="#b22234"/><rect width="15.2" height="10.77" fill="#3c3b6e"/><g fill="#fff"><circle cx="1.6" cy="1.6" r=".55"/><circle cx="3.6" cy="1.6" r=".55"/><circle cx="5.6" cy="1.6" r=".55"/><circle cx="7.6" cy="1.6" r=".55"/><circle cx="9.6" cy="1.6" r=".55"/><circle cx="11.6" cy="1.6" r=".55"/><circle cx="1.6" cy="3.6" r=".55"/><circle cx="3.6" cy="3.6" r=".55"/><circle cx="5.6" cy="3.6" r=".55"/><circle cx="7.6" cy="3.6" r=".55"/><circle cx="9.6" cy="3.6" r=".55"/><circle cx="11.6" cy="3.6" r=".55"/><circle cx="1.6" cy="5.6" r=".55"/><circle cx="3.6" cy="5.6" r=".55"/><circle cx="5.6" cy="5.6" r=".55"/><circle cx="7.6" cy="5.6" r=".55"/><circle cx="9.6" cy="5.6" r=".55"/><circle cx="11.6" cy="5.6" r=".55"/><circle cx="1.6" cy="7.6" r=".55"/><circle cx="3.6" cy="7.6" r=".55"/><circle cx="5.6" cy="7.6" r=".55"/><circle cx="7.6" cy="7.6" r=".55"/><circle cx="9.6" cy="7.6" r=".55"/><circle cx="11.6" cy="7.6" r=".55"/></g></svg></span></sc-if><sc-if value="{{ selectedHorse.flag_se }}" hint-placeholder-val="{{ false }}"><span class="flag-se" role="img" aria-label="Exported to Sweden"><svg viewBox="0 0 16 10" aria-hidden="true"><rect width="16" height="10" fill="#006aa7"/><rect x="5" width="2" height="10" fill="#fecc00"/><rect y="4" width="16" height="2" fill="#fecc00"/></svg></span></sc-if></i></div>
       </sc-if>
       <sc-if value="{{ selectedHorseHasMultiplePhotos }}" hint-placeholder-val="{{ false }}">
         <button type="button" class="photo-nav photo-nav-prev" onClick="{{ photoPrev }}" aria-label="Previous photo">&#8249;</button>
@@ -918,7 +921,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
     <p>All transport costs for horses sold under distance selling rules will be down to the buyer, including transport to and from Cornerwood Stud.</p>
     <p><b>When this applies.</b> If you are a consumer and you buy a horse from us without meeting us in person at the yard before the contract is made (for example entirely by telephone, email, WhatsApp, video call or through our website), this is a distance contract and the Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013 apply. This section applies to consumers only and does not apply to trade to trade sales.</p>
     <p><b>Your right to cancel.</b> You have the right to cancel a distance contract within 14 days without giving any reason. The cancellation period expires 14 days after the day on which you, or a person you nominate (other than the carrier), take physical possession of the horse.</p>
-    <p><b>How to cancel.</b> To exercise the right to cancel you must tell us of your decision by a clear statement, for example by email to info@cornerwoodstud.co.uk or by telephone on +44 7974 941333 or 01424 772484. You must do so before the cancellation period expires. We will acknowledge your cancellation.</p>
+    <p><b>How to cancel.</b> To exercise the right to cancel you must tell us of your decision by a clear statement, for example by email to info@cornerwoodstud.co.uk or by telephone on +44 7974 941333 or +44 1424 772484. You must do so before the cancellation period expires. We will acknowledge your cancellation.</p>
     <p><b>Refunds.</b> If you cancel, we will refund all payments received from you, including any delivery charges paid to us, without undue delay and no later than 14 days after the day we are told of your decision. We may withhold the refund until we have received the horse back, or until you supply evidence that you have returned it, whichever is earlier. We will refund using the same method of payment you used for the purchase.</p>
     <p><b>Returning the horse.</b> You must return the horse to Cornerwood Stud without undue delay, and in any event within 14 days of telling us that you cancel. You will bear the direct cost of returning the horse, including transport. You must take reasonable care of the horse while it is in your possession. You are liable for any reduction in the horse&rsquo;s value resulting from handling beyond what is necessary to establish its nature, health and ability.</p>
     <p><b>Your statutory rights.</b> Nothing in these terms affects your statutory rights, including those under the Consumer Rights Act 2015 and the Consumer Contracts Regulations 2013.</p>
@@ -1126,7 +1129,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
     <div class="contact-side">
       <h3>Phone</h3>
       <p><a href="tel:+447974941333">+44 7974 941333</a> <span class="phone-label">Mobile</span></p>
-      <p><a href="tel:+441424772484">01424 772484</a> <span class="phone-label">Office</span></p>
+      <p><a href="tel:+441424772484">+44 1424 772484</a> <span class="phone-label">Office</span></p>
       <h3>Email</h3>
       <p><a href="mailto:info@cornerwoodstud.co.uk">info@cornerwoodstud.co.uk</a></p>
       <h3>Location</h3>
@@ -1165,7 +1168,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       <div>
         <h2 class="foot-h">Contact</h2>
         <a href="tel:+447974941333">+44 7974 941333</a>
-        <a href="tel:+441424772484">01424 772484</a>
+        <a href="tel:+441424772484">+44 1424 772484</a>
         <a href="mailto:info@cornerwoodstud.co.uk">info@cornerwoodstud.co.uk</a>
         <p>Battle, East Sussex, England</p>
       </div>
@@ -1305,7 +1308,7 @@ class Component extends DCLogic {
           id: h.id, name: h.name, age: h.age, breed: h.breed, sex: h.sex,
           categories: h.categories, height: h.height, price: h.price,
           sold: h.sold, photo: h.photo, desc: h.description,
-          exported_us: h.exported_us, photos: h.photos, videos: h.videos
+          exported_us: h.exported_us, export_country: h.export_country, flag_us: !!(h.exported_us || h.export_country === 'us'), flag_se: h.export_country === 'se', photos: h.photos, videos: h.videos
         }));
         this.setState({ horses, horsesLoading: false, horsesError: false });
       });
@@ -1435,7 +1438,7 @@ class Component extends DCLogic {
     'service-sales-livery': ['Sales Livery in East Sussex | Cornerwood Stud', 'Selling a horse? Our sales livery covers producing, photos, video, advertising, viewings, vettings and the sale itself, with regular updates for owners.'],
     'service-producing': ['Producing & Schooling Horses | Cornerwood Stud', 'Correct, sympathetic schooling for young and green horses in East Sussex. Starting, confidence building, flatwork, poles and jumping with regular feedback for owners.'],
     'service-breeding': ['Breeding & Stud Services | Cornerwood Stud', 'A small, carefully chosen stallion line up each season with limited bookings for outside mares, plus guidance on suitability and covering arrangements.'],
-    contact: ['Contact Us | Cornerwood Stud, Battle, East Sussex', 'Get in touch with Cornerwood Stud about horses for sale, sales livery, schooling or stallions. Call +44 7974 941333 or 01424 772484 or email info@cornerwoodstud.co.uk.'],
+    contact: ['Contact Us | Cornerwood Stud, Battle, East Sussex', 'Get in touch with Cornerwood Stud about horses for sale, sales livery, schooling or stallions. Call +44 7974 941333 or +44 1424 772484 or email info@cornerwoodstud.co.uk.'],
     terms: ['Terms & Conditions of Sale | Cornerwood Stud', 'Conditions of sale for horses bought from Cornerwood Stud & Sport Horses, including deposits, vetting, returns, sales livery and distance selling rights.']
   };
 
@@ -1511,7 +1514,7 @@ class Component extends DCLogic {
     return [
       { id: 'team-1', name: 'Harriet', role: 'Founder & Producer', bio: 'Runs the day-to-day of the yard, producing and selling handpicked horses and working as agent for trusted breeders across Europe and Ireland.', photo: 'assets/harriet.jpg' },
       { id: 'team-2-holly', photo: 'assets/holly.jpg', name: 'Holly', role: 'Yard Manager', bio: 'Oversees the daily care of every horse on the yard, from feeding and turnout to keeping the facilities running smoothly.' },
-      { id: 'team-3-henry', name: 'Henry', role: 'Accounts & Administration', bio: 'Looks after the yard\u2019s accounts and invoicing, along with bookings, paperwork and passports, keeping the business side of Cornerwood running smoothly and every client properly looked after.', detailBio: 'Henry is often the first point of contact when clients call, so he is a familiar voice on the end of the phone. He is working towards qualifying as a solicitor and is currently studying for an LLB (Hons) in Law at the University of Kent. Alongside his degree he volunteers as a General Adviser at Citizens Advice, which gives him a good working grasp of the rules and legal requirements that affect our clients.', favouriteMoment: '', photo: 'assets/henry.jpg' },
+      { id: 'team-3-henry', name: 'Henry', role: 'Accounts & Administration', bio: 'Looks after the yard\u2019s accounts and invoicing, along with bookings, paperwork and passports, keeping the business side of Cornerwood running smoothly and every client properly looked after.', detailBio: 'Henry looks after the business side of Cornerwood. He prepares and sends invoices, keeps the accounts in order and handles the paperwork that goes with every horse, from bookings and passports to sale documents. He makes sure everything is accurate, up to date and sent on time, so buyers and sellers always know where they stand.', favouriteMoment: '', photo: 'assets/henry.jpg' },
       { id: 'team-4-catherine', photo: 'assets/catherine.jpg', name: 'Catherine', role: 'Sales & Client Liaison', bio: 'Handles enquiries, viewings and sales livery clients, keeping every buyer and seller well looked after.' },
       { id: 'team-5-rajpal', name: 'Rajpal', role: 'Groom', bio: 'A valued member of the yard team, assisting with the daily care of our horses, from mucking out and feeding to turnout and general stable management.', photo: 'assets/rajpal.jpg' },
       { id: 'team-7-peter', photo: 'assets/peter.jpg', name: 'Peter', role: 'Transport', bio: 'Handles horse transport to and from the yard, viewings, vettings and deliveries across the UK and to the Continent.' },

@@ -121,6 +121,8 @@
   .switch input:checked + .track{ background:var(--cw-green); }
   .switch input:checked + .track::after{ transform:translateX(18px); background:var(--gold); }
   .switch input:focus-visible + .track{ outline:2px solid var(--gold); outline-offset:2px; }
+  .switch.pick{ cursor:default; justify-content:space-between; gap:14px; }
+  .switch.pick select{ flex:none; min-height:44px; padding:8px 10px; font:inherit; font-size:15px; border:1px solid var(--divider); background:#fff; }
   .switch b{ display:block; font-size:14.5px; }
   .switch small{ display:block; font-size:12px; color:#8a8683; margin-top:1px; line-height:1.35; }
   .adm-bar{ position:sticky; bottom:0; z-index:10; display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 24px; background:rgba(255,255,255,.96); border-top:1px solid var(--divider); backdrop-filter:blur(6px); padding-bottom:max(12px,env(safe-area-inset-bottom)); }
@@ -281,7 +283,8 @@
             <h3>Status</h3>
             <div class="adm-card-body"><div class="switches">
               <label class="switch"><input type="checkbox" id="f-sold"><span class="track"></span><span><b>Sold</b><small>Shows the SOLD ribbon on the website.</small></span></label>
-              <label class="switch"><input type="checkbox" id="f-us"><span class="track"></span><span><b>Exported to the USA</b><small>Adds the US flag under SOLD.</small></span></label>
+              <div class="switch pick"><span><b>Sold abroad</b><small id="exportHint">Shows a flag under SOLD.</small></span>
+                <select id="f-export" aria-label="Exported to"><option value="">None</option><option value="us">USA flag</option><option value="se">Sweden flag</option></select></div>
             </div></div>
           </div>
 
@@ -347,6 +350,10 @@
   var baseline = '';         // serialised form state when it was loaded (for "unsaved changes")
   var filter = 'all', query = '', sortBy = 'default';
 
+  // Which country (if any) a sold horse was exported to. 'export_country' is the newer column;
+  // older rows only have the exported_us yes/no.
+  function exportOf(h){ return h.export_country || (h.exported_us ? 'us' : ''); }
+  var hasCountryCol = false;
   function newId(){ return crypto.randomUUID ? crypto.randomUUID() : 'tmp-' + Date.now(); }
   function esc(s){
     return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
@@ -451,6 +458,10 @@
       .then(function(res){
         if (res.error) { $('listBody').innerHTML = '<div class="adm-empty">Could not load horses: ' + esc(res.error.message) + '</div>'; return; }
         horses = res.data || [];
+        hasCountryCol = !horses.length || ('export_country' in horses[0]);
+        var se = $('f-export').querySelector('option[value="se"]');
+        se.disabled = !hasCountryCol;
+        $('exportHint').textContent = hasCountryCol ? 'Shows a flag under SOLD.' : 'Sweden needs a one-off database update first (supabase-add-export-country.sql).';
         renderStats(); renderFilters(); renderList();
       });
   }
@@ -496,7 +507,7 @@
     $('listBody').innerHTML = list.map(function(h){
       var meta = [h.age, h.breed, h.sex].filter(Boolean).join(' \u00b7 ');
       var tags = '<span class="tag ' + (h.sold ? 'tag-sold' : 'tag-avail') + '">' + (h.sold ? 'Sold' : 'For sale') + '</span>' +
-        (h.exported_us ? '<span class="tag tag-us">USA</span>' : '') +
+        (exportOf(h) === 'us' ? '<span class="tag tag-us">USA</span>' : exportOf(h) === 'se' ? '<span class="tag tag-us">Sweden</span>' : '') +
         (!h.photo ? '<span class="tag tag-warn">No photo</span>' : '') +
         (!(h.description && h.description.trim()) ? '<span class="tag tag-warn">No description</span>' : '');
       return '<button type="button" class="adm-row' + (h.id === selectedId ? ' is-selected' : '') + '" data-id="' + esc(h.id) + '">' +
@@ -522,7 +533,7 @@
   function formState(){
     return JSON.stringify([
       $('f-name').value, $('f-age').value, $('f-breed').value, $('f-sex').value, $('f-height').value,
-      $('f-categories').value, $('f-price').value, $('f-sold').checked, $('f-us').checked,
+      $('f-categories').value, $('f-price').value, $('f-sold').checked, $('f-export').value,
       $('f-description').value, $('f-videos').value, currentPhotos
     ]);
   }
@@ -547,7 +558,7 @@
   function setFields(h){
     $('f-name').value = h.name || ''; $('f-age').value = h.age || ''; $('f-breed').value = h.breed || '';
     $('f-sex').value = h.sex || ''; $('f-height').value = h.height || ''; $('f-categories').value = h.categories || '';
-    $('f-price').value = h.price || ''; $('f-sold').checked = !!h.sold; $('f-us').checked = !!h.exported_us;
+    $('f-price').value = h.price || ''; $('f-sold').checked = !!h.sold; $('f-export').value = exportOf(h);
     $('f-description').value = h.description || '';
     $('f-videos').value = (h.videos || []).join('\n');
     currentPhotos = (h.photos && h.photos.length) ? h.photos.slice() : (h.photo ? [h.photo] : []);
@@ -666,10 +677,12 @@
     var payload = {
       name: name, age: val('f-age'), breed: val('f-breed'), sex: val('f-sex'), height: val('f-height'),
       categories: val('f-categories'), price: val('f-price'),
-      sold: $('f-sold').checked, exported_us: $('f-us').checked,
+      sold: $('f-sold').checked, exported_us: $('f-export').value === 'us',
       photo: currentPhotos[0] || null, photos: currentPhotos,
       videos: vids.list, description: val('f-description')
     };
+    if ($('f-export').value === 'se' && !hasCountryCol) { toast('Sweden needs the database update first. Run supabase-add-export-country.sql in Supabase.', true); return; }
+    if (hasCountryCol) payload.export_country = $('f-export').value || null;
     var btn = $('saveBtn'), label = btn.textContent;
     btn.disabled = true; btn.textContent = 'Saving\u2026';
     var req = isNew ? sb.from('horses').insert(payload).select().single()
