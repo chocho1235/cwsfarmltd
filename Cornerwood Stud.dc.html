@@ -39,7 +39,7 @@
       "url": "https://www.cornerwoodstud.co.uk/",
       "logo": "https://www.cornerwoodstud.co.uk/assets/cornerwood-logo.png",
       "image": ["https://www.cornerwoodstud.co.uk/assets/aerial-yard.jpg", "https://www.cornerwoodstud.co.uk/assets/hickstead-jump.jpg", "https://www.cornerwoodstud.co.uk/assets/facilities-stables.jpg"],
-      "telephone": "+44 1424 614191",
+      "telephone": ["+44 7974 941333", "+44 1424 772484"],
       "email": "info@cornerwoodstud.co.uk",
       "address": {
         "@type": "PostalAddress",
@@ -103,6 +103,7 @@ a:hover{ color:var(--color-accent); text-decoration:underline; }
 .keep-touch{ text-align:right; }
 .keep-touch-title{ display:block; font-size:12px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; color:var(--color-accent); margin:0 0 6px; }
 .keep-touch-line{ display:flex; align-items:center; justify-content:flex-end; gap:7px; font-size:15px; font-weight:600; color:var(--color-accent); line-height:1.7; }
+.phone-label{ margin-left:8px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 55%, transparent); }
 .keep-touch-line svg{ flex-shrink:0; }
 .keep-touch-line:hover{ color:#fff; text-decoration:none; }
 .mobile-actions{ display:none; align-items:center; gap:8px; }
@@ -286,9 +287,10 @@ a.btn-primary, a.btn-primary:hover{ color:var(--color-bg); }
 .detail-specs div b{ color:var(--color-text); font-weight:600; text-transform:none; letter-spacing:normal; }
 .sale-specs div{ font-size:12px; letter-spacing:.05em; text-transform:uppercase; color:var(--color-accent); line-height:1.5; }
 .sale-specs div b{ color:color-mix(in srgb, #fff 78%, transparent); font-weight:400; }
-.sold-flag{ position:absolute; top:0; right:0; width:120px; height:120px; overflow:hidden; pointer-events:none; }
-.sold-flag i{ position:absolute; top:26px; right:-34px; width:150px; text-align:center; transform:rotate(45deg); background:var(--color-accent); color:var(--cw-green); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-style:normal; padding:5px 0; }
-.flag-emoji{ font-size:14px; letter-spacing:0; margin-left:2px; display:inline-block; }
+.sold-flag{ position:absolute; top:0; right:0; width:132px; height:132px; overflow:hidden; pointer-events:none; }
+.sold-flag i{ position:absolute; top:28px; right:-44px; width:176px; display:flex; flex-direction:column; align-items:center; gap:4px; transform:rotate(45deg); background:var(--color-accent); color:var(--cw-green); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; font-style:normal; line-height:1.1; padding:5px 0; }
+.sold-flag .flag-us{ display:block; line-height:0; }
+.sold-flag .flag-us svg{ display:block; width:34px; height:18px; box-shadow:0 0 0 1px rgba(255,255,255,.7), 0 1px 3px rgba(0,0,0,.35); }
 .horse-detail-layout{ grid-template-columns:minmax(0,5fr) minmax(0,7fr); }
 .horse-detail-layout > .split-figure{ container-type:inline-size; }
 .horse-detail-layout .photo-nav{ top:calc(50cqi - 22px); }
@@ -304,7 +306,6 @@ a.btn-primary, a.btn-primary:hover{ color:var(--color-bg); }
 .terms .terms-lettered{ list-style:none; padding-left:0; }
 .terms .terms-lettered li{ display:flex; gap:12px; }
 .terms .terms-lettered span{ flex:none; color:var(--color-accent-700); font-weight:600; }
-.distance-note{ margin-top:calc(1.2*var(--leading)); font-size:13px; max-width:64ch; color:color-mix(in srgb, var(--color-text) 70%, transparent); }
 .coming-soon{ max-width:64ch; padding:calc(1.2*var(--leading)) 0 calc(3*var(--leading)); border-top:2px solid var(--color-divider); }
 .coming-soon p{ font-size:17px; line-height:1.75; }
 .founder{ display:grid; grid-template-columns:minmax(0,260px) minmax(0,1fr); gap:clamp(24px,4vw,56px); align-items:center; padding:calc(2*var(--leading)) 0 calc(2.5*var(--leading)); }
@@ -382,9 +383,15 @@ a.btn-primary, a.btn-primary:hover{ color:var(--color-bg); }
 .close h3{ font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:clamp(28px,3.4vw,42px); margin:0; letter-spacing:-0.015em; }
 .close .btn-ghost{ color:var(--color-bg); border-color:var(--color-bg); }
 .contact-grid{ display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:calc(2*var(--leading)); padding:var(--leading) 0 calc(2.5*var(--leading)); }
+.contact-grid-solo{ grid-template-columns:minmax(0,680px); }
 .contact-grid .field .input{ min-height:48px; padding:10px 14px; font-size:16px; }
 .contact-grid textarea.input{ min-height:150px; }
 .contact-grid form .btn{ min-height:50px; padding:12px 28px; font-size:15px; }
+.form-status{ margin:6px 0 0; font-size:14.5px; line-height:1.55; }
+.form-status:empty{ display:none; }
+.form-status.is-ok{ color:#1f6b45; background:#e8f3ec; border-left:3px solid #2f7d4f; padding:12px 14px; }
+.form-status.is-error{ color:#9b2c2c; background:#fbeaea; border-left:3px solid #a33b3b; padding:12px 14px; }
+.contact-grid form .btn:disabled{ opacity:.65; cursor:wait; }
 .form-note{ font-size:13px; color:color-mix(in srgb, var(--color-text) 65%, transparent); margin:4px 0 0; }
 .contact-grid form{ display:flex; flex-direction:column; gap:var(--half); }
 .contact-side p{ font-size:16px; line-height:1.7; margin:0 0 var(--half); }
@@ -430,11 +437,12 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       </a>
       <div class="keep-touch">
         <span class="keep-touch-title">Keep in touch</span>
-        <a href="tel:+441424614191" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 (0) 1424 614191</a>
+        <a href="tel:+447974941333" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 7974 941333</a>
+        <a href="tel:+441424772484" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>01424 772484</a>
         <a href="mailto:info@cornerwoodstud.co.uk" class="keep-touch-line"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>info@cornerwoodstud.co.uk</a>
       </div>
       <div class="mobile-actions">
-        <a href="tel:+441424614191" class="icon-btn" aria-label="Call us on +44 1424 614191"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
+        <a href="tel:+447974941333" class="icon-btn" aria-label="Call us on +44 7974 941333"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
         <button type="button" class="icon-btn menu-btn" aria-controls="site-nav" aria-expanded="{{ menuExpanded }}" aria-label="{{ menuLabel }}" onClick="{{ toggleMenu }}"><span class="menu-bars"></span></button>
       </div>
     </div>
@@ -460,7 +468,8 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       </nav>
       <a href="/contact" class="btn btn-primary nav-cta" onClick="{{ goContact }}">Contact us</a>
       <div class="nav-contact">
-        <a href="tel:+441424614191"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 (0) 1424 614191</a>
+        <a href="tel:+447974941333"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>+44 7974 941333</a>
+        <a href="tel:+441424772484"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>01424 772484</a>
         <a href="mailto:info@cornerwoodstud.co.uk"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>info@cornerwoodstud.co.uk</a>
       </div>
     </div>
@@ -750,7 +759,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
     <p style="padding:calc(1.5*var(--leading)) 0; color:color-mix(in srgb, var(--color-text) 60%, transparent);">Loading horses…</p>
   </sc-if>
   <sc-if value="{{ horsesError }}" hint-placeholder-val="{{ false }}">
-    <p style="padding:calc(1.5*var(--leading)) 0; color:#a33b3b;">Couldn't load horses right now, please refresh, or call us on +44 (0) 1424 614191.</p>
+    <p style="padding:calc(1.5*var(--leading)) 0; color:#a33b3b;">Couldn't load horses right now, please refresh, or call us on +44 7974 941333.</p>
   </sc-if>
   <sc-if value="{{ horsesEmpty }}" hint-placeholder-val="{{ false }}">
     <p style="padding:calc(1.5*var(--leading)) 0; color:color-mix(in srgb, var(--color-text) 60%, transparent);">No horses listed right now, check back soon, or give us a call.</p>
@@ -769,7 +778,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
           <div>Price &middot; <b>{{ item.price }}</b></div>
         </div>
         <sc-if value="{{ item.sold }}" hint-placeholder-val="{{ false }}">
-          <div class="sold-flag"><i>Sold <sc-if value="{{ item.exported_us }}" hint-placeholder-val="{{ false }}"><span class="flag-emoji">&#127482;&#127480;</span></sc-if></i></div>
+          <div class="sold-flag"><i><span class="sold-text">Sold</span><sc-if value="{{ item.exported_us }}" hint-placeholder-val="{{ false }}"><span class="flag-us" role="img" aria-label="Exported to the USA"><svg viewBox="0 0 38 20" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><rect y="0.000" width="38" height="1.538" fill="#b22234"/><rect y="3.077" width="38" height="1.538" fill="#b22234"/><rect y="6.154" width="38" height="1.538" fill="#b22234"/><rect y="9.231" width="38" height="1.538" fill="#b22234"/><rect y="12.308" width="38" height="1.538" fill="#b22234"/><rect y="15.385" width="38" height="1.538" fill="#b22234"/><rect y="18.462" width="38" height="1.538" fill="#b22234"/><rect width="15.2" height="10.77" fill="#3c3b6e"/><g fill="#fff"><circle cx="1.6" cy="1.6" r=".55"/><circle cx="3.6" cy="1.6" r=".55"/><circle cx="5.6" cy="1.6" r=".55"/><circle cx="7.6" cy="1.6" r=".55"/><circle cx="9.6" cy="1.6" r=".55"/><circle cx="11.6" cy="1.6" r=".55"/><circle cx="1.6" cy="3.6" r=".55"/><circle cx="3.6" cy="3.6" r=".55"/><circle cx="5.6" cy="3.6" r=".55"/><circle cx="7.6" cy="3.6" r=".55"/><circle cx="9.6" cy="3.6" r=".55"/><circle cx="11.6" cy="3.6" r=".55"/><circle cx="1.6" cy="5.6" r=".55"/><circle cx="3.6" cy="5.6" r=".55"/><circle cx="5.6" cy="5.6" r=".55"/><circle cx="7.6" cy="5.6" r=".55"/><circle cx="9.6" cy="5.6" r=".55"/><circle cx="11.6" cy="5.6" r=".55"/><circle cx="1.6" cy="7.6" r=".55"/><circle cx="3.6" cy="7.6" r=".55"/><circle cx="5.6" cy="7.6" r=".55"/><circle cx="7.6" cy="7.6" r=".55"/><circle cx="9.6" cy="7.6" r=".55"/><circle cx="11.6" cy="7.6" r=".55"/></g></svg></span></sc-if></i></div>
         </sc-if>
       </article>
     </sc-for>
@@ -793,7 +802,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
     <div class="split-figure" style="grid-column:1; position:relative;">
       <image-slot id="{{ selectedHorse.id }}-detail" shape="rect" fit="contain" src="{{ selectedHorse.activePhoto }}" alt="{{ selectedHorse.alt }}" placeholder="Photo" style="width:100%; aspect-ratio:1;"></image-slot>
       <sc-if value="{{ selectedHorse.sold }}" hint-placeholder-val="{{ false }}">
-        <div class="sold-flag"><i>Sold <sc-if value="{{ selectedHorse.exported_us }}" hint-placeholder-val="{{ false }}"><span class="flag-emoji">&#127482;&#127480;</span></sc-if></i></div>
+        <div class="sold-flag"><i><span class="sold-text">Sold</span><sc-if value="{{ selectedHorse.exported_us }}" hint-placeholder-val="{{ false }}"><span class="flag-us" role="img" aria-label="Exported to the USA"><svg viewBox="0 0 38 20" aria-hidden="true"><rect width="38" height="20" fill="#fff"/><rect y="0.000" width="38" height="1.538" fill="#b22234"/><rect y="3.077" width="38" height="1.538" fill="#b22234"/><rect y="6.154" width="38" height="1.538" fill="#b22234"/><rect y="9.231" width="38" height="1.538" fill="#b22234"/><rect y="12.308" width="38" height="1.538" fill="#b22234"/><rect y="15.385" width="38" height="1.538" fill="#b22234"/><rect y="18.462" width="38" height="1.538" fill="#b22234"/><rect width="15.2" height="10.77" fill="#3c3b6e"/><g fill="#fff"><circle cx="1.6" cy="1.6" r=".55"/><circle cx="3.6" cy="1.6" r=".55"/><circle cx="5.6" cy="1.6" r=".55"/><circle cx="7.6" cy="1.6" r=".55"/><circle cx="9.6" cy="1.6" r=".55"/><circle cx="11.6" cy="1.6" r=".55"/><circle cx="1.6" cy="3.6" r=".55"/><circle cx="3.6" cy="3.6" r=".55"/><circle cx="5.6" cy="3.6" r=".55"/><circle cx="7.6" cy="3.6" r=".55"/><circle cx="9.6" cy="3.6" r=".55"/><circle cx="11.6" cy="3.6" r=".55"/><circle cx="1.6" cy="5.6" r=".55"/><circle cx="3.6" cy="5.6" r=".55"/><circle cx="5.6" cy="5.6" r=".55"/><circle cx="7.6" cy="5.6" r=".55"/><circle cx="9.6" cy="5.6" r=".55"/><circle cx="11.6" cy="5.6" r=".55"/><circle cx="1.6" cy="7.6" r=".55"/><circle cx="3.6" cy="7.6" r=".55"/><circle cx="5.6" cy="7.6" r=".55"/><circle cx="7.6" cy="7.6" r=".55"/><circle cx="9.6" cy="7.6" r=".55"/><circle cx="11.6" cy="7.6" r=".55"/></g></svg></span></sc-if></i></div>
       </sc-if>
       <sc-if value="{{ selectedHorseHasMultiplePhotos }}" hint-placeholder-val="{{ false }}">
         <button type="button" class="photo-nav photo-nav-prev" onClick="{{ photoPrev }}" aria-label="Previous photo">&#8249;</button>
@@ -838,7 +847,6 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
         <button type="button" class="btn btn-primary" onClick="{{ goContact }}">Enquire about {{ selectedHorse.name }}</button>
         <button type="button" class="btn btn-secondary" onClick="{{ goSale }}">See other horses</button>
       </div>
-      <p class="f-copy distance-note">Buying without viewing in person? Distance selling rules apply, including a 14 day right to cancel for consumers. See our <a href="/terms" onClick="{{ goTerms }}">Terms &amp; Conditions</a>.</p>
     </div>
   </section>
 </div>
@@ -910,7 +918,7 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
     <p>All transport costs for horses sold under distance selling rules will be down to the buyer, including transport to and from Cornerwood Stud.</p>
     <p><b>When this applies.</b> If you are a consumer and you buy a horse from us without meeting us in person at the yard before the contract is made (for example entirely by telephone, email, WhatsApp, video call or through our website), this is a distance contract and the Consumer Contracts (Information, Cancellation and Additional Charges) Regulations 2013 apply. This section applies to consumers only and does not apply to trade to trade sales.</p>
     <p><b>Your right to cancel.</b> You have the right to cancel a distance contract within 14 days without giving any reason. The cancellation period expires 14 days after the day on which you, or a person you nominate (other than the carrier), take physical possession of the horse.</p>
-    <p><b>How to cancel.</b> To exercise the right to cancel you must tell us of your decision by a clear statement, for example by email to info@cornerwoodstud.co.uk or by telephone on +44 (0) 1424 614191. You must do so before the cancellation period expires. We will acknowledge your cancellation.</p>
+    <p><b>How to cancel.</b> To exercise the right to cancel you must tell us of your decision by a clear statement, for example by email to info@cornerwoodstud.co.uk or by telephone on +44 7974 941333 or 01424 772484. You must do so before the cancellation period expires. We will acknowledge your cancellation.</p>
     <p><b>Refunds.</b> If you cancel, we will refund all payments received from you, including any delivery charges paid to us, without undue delay and no later than 14 days after the day we are told of your decision. We may withhold the refund until we have received the horse back, or until you supply evidence that you have returned it, whichever is earlier. We will refund using the same method of payment you used for the purchase.</p>
     <p><b>Returning the horse.</b> You must return the horse to Cornerwood Stud without undue delay, and in any event within 14 days of telling us that you cancel. You will bear the direct cost of returning the horse, including transport. You must take reasonable care of the horse while it is in your possession. You are liable for any reduction in the horse&rsquo;s value resulting from handling beyond what is necessary to establish its nature, health and ability.</p>
     <p><b>Your statutory rights.</b> Nothing in these terms affects your statutory rights, including those under the Consumer Rights Act 2015 and the Consumer Contracts Regulations 2013.</p>
@@ -1101,20 +1109,24 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
   <div class="pagehead">
     <span class="kicker">Contact</span>
     <h1>Get in touch</h1>
-    <p>For enquiries about stallions, horses for sale, or our services, call, email, or send a message below.</p>
+    <p>For enquiries about stallions, horses for sale, or our services, call or email us using the details below.</p>
   </div>
-  <div class="contact-grid">
+  <div class="contact-grid contact-grid-solo">
+    <!-- CONTACT FORM DISABLED FOR NOW. To re-enable, delete this comment line and the closing comment marker below the form.
     <form onSubmit="{{ handleSubmit }}" aria-label="Contact form">
       <div class="field"><label for="cf-name">Name</label><input class="input" id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your name" required></div>
       <div class="field"><label for="cf-email">Email</label><input class="input" id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@example.com" required></div>
       <div class="field"><label for="cf-phone">Phone (optional)</label><input class="input" id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Your phone number"></div>
       <div class="field"><label for="cf-message">Message</label><textarea class="input" id="cf-message" name="message" rows="5" placeholder="Tell us what you're looking for" required></textarea></div>
-      <button type="submit" class="btn btn-primary" style="align-self:flex-start; margin-top:8px;">Send message</button>
-      <p class="form-note">This opens your email app with your message ready to send.</p>
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
+      <button type="submit" class="btn btn-primary form-send" style="align-self:flex-start; margin-top:8px;">Send message</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
     </form>
+    -->
     <div class="contact-side">
       <h3>Phone</h3>
-      <p><a href="tel:+441424614191">+44 (0) 1424 614191</a></p>
+      <p><a href="tel:+447974941333">+44 7974 941333</a> <span class="phone-label">Mobile</span></p>
+      <p><a href="tel:+441424772484">01424 772484</a> <span class="phone-label">Office</span></p>
       <h3>Email</h3>
       <p><a href="mailto:info@cornerwoodstud.co.uk">info@cornerwoodstud.co.uk</a></p>
       <h3>Location</h3>
@@ -1152,7 +1164,8 @@ footer.sitefoot{ background:var(--cw-green); border-top:2px solid var(--color-ac
       </div>
       <div>
         <h2 class="foot-h">Contact</h2>
-        <a href="tel:+441424614191">+44 (0) 1424 614191</a>
+        <a href="tel:+447974941333">+44 7974 941333</a>
+        <a href="tel:+441424772484">01424 772484</a>
         <a href="mailto:info@cornerwoodstud.co.uk">info@cornerwoodstud.co.uk</a>
         <p>Battle, East Sussex, England</p>
       </div>
@@ -1422,7 +1435,7 @@ class Component extends DCLogic {
     'service-sales-livery': ['Sales Livery in East Sussex | Cornerwood Stud', 'Selling a horse? Our sales livery covers producing, photos, video, advertising, viewings, vettings and the sale itself, with regular updates for owners.'],
     'service-producing': ['Producing & Schooling Horses | Cornerwood Stud', 'Correct, sympathetic schooling for young and green horses in East Sussex. Starting, confidence building, flatwork, poles and jumping with regular feedback for owners.'],
     'service-breeding': ['Breeding & Stud Services | Cornerwood Stud', 'A small, carefully chosen stallion line up each season with limited bookings for outside mares, plus guidance on suitability and covering arrangements.'],
-    contact: ['Contact Us | Cornerwood Stud, Battle, East Sussex', 'Get in touch with Cornerwood Stud about horses for sale, sales livery, schooling or stallions. Call +44 (0) 1424 614191 or email info@cornerwoodstud.co.uk.'],
+    contact: ['Contact Us | Cornerwood Stud, Battle, East Sussex', 'Get in touch with Cornerwood Stud about horses for sale, sales livery, schooling or stallions. Call +44 7974 941333 or 01424 772484 or email info@cornerwoodstud.co.uk.'],
     terms: ['Terms & Conditions of Sale | Cornerwood Stud', 'Conditions of sale for horses bought from Cornerwood Stud & Sport Horses, including deposits, vetting, returns, sales livery and distance selling rights.']
   };
 
@@ -1574,13 +1587,34 @@ class Component extends DCLogic {
       goServiceSalesLivery: this.link('service-sales-livery'),
       goServiceProducing: this.link('service-producing'),
       goServiceBreeding: this.link('service-breeding'),
-      // No mail backend yet, so the form hands the message to the visitor's email app.
       handleSubmit: (e) => {
         e.preventDefault();
         const f = e.target;
+        const btn = f.querySelector('.form-send');
+        const status = f.querySelector('.form-status');
         const v = (n) => (f.elements[n] && f.elements[n].value || '').trim();
-        const body = v('message') + '\n\n' + v('name') + (v('phone') ? '\n' + v('phone') : '') + '\n' + v('email');
-        location.href = 'mailto:info@cornerwoodstud.co.uk?subject=' + encodeURIComponent('Website enquiry from ' + (v('name') || 'a visitor')) + '&body=' + encodeURIComponent(body);
+        const show = (msg, kind) => { status.textContent = msg; status.className = 'form-status is-' + kind; };
+        const idle = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Sending\u2026'; show('', 'idle');
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: '0b4aa51e-3870-4295-8989-e5343346f78b',
+            subject: 'Website enquiry from ' + (v('name') || 'a visitor'),
+            from_name: 'Cornerwood Stud website',
+            name: v('name'), email: v('email'), phone: v('phone'), message: v('message'),
+            botcheck: !!(f.elements.botcheck && f.elements.botcheck.checked)
+          })
+        })
+          .then((r) => r.json().then((d) => ({ ok: r.ok && d.success, d })))
+          .then(({ ok }) => {
+            if (!ok) throw new Error('rejected');
+            f.reset();
+            show('Thank you. Your message has been sent and we will be in touch shortly.', 'ok');
+          })
+          .catch(() => show('Sorry, your message could not be sent. Please call +44 7974 941333 or email info@cornerwoodstud.co.uk.', 'error'))
+          .then(() => { btn.disabled = false; btn.textContent = idle; });
       },
       homeNews: allNews.slice(0, 2),
       featuredNews: allNews[0],

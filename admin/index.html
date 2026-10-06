@@ -50,97 +50,145 @@
   .gate-foot a{ color:var(--gold); text-decoration:none; }
   .gate-foot a:hover{ text-decoration:underline; }
 
-  /* --- dashboard --- */
-  #dashboard{ display:none; }
-  header.top{ background:var(--cw-green); border-bottom:3px solid var(--gold); padding:18px 0; }
-  header.top .wrap{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
-  header.top h1{ color:#fff; font-size:20px; }
-  header.top .sub{ color:var(--gold); font-size:12px; text-transform:uppercase; letter-spacing:.1em; font-weight:700; display:block; margin-bottom:2px; }
-  header.top a.logout{ color:#fff; font-size:13px; text-decoration:underline; cursor:pointer; }
+  /* --- dashboard shell --- */
+  #dashboard{ display:none; min-height:100vh; }
+  .adm-top{ position:sticky; top:0; z-index:30; display:flex; align-items:center; gap:14px; padding:10px 20px; background:var(--cw-green); border-bottom:3px solid var(--gold); color:#fff; }
+  .adm-brand{ display:flex; align-items:center; gap:12px; min-width:0; }
+  .adm-brand img{ height:38px; width:auto; display:block; }
+  .adm-brand span{ font-family:'Oswald',sans-serif; font-weight:500; font-size:17px; letter-spacing:.04em; white-space:nowrap; }
+  .adm-stats{ display:flex; gap:8px; margin-left:auto; }
+  .adm-stat{ background:rgba(255,255,255,.08); border:1px solid rgba(184,165,98,.35); padding:5px 12px; text-align:center; line-height:1.15; }
+  .adm-stat b{ display:block; font-family:'Oswald',sans-serif; font-weight:500; font-size:18px; color:var(--gold); }
+  .adm-stat small{ font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.7); }
+  .adm-top-links{ display:flex; align-items:center; gap:6px; }
+  .adm-top-links a{ color:#fff; font-size:13px; text-decoration:none; padding:9px 12px; min-height:44px; display:inline-flex; align-items:center; border:1px solid transparent; cursor:pointer; }
+  .adm-top-links a:hover{ border-color:rgba(184,165,98,.6); }
 
-  main{ padding:32px 0 80px; }
-  .panel{ background:#fff; border:1px solid var(--divider); margin-bottom:28px; }
-  .panel-head{ padding:16px 20px; border-bottom:1px solid var(--divider); display:flex; align-items:center; justify-content:space-between; }
-  .panel-head h2{ font-size:18px; }
-  .btn{ display:inline-flex; align-items:center; gap:6px; padding:10px 18px; font-family:'Oswald',sans-serif; font-weight:500; font-size:13px; letter-spacing:.03em; text-transform:uppercase; cursor:pointer; border:0; }
+  .adm-shell{ display:grid; grid-template-columns:minmax(330px,400px) minmax(0,1fr); height:calc(100vh - 62px); }
+  .adm-list{ display:flex; flex-direction:column; min-height:0; background:#fff; border-right:1px solid var(--divider); }
+  .adm-list-head{ padding:14px; border-bottom:1px solid var(--divider); display:flex; flex-direction:column; gap:10px; }
+  .adm-search{ width:100%; padding:11px 12px; font:inherit; font-size:15px; border:1px solid var(--divider); background:#faf9f7; }
+  .adm-search:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(184,165,98,.25); background:#fff; }
+  .adm-filters{ display:flex; flex-wrap:wrap; gap:6px; }
+  .adm-filter{ padding:6px 11px; font:inherit; font-size:12.5px; font-weight:600; border:1px solid var(--divider); background:#fff; color:var(--text); cursor:pointer; }
+  .adm-filter:hover{ border-color:var(--gold); }
+  .adm-filter.is-on{ background:var(--cw-green); border-color:var(--cw-green); color:var(--gold); }
+  .adm-filter em{ font-style:normal; opacity:.65; margin-left:4px; font-weight:500; }
+  .adm-list-tools{ display:flex; gap:8px; align-items:center; }
+  .adm-list-tools select{ flex:1; min-height:44px; padding:8px; font:inherit; font-size:13px; border:1px solid var(--divider); background:#fff; }
+  .adm-count{ font-size:12px; color:#8a8683; white-space:nowrap; }
+  .adm-list-body{ overflow-y:auto; flex:1; -webkit-overflow-scrolling:touch; }
+  .adm-row{ display:flex; align-items:center; gap:12px; width:100%; padding:10px 14px; background:none; border:0; border-bottom:1px solid #eeece8; border-left:3px solid transparent; text-align:left; font:inherit; color:inherit; cursor:pointer; }
+  .adm-row:hover{ background:#faf8f1; }
+  .adm-row.is-selected{ background:#f6f1de; border-left-color:var(--gold); }
+  .adm-thumb{ flex:none; width:56px; height:56px; background:#ece9e3; object-fit:cover; display:block; }
+  .adm-row-main{ min-width:0; flex:1; }
+  .adm-row-name{ display:block; font-weight:700; font-size:15px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .adm-row-meta{ display:block; font-size:12.5px; color:#8a8683; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:1px; }
+  .adm-tags{ display:flex; flex-wrap:wrap; gap:4px; margin-top:5px; }
+  .tag{ font-size:10px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:2px 6px; }
+  .tag-avail{ background:#e6f2ea; color:#2f7d4f; }
+  .tag-sold{ background:#f3e3e3; color:var(--danger); }
+  .tag-us{ background:#e4e8f4; color:#2f4a8f; }
+  .tag-warn{ background:#fbf0d4; color:#8a6410; }
+  .adm-empty{ padding:36px 20px; text-align:center; color:#8a8683; font-size:14px; }
+
+  .adm-editor{ overflow-y:auto; background:var(--bg); -webkit-overflow-scrolling:touch; position:relative; }
+  .adm-editor-inner{ max-width:860px; margin:0 auto; padding:24px 24px 110px; }
+  .adm-welcome{ min-height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:14px; padding:40px; color:#8a8683; }
+  .adm-welcome h2{ font-size:24px; color:var(--cw-green); }
+  .adm-welcome p{ margin:0; max-width:36ch; font-size:15px; line-height:1.6; }
+  .adm-ed-head{ display:flex; align-items:center; gap:12px; margin-bottom:18px; flex-wrap:wrap; }
+  .btn.adm-back{ display:none; }
+  .adm-ed-title{ font-size:26px; color:var(--cw-green); margin:0; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; }
+  .adm-card{ background:#fff; border:1px solid var(--divider); margin-bottom:16px; }
+  .adm-card > h3{ font-size:15px; letter-spacing:.06em; text-transform:uppercase; padding:13px 18px; border-bottom:1px solid var(--divider); color:var(--cw-green); }
+  .adm-card-body{ padding:18px; }
+  .form-grid{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+  .field{ display:flex; flex-direction:column; gap:5px; min-width:0; }
+  .field.span-2{ grid-column:span 2; } .field.span-4{ grid-column:1/-1; }
+  .field label, .lbl{ font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#6b6764; }
+  .field input[type=text], .field textarea{ padding:10px 12px; font:inherit; font-size:15px; border:1px solid var(--divider); background:#fff; width:100%; }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--gold); box-shadow:0 0 0 3px rgba(184,165,98,.25); }
+  .field textarea{ resize:vertical; min-height:150px; line-height:1.55; }
+  .hint{ font-size:12.5px; color:#8a8683; margin:6px 0 0; line-height:1.5; }
+  .switches{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+  .switch{ display:flex; align-items:center; gap:12px; padding:12px 14px; border:1px solid var(--divider); cursor:pointer; background:#fff; user-select:none; }
+  .switch:hover{ border-color:var(--gold); }
+  .switch input{ position:absolute; opacity:0; pointer-events:none; }
+  .switch .track{ flex:none; width:42px; height:24px; border-radius:12px; background:#cfcbc4; position:relative; transition:background .2s; }
+  .switch .track::after{ content:""; position:absolute; top:3px; left:3px; width:18px; height:18px; border-radius:50%; background:#fff; transition:transform .2s; box-shadow:0 1px 2px rgba(0,0,0,.3); }
+  .switch input:checked + .track{ background:var(--cw-green); }
+  .switch input:checked + .track::after{ transform:translateX(18px); background:var(--gold); }
+  .switch input:focus-visible + .track{ outline:2px solid var(--gold); outline-offset:2px; }
+  .switch b{ display:block; font-size:14.5px; }
+  .switch small{ display:block; font-size:12px; color:#8a8683; margin-top:1px; line-height:1.35; }
+  .adm-bar{ position:sticky; bottom:0; z-index:10; display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:12px 24px; background:rgba(255,255,255,.96); border-top:1px solid var(--divider); backdrop-filter:blur(6px); padding-bottom:max(12px,env(safe-area-inset-bottom)); }
+  .adm-dirty{ font-size:13px; color:#8a6410; font-weight:600; display:none; }
+  .adm-dirty.on{ display:inline; }
+  .adm-spacer{ flex:1; }
+  .btn{ display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:11px 20px; font-family:'Oswald',sans-serif; font-weight:500; font-size:14px; letter-spacing:.04em; text-transform:uppercase; cursor:pointer; border:1px solid transparent; min-height:44px; }
   .btn-primary{ background:var(--gold); color:var(--cw-green); }
-  .btn-primary:hover{ background:var(--gold-dark); color:#fff; }
-  .btn-ghost{ background:transparent; border:1px solid var(--divider); color:var(--text); }
+  .btn-primary:hover:not(:disabled){ background:var(--gold-dark); color:#fff; }
+  .btn-primary:disabled{ opacity:.6; cursor:wait; }
+  .btn-ghost{ background:transparent; border-color:var(--divider); color:var(--text); }
   .btn-ghost:hover{ background:#f0efec; }
-  .btn-danger{ background:transparent; color:var(--danger); border:1px solid var(--danger); }
+  .btn-danger{ background:transparent; color:var(--danger); border-color:var(--danger); }
   .btn-danger:hover{ background:var(--danger); color:#fff; }
-  .btn-small{ padding:6px 12px; font-size:11px; }
-
-  table{ width:100%; border-collapse:collapse; }
-  th{ text-align:left; font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:#8a8683; padding:10px 20px; border-bottom:1px solid var(--divider); }
-  td{ padding:12px 20px; border-bottom:1px solid var(--divider); font-size:14px; vertical-align:middle; }
-  tr:last-child td{ border-bottom:0; }
-  .thumb{ width:48px; height:48px; object-fit:cover; background:#eee; display:block; }
-  .badge{ display:inline-block; padding:3px 9px; font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; }
-  .badge-sold{ background:color-mix(in srgb, var(--danger) 15%, transparent); color:var(--danger); }
-  .badge-available{ background:color-mix(in srgb, #2f7d4f 15%, transparent); color:#2f7d4f; }
-  .row-actions{ display:flex; gap:8px; }
-  .empty{ padding:40px 20px; text-align:center; color:#8a8683; font-size:14px; }
-
-  /* --- form --- */
-  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:20px; }
-  .field{ display:flex; flex-direction:column; gap:5px; }
-  .field.span-2{ grid-column:1/-1; }
-  .field label{ font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:#6b6764; }
-  .field input[type=text], .field textarea{ padding:9px 11px; font-size:14px; border:1px solid var(--divider); font-family:inherit; }
-  .field input:focus, .field textarea:focus{ outline:2px solid var(--gold); outline-offset:0; border-color:var(--gold); }
-  .field textarea{ resize:vertical; min-height:70px; }
-  .field.checkbox{ flex-direction:row; align-items:center; gap:8px; }
-  .field.checkbox label{ font-size:14px; text-transform:none; font-weight:600; color:var(--text); }
-  .form-actions{ display:flex; gap:10px; padding:16px 20px; border-top:1px solid var(--divider); }
-  .status{ font-size:13px; padding:10px 20px; display:none; }
-  .status.ok{ display:block; background:#eaf5ee; color:#2f7d4f; }
-  .status.err{ display:block; background:#fbeaea; color:var(--danger); }
-  .hint{ font-size:12px; color:#8a8683; margin:0; padding:0 20px 16px; }
+  .btn-add{ background:var(--cw-green); color:var(--gold); width:100%; }
+  .btn-add:hover{ background:var(--gold); color:var(--cw-green); }
 
   /* --- gallery manager --- */
-  .gallery{ display:grid; grid-template-columns:repeat(auto-fill, minmax(96px, 1fr)); gap:10px; margin-bottom:10px; }
+  .gallery{ display:grid; grid-template-columns:repeat(auto-fill, minmax(110px, 1fr)); gap:10px; margin-bottom:12px; }
+  .gallery:empty{ display:none; }
   .gallery-item{ position:relative; aspect-ratio:1; background:#eee; cursor:grab; border:1px solid var(--divider); }
   .gallery-item:active{ cursor:grabbing; }
   .gallery-item img{ width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; }
-  .gallery-item .cover-badge{ position:absolute; bottom:0; left:0; right:0; background:rgba(14,43,38,.85); color:var(--gold); font-size:9px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; text-align:center; padding:3px 0; }
-  .gallery-item .remove-btn{ position:absolute; top:3px; right:3px; width:20px; height:20px; border:0; border-radius:50%; background:rgba(163,59,59,.9); color:#fff; font-size:13px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+  .gallery-item .cover-badge{ position:absolute; bottom:0; left:0; right:0; background:rgba(14,43,38,.88); color:var(--gold); font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; text-align:center; padding:4px 0; }
+  .gallery-item .remove-btn{ position:absolute; top:4px; right:4px; width:26px; height:26px; border:0; border-radius:50%; background:rgba(163,59,59,.92); color:#fff; font-size:16px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
   .gallery-item .remove-btn:hover{ background:var(--danger); }
-  .gallery-item.uploading{ display:flex; align-items:center; justify-content:center; font-size:10px; color:#8a8683; text-align:center; padding:4px; }
-  .gallery-drop{ border:2px dashed var(--divider); padding:18px; text-align:center; font-size:13px; color:#8a8683; cursor:pointer; transition:border-color .15s ease, background .15s ease; }
+  .gallery-item.uploading{ display:flex; align-items:center; justify-content:center; font-size:11px; color:#8a8683; text-align:center; padding:4px; cursor:default; }
+  .gallery-drop{ display:block; border:2px dashed var(--divider); padding:22px 16px; text-align:center; font-size:14px; color:#8a8683; cursor:pointer; transition:border-color .15s, background .15s; line-height:1.5; }
   .gallery-drop:hover, .gallery-drop.drag-over{ border-color:var(--gold); background:#faf8f1; color:var(--text); }
+  .gallery-drop strong{ color:var(--cw-green); }
   .gallery-drop input{ display:none; }
 
-  /* --- phones & small tablets --- */
+  /* --- toast --- */
+  #toast{ position:fixed; left:50%; bottom:90px; transform:translate(-50%,20px); z-index:100; max-width:min(92vw,520px); padding:13px 18px; background:var(--cw-green); color:#fff; font-size:14px; line-height:1.4; border-left:4px solid var(--gold); box-shadow:0 10px 30px rgba(0,0,0,.3); opacity:0; pointer-events:none; transition:opacity .2s, transform .2s; }
+  #toast.on{ opacity:1; transform:translate(-50%,0); }
+  #toast.err{ border-left-color:#e07070; background:#4a1f1f; }
+
+  /* --- tablets & phones: list and editor take turns --- */
   html{ -webkit-text-size-adjust:100%; }
+  @media (max-width:1000px){
+    .adm-shell{ grid-template-columns:1fr; height:auto; min-height:calc(100vh - 62px); }
+    .adm-list{ border-right:0; }
+    .adm-list-body{ overflow:visible; }
+    .adm-editor{ display:none; overflow:visible; }
+    #dashboard.is-editing .adm-list{ display:none; }
+    #dashboard.is-editing .adm-editor{ display:block; }
+    .btn.adm-back{ display:inline-flex; }
+    .adm-welcome{ display:none; }
+    .adm-top{ padding:8px 14px; flex-wrap:wrap; }
+    .adm-stats{ order:3; width:100%; margin:0; }
+    .adm-stat{ flex:1; }
+    .adm-editor-inner{ padding:16px 14px 120px; }
+    .form-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .field.span-4{ grid-column:1/-1; }
+    .adm-bar{ padding:10px 14px max(10px,env(safe-area-inset-bottom)); position:fixed; left:0; right:0; }
+    #toast{ bottom:96px; }
+  }
   @media (max-width:640px){
-    main{ padding:20px 0 60px; }
-    .wrap{ padding:0 14px; }
-    .form-grid{ grid-template-columns:1fr; padding:16px; }
-    .field input[type=text], .field textarea, .gate-input input{ font-size:16px; padding:11px 12px; }
-    .field.checkbox input{ width:22px; height:22px; }
-    .form-actions{ padding:14px 16px; }
-    .form-actions .btn{ flex:1; justify-content:center; min-height:46px; }
-    .panel-head{ padding:14px 16px; }
-    .hint{ padding:0 16px 14px; }
-    .btn-small{ padding:9px 12px; font-size:12px; }
-    header.top a.logout{ display:inline-flex; align-items:center; min-height:44px; }
+    .adm-brand span{ display:none; }
+    .adm-top-links{ margin-left:auto; }
+    .form-grid{ grid-template-columns:1fr; }
+    .field.span-2, .field.span-4{ grid-column:1/-1; }
+    .switches{ grid-template-columns:1fr; }
+    .field input[type=text], .field textarea, .gate-input input, .adm-search, .adm-list-tools select{ font-size:16px; }
+    .adm-bar .btn{ flex:1; }
+    .adm-bar .adm-spacer, .adm-bar .adm-dirty{ display:none; }
     .gate-box{ padding:28px 20px 24px; }
-    .gallery{ grid-template-columns:repeat(auto-fill, minmax(84px, 1fr)); }
-    .gallery-item .remove-btn{ width:28px; height:28px; font-size:16px; }
-    /* horse list as stacked cards */
-    #tableWrap table, #tableWrap tbody, #tableWrap tr, #tableWrap td{ display:block; width:100%; }
-    #tableWrap thead{ display:none; }
-    #tableWrap tr{ position:relative; padding:14px 16px 14px 80px; min-height:92px; border-bottom:1px solid var(--divider); }
-    #tableWrap tr:last-child{ border-bottom:0; }
-    #tableWrap td{ padding:2px 0; border:0; font-size:14px; }
-    #tableWrap td:first-child{ position:absolute; left:16px; top:16px; width:auto; padding:0; }
-    #tableWrap .thumb{ width:52px; height:52px; }
-    #tableWrap td:nth-child(3):not(:empty)::before{ content:"Age: "; color:#8a8683; }
-    #tableWrap td:nth-child(4):not(:empty)::before{ content:"Price: "; color:#8a8683; }
-    #tableWrap td:nth-child(5){ margin-top:4px; }
-    #tableWrap .row-actions{ flex-wrap:wrap; margin-top:8px; }
-    #tableWrap .row-actions .btn{ min-height:40px; }
+    .gallery{ grid-template-columns:repeat(auto-fill, minmax(92px, 1fr)); }
   }
 </style>
 </head>
@@ -172,121 +220,145 @@
 </div>
 
 <div id="dashboard">
-  <header class="top">
-    <div class="wrap">
-      <div>
-        <span class="sub">Cornerwood Stud</span>
-        <h1>Horses for sale, admin</h1>
-      </div>
-      <a class="logout" id="logoutBtn">Log out</a>
+  <header class="adm-top">
+    <div class="adm-brand"><img src="/assets/cornerwood-logo.svg" alt="Cornerwood Stud"><span>Horse admin</span></div>
+    <div class="adm-stats" aria-label="Totals">
+      <div class="adm-stat"><b id="statAll">0</b><small>Horses</small></div>
+      <div class="adm-stat"><b id="statAvail">0</b><small>For sale</small></div>
+      <div class="adm-stat"><b id="statSold">0</b><small>Sold</small></div>
     </div>
+    <nav class="adm-top-links">
+      <a href="/horses" target="_blank" rel="noopener">View site</a>
+      <a id="logoutBtn" role="button" tabindex="0">Log out</a>
+    </nav>
   </header>
 
-  <main class="wrap">
-    <div class="panel">
-      <div class="panel-head">
-        <h2 id="formTitle">Add a horse</h2>
-        <button type="button" class="btn btn-ghost btn-small" id="cancelEditBtn" style="display:none;">Cancel edit</button>
+  <div class="adm-shell">
+    <aside class="adm-list" aria-label="Horses">
+      <div class="adm-list-head">
+        <button type="button" class="btn btn-add" id="addBtn">+ Add a horse</button>
+        <input class="adm-search" id="search" type="search" placeholder="Search name, breed or year" autocomplete="off">
+        <div class="adm-filters" id="filters"></div>
+        <div class="adm-list-tools">
+          <select id="sort" aria-label="Sort horses">
+            <option value="default">Site order</option>
+            <option value="name">Name A to Z</option>
+            <option value="newest">Recently added</option>
+            <option value="year">Year born (newest)</option>
+          </select>
+          <span class="adm-count" id="count"></span>
+        </div>
       </div>
-      <div class="status" id="formStatus"></div>
-      <form id="horseForm">
-        <div class="form-grid">
-          <div class="field span-2">
-            <label for="f-name">Name *</label>
-            <input type="text" id="f-name" required>
+      <div class="adm-list-body" id="listBody"><div class="adm-empty">Loading horses&hellip;</div></div>
+    </aside>
+
+    <section class="adm-editor" id="editor" aria-label="Edit horse">
+      <div class="adm-welcome" id="welcome">
+        <h2>Pick a horse to edit</h2>
+        <p>Choose a horse from the list, or add a new one. Changes go live on the website as soon as you save.</p>
+      </div>
+      <form id="horseForm" style="display:none;" novalidate>
+        <div class="adm-editor-inner">
+          <div class="adm-ed-head">
+            <button type="button" class="btn btn-ghost adm-back" id="backBtn">&larr; All horses</button>
+            <h2 class="adm-ed-title" id="edTitle">New horse</h2>
           </div>
-          <div class="field">
-            <label for="f-age">Age / year born</label>
-            <input type="text" id="f-age" placeholder="e.g. 2019">
+
+          <div class="adm-card">
+            <h3>Details</h3>
+            <div class="adm-card-body"><div class="form-grid">
+              <div class="field span-4"><label for="f-name">Name *</label><input type="text" id="f-name" autocomplete="off" required></div>
+              <div class="field"><label for="f-age">Year born</label><input type="text" id="f-age" inputmode="numeric" placeholder="2019"></div>
+              <div class="field"><label for="f-height">Height (hh)</label><input type="text" id="f-height" inputmode="decimal" placeholder="16.1"></div>
+              <div class="field"><label for="f-sex">Sex</label><input type="text" id="f-sex" placeholder="Gelding"></div>
+              <div class="field"><label for="f-price">Price</label><input type="text" id="f-price" placeholder="POA or £12,500"></div>
+              <div class="field span-2"><label for="f-breed">Breed</label><input type="text" id="f-breed" placeholder="Irish Sport Horse"></div>
+              <div class="field span-2"><label for="f-categories">Categories</label><input type="text" id="f-categories" placeholder="Allrounder // Riding Club // Hacking"></div>
+            </div></div>
           </div>
-          <div class="field">
-            <label for="f-breed">Breed</label>
-            <input type="text" id="f-breed" placeholder="e.g. Irish Sport Horse">
+
+          <div class="adm-card">
+            <h3>Status</h3>
+            <div class="adm-card-body"><div class="switches">
+              <label class="switch"><input type="checkbox" id="f-sold"><span class="track"></span><span><b>Sold</b><small>Shows the SOLD ribbon on the website.</small></span></label>
+              <label class="switch"><input type="checkbox" id="f-us"><span class="track"></span><span><b>Exported to the USA</b><small>Adds the US flag under SOLD.</small></span></label>
+            </div></div>
           </div>
-          <div class="field">
-            <label for="f-sex">Sex</label>
-            <input type="text" id="f-sex" placeholder="e.g. Gelding">
+
+          <div class="adm-card">
+            <h3>Photos</h3>
+            <div class="adm-card-body">
+              <div class="gallery" id="gallery"></div>
+              <label class="gallery-drop" id="galleryDrop" for="f-photo-input">
+                <strong>Drag photos here</strong> or tap to choose files.<br>The first photo is the cover. Drag a photo to reorder it.
+                <input type="file" id="f-photo-input" accept="image/*" multiple>
+              </label>
+              <p class="hint" id="photoHint"></p>
+            </div>
           </div>
-          <div class="field">
-            <label for="f-height">Height</label>
-            <input type="text" id="f-height" placeholder="e.g. 16">
+
+          <div class="adm-card">
+            <h3>Videos</h3>
+            <div class="adm-card-body">
+              <div class="field"><label for="f-videos">YouTube links, one per line</label>
+              <textarea id="f-videos" style="min-height:90px;" placeholder="https://www.youtube.com/watch?v=..."></textarea></div>
+              <p class="hint">Any YouTube link works (watch, share or embed). Videos appear under the description.</p>
+            </div>
           </div>
-          <div class="field span-2">
-            <label for="f-categories">Categories</label>
-            <input type="text" id="f-categories" placeholder="e.g. Allrounder // Riding Club // Hacking">
-          </div>
-          <div class="field">
-            <label for="f-price">Price</label>
-            <input type="text" id="f-price" placeholder="e.g. POA or £12,500">
-          </div>
-          <div class="field checkbox" style="align-self:end;">
-            <input type="checkbox" id="f-sold">
-            <label for="f-sold">Sold</label>
-          </div>
-          <div class="field span-2">
-            <label>Photos</label>
-            <div class="gallery" id="gallery"></div>
-            <label class="gallery-drop" id="galleryDrop" for="f-photo-input">
-              Drag &amp; drop photos here, or click to choose files, first photo is the cover. Drag thumbnails to reorder.
-              <input type="file" id="f-photo-input" accept="image/*" multiple>
-            </label>
-          </div>
-          <div class="field span-2">
-            <label for="f-description">Description (optional, shown under specs)</label>
-            <textarea id="f-description" style="min-height:140px;"></textarea>
+
+          <div class="adm-card">
+            <h3>Description</h3>
+            <div class="adm-card-body">
+              <div class="field"><textarea id="f-description" aria-label="Description"></textarea></div>
+              <p class="hint">Shown under the details on the horse's page. Blank lines make new paragraphs.</p>
+            </div>
           </div>
         </div>
-        <div class="form-actions">
-          <button type="submit" class="btn btn-primary" id="submitBtn">Add horse</button>
+
+        <div class="adm-bar">
+          <button type="submit" class="btn btn-primary" id="saveBtn">Save changes</button>
+          <button type="button" class="btn btn-ghost" id="cancelBtn">Cancel</button>
+          <span class="adm-dirty" id="dirty">Unsaved changes</span>
+          <span class="adm-spacer"></span>
+          <button type="button" class="btn btn-danger" id="deleteBtn">Delete horse</button>
         </div>
       </form>
-    </div>
-
-    <div class="panel">
-      <div class="panel-head">
-        <h2>Current horses</h2>
-      </div>
-      <div id="tableWrap">
-        <div class="empty">Loading…</div>
-      </div>
-    </div>
-  </main>
+    </section>
+  </div>
 </div>
+
+<div id="toast" role="status" aria-live="polite"></div>
 
 <script>
 (function(){
   var SUPABASE_URL = 'https://jioacvzzweugnacuzoyo.supabase.co';
   var SUPABASE_KEY = 'sb_publishable_AP2frH528wRVmUIq_hSgLw_f7aq5oRf';
-
   var sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-  var editingId = null;
+
+  var $ = function(id){ return document.getElementById(id); };
+  var gate = $('gate'), dashboard = $('dashboard'), gateForm = $('gateForm'), gateError = $('gateError');
+
+  var horses = [];           // all rows from the database
+  var selectedId = null;     // id of the horse being edited, or null for a new one
+  var isNew = false;
   var currentPhotos = [];
-  var uploadFolderId = (crypto.randomUUID ? crypto.randomUUID() : 'tmp-' + Date.now());
+  var uploadFolderId = newId();
   var gallerySortable = null;
+  var baseline = '';         // serialised form state when it was loaded (for "unsaved changes")
+  var filter = 'all', query = '', sortBy = 'default';
 
-  var gate = document.getElementById('gate');
-  var dashboard = document.getElementById('dashboard');
-  var gateForm = document.getElementById('gateForm');
-  var gateError = document.getElementById('gateError');
-
-  function unlock(){
-    gate.style.display = 'none';
-    dashboard.style.display = 'block';
-    loadHorses();
+  function newId(){ return crypto.randomUUID ? crypto.randomUUID() : 'tmp-' + Date.now(); }
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+    });
   }
 
-  function lock(){
-    dashboard.style.display = 'none';
-    gate.style.display = 'flex';
-  }
-
-  sb.auth.getSession().then(function(res){
-    if (res.data && res.data.session) unlock();
-  });
-
-  sb.auth.onAuthStateChange(function(event, session){
-    if (event === 'SIGNED_OUT') lock();
-  });
+  /* ---------- sign in / out ---------- */
+  function unlock(){ gate.style.display = 'none'; dashboard.style.display = 'block'; loadHorses(); }
+  function lock(){ dashboard.style.display = 'none'; gate.style.display = 'flex'; }
+  sb.auth.getSession().then(function(res){ if (res.data && res.data.session) unlock(); });
+  sb.auth.onAuthStateChange(function(event){ if (event === 'SIGNED_OUT') lock(); });
 
   var FAIL_KEY = 'cw_admin_fails';
   var gateBtn = document.getElementById('gateBtn');
@@ -359,237 +431,270 @@
     });
   });
 
-  document.getElementById('logoutBtn').addEventListener('click', function(){
-    sb.auth.signOut();
-  });
+  $('logoutBtn').addEventListener('click', function(){ sb.auth.signOut(); });
+  $('logoutBtn').addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); sb.auth.signOut(); } });
 
-  function esc(s){
-    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
-      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
-    });
+  /* ---------- toast ---------- */
+  var toastTimer = null;
+  function toast(msg, isErr){
+    var t = $('toast');
+    t.textContent = msg; t.className = (isErr ? 'err ' : '') + 'on';
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.className = isErr ? 'err' : ''; }, isErr ? 6000 : 3200);
   }
 
-  function renderGallery(){
-    var el = document.getElementById('gallery');
-    el.innerHTML = currentPhotos.map(function(url, i){
-      return '<div class="gallery-item" data-url="' + esc(url) + '">' +
-        '<img src="' + esc(url) + '" alt="">' +
-        (i === 0 ? '<div class="cover-badge">Cover</div>' : '') +
-        '<button type="button" class="remove-btn" data-remove="' + i + '" title="Remove">&times;</button>' +
-        '</div>';
+  /* ---------- list ---------- */
+  function needsAttention(h){ return !h.photo || !(h.description && h.description.trim()); }
+
+  function loadHorses(keepSelection){
+    return sb.from('horses').select('*').order('sort_order', { ascending: true }).order('created_at', { ascending: true })
+      .then(function(res){
+        if (res.error) { $('listBody').innerHTML = '<div class="adm-empty">Could not load horses: ' + esc(res.error.message) + '</div>'; return; }
+        horses = res.data || [];
+        renderStats(); renderFilters(); renderList();
+      });
+  }
+
+  function renderStats(){
+    var sold = horses.filter(function(h){ return h.sold; }).length;
+    $('statAll').textContent = horses.length;
+    $('statSold').textContent = sold;
+    $('statAvail').textContent = horses.length - sold;
+  }
+
+  function renderFilters(){
+    var defs = [
+      ['all', 'All', horses.length],
+      ['avail', 'For sale', horses.filter(function(h){ return !h.sold; }).length],
+      ['sold', 'Sold', horses.filter(function(h){ return h.sold; }).length],
+      ['attn', 'Needs attention', horses.filter(needsAttention).length]
+    ];
+    $('filters').innerHTML = defs.map(function(d){
+      return '<button type="button" class="adm-filter' + (filter === d[0] ? ' is-on' : '') + '" data-filter="' + d[0] + '">' + d[1] + '<em>' + d[2] + '</em></button>';
     }).join('');
+  }
+
+  function visibleHorses(){
+    var q = query.trim().toLowerCase();
+    var list = horses.filter(function(h){
+      if (filter === 'avail' && h.sold) return false;
+      if (filter === 'sold' && !h.sold) return false;
+      if (filter === 'attn' && !needsAttention(h)) return false;
+      if (!q) return true;
+      return [h.name, h.breed, h.age, h.sex, h.categories].join(' ').toLowerCase().indexOf(q) !== -1;
+    });
+    if (sortBy === 'name') list.sort(function(a, b){ return (a.name || '').localeCompare(b.name || ''); });
+    else if (sortBy === 'newest') list.sort(function(a, b){ return (b.created_at || '').localeCompare(a.created_at || ''); });
+    else if (sortBy === 'year') list.sort(function(a, b){ return (parseInt(b.age, 10) || 0) - (parseInt(a.age, 10) || 0); });
+    return list;
+  }
+
+  function renderList(){
+    var list = visibleHorses();
+    $('count').textContent = list.length + ' shown';
+    if (!list.length) { $('listBody').innerHTML = '<div class="adm-empty">' + (horses.length ? 'No horses match.' : 'No horses yet. Add your first one.') + '</div>'; return; }
+    $('listBody').innerHTML = list.map(function(h){
+      var meta = [h.age, h.breed, h.sex].filter(Boolean).join(' \u00b7 ');
+      var tags = '<span class="tag ' + (h.sold ? 'tag-sold' : 'tag-avail') + '">' + (h.sold ? 'Sold' : 'For sale') + '</span>' +
+        (h.exported_us ? '<span class="tag tag-us">USA</span>' : '') +
+        (!h.photo ? '<span class="tag tag-warn">No photo</span>' : '') +
+        (!(h.description && h.description.trim()) ? '<span class="tag tag-warn">No description</span>' : '');
+      return '<button type="button" class="adm-row' + (h.id === selectedId ? ' is-selected' : '') + '" data-id="' + esc(h.id) + '">' +
+        (h.photo ? '<img class="adm-thumb" loading="lazy" src="' + esc(h.photo) + '" alt="">' : '<span class="adm-thumb"></span>') +
+        '<span class="adm-row-main"><span class="adm-row-name">' + esc(h.name) + '</span><span class="adm-row-meta">' + esc(meta || 'No details yet') + '</span><span class="adm-tags">' + tags + '</span></span></button>';
+    }).join('');
+  }
+
+  $('filters').addEventListener('click', function(e){
+    var b = e.target.closest('[data-filter]'); if (!b) return;
+    filter = b.getAttribute('data-filter'); renderFilters(); renderList();
+  });
+  $('search').addEventListener('input', function(){ query = this.value; renderList(); });
+  $('sort').addEventListener('change', function(){ sortBy = this.value; renderList(); });
+  $('listBody').addEventListener('click', function(e){
+    var row = e.target.closest('[data-id]'); if (!row) return;
+    if (!confirmDiscard()) return;
+    var h = horses.find(function(x){ return x.id === row.getAttribute('data-id'); });
+    if (h) openHorse(h);
+  });
+
+  /* ---------- editor ---------- */
+  function formState(){
+    return JSON.stringify([
+      $('f-name').value, $('f-age').value, $('f-breed').value, $('f-sex').value, $('f-height').value,
+      $('f-categories').value, $('f-price').value, $('f-sold').checked, $('f-us').checked,
+      $('f-description').value, $('f-videos').value, currentPhotos
+    ]);
+  }
+  function refreshDirty(){ $('dirty').classList.toggle('on', formState() !== baseline); }
+  function confirmDiscard(){
+    if ($('horseForm').style.display === 'none' || formState() === baseline) return true;
+    return confirm('You have unsaved changes. Discard them?');
+  }
+  function showEditor(){
+    $('welcome').style.display = 'none';
+    $('horseForm').style.display = 'block';
+    dashboard.classList.add('is-editing');
+    $('editor').scrollTop = 0; window.scrollTo(0, 0);
+  }
+  function closeEditor(){
+    selectedId = null; isNew = false;
+    $('horseForm').style.display = 'none'; $('welcome').style.display = '';
+    dashboard.classList.remove('is-editing');
+    renderList();
+  }
+
+  function setFields(h){
+    $('f-name').value = h.name || ''; $('f-age').value = h.age || ''; $('f-breed').value = h.breed || '';
+    $('f-sex').value = h.sex || ''; $('f-height').value = h.height || ''; $('f-categories').value = h.categories || '';
+    $('f-price').value = h.price || ''; $('f-sold').checked = !!h.sold; $('f-us').checked = !!h.exported_us;
+    $('f-description').value = h.description || '';
+    $('f-videos').value = (h.videos || []).join('\n');
+    currentPhotos = (h.photos && h.photos.length) ? h.photos.slice() : (h.photo ? [h.photo] : []);
+    renderGallery();
+    baseline = formState(); refreshDirty();
+  }
+
+  function openHorse(h){
+    selectedId = h.id; isNew = false; uploadFolderId = h.id;
+    setFields(h);
+    $('edTitle').textContent = h.name || 'Untitled horse';
+    $('deleteBtn').style.display = '';
+    $('saveBtn').textContent = 'Save changes';
+    showEditor(); renderList();
+  }
+
+  function openNew(){
+    if (!confirmDiscard()) return;
+    selectedId = null; isNew = true; uploadFolderId = newId();
+    setFields({});
+    $('edTitle').textContent = 'New horse';
+    $('deleteBtn').style.display = 'none';
+    $('saveBtn').textContent = 'Add horse';
+    showEditor(); renderList();
+    $('f-name').focus();
+  }
+
+  $('addBtn').addEventListener('click', openNew);
+  $('backBtn').addEventListener('click', function(){ if (confirmDiscard()) closeEditor(); });
+  $('cancelBtn').addEventListener('click', function(){
+    if (!confirmDiscard()) return;
+    if (isNew) closeEditor(); else { var h = horses.find(function(x){ return x.id === selectedId; }); if (h) setFields(h); }
+  });
+  $('horseForm').addEventListener('input', refreshDirty);
+  $('horseForm').addEventListener('change', refreshDirty);
+  $('f-name').addEventListener('input', function(){ $('edTitle').textContent = this.value.trim() || (isNew ? 'New horse' : 'Untitled horse'); });
+  window.addEventListener('beforeunload', function(e){ if ($('horseForm').style.display !== 'none' && formState() !== baseline) { e.preventDefault(); e.returnValue = ''; } });
+  document.addEventListener('keydown', function(e){
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 's' && $('horseForm').style.display !== 'none') { e.preventDefault(); $('horseForm').requestSubmit(); }
+  });
+
+  /* ---------- photos ---------- */
+  function renderGallery(){
+    var el = $('gallery');
+    el.innerHTML = currentPhotos.map(function(url, i){
+      return '<div class="gallery-item" data-url="' + esc(url) + '"><img src="' + esc(url) + '" alt="">' +
+        (i === 0 ? '<div class="cover-badge">Cover</div>' : '') +
+        '<button type="button" class="remove-btn" data-remove="' + i + '" aria-label="Remove photo">&times;</button></div>';
+    }).join('');
+    $('photoHint').textContent = currentPhotos.length ? currentPhotos.length + ' photo' + (currentPhotos.length === 1 ? '' : 's') + '. Removing a photo here unlinks it from the horse.' : 'No photos yet. Horses without a photo show a blank box on the website.';
     el.querySelectorAll('[data-remove]').forEach(function(btn){
       btn.addEventListener('click', function(e){
         e.preventDefault();
         currentPhotos.splice(parseInt(btn.getAttribute('data-remove'), 10), 1);
-        renderGallery();
+        renderGallery(); refreshDirty();
       });
     });
     if (!gallerySortable) {
       gallerySortable = new Sortable(el, {
-        animation: 150,
+        animation: 150, filter: '.uploading',
         onEnd: function(evt){
           var moved = currentPhotos.splice(evt.oldIndex, 1)[0];
           currentPhotos.splice(evt.newIndex, 0, moved);
-          renderGallery();
+          renderGallery(); refreshDirty();
         }
       });
     }
-  }
-
-  function addUploadingTile(){
-    var el = document.getElementById('gallery');
-    var tile = document.createElement('div');
-    tile.className = 'gallery-item uploading';
-    tile.textContent = 'Uploading…';
-    el.appendChild(tile);
-    return tile;
   }
 
   function uploadFiles(fileList){
-    var files = [...fileList].filter(function(f){ return f.type.indexOf('image/') === 0; });
+    var files = Array.prototype.slice.call(fileList).filter(function(f){ return f.type.indexOf('image/') === 0; });
+    if (!files.length) { toast('Please choose image files.', true); return; }
     files.forEach(function(file){
-      var tile = addUploadingTile();
+      var tile = document.createElement('div');
+      tile.className = 'gallery-item uploading'; tile.textContent = 'Uploading\u2026';
+      $('gallery').appendChild(tile);
       var ext = (file.name.match(/\.\w+$/) || ['.jpg'])[0];
       var path = 'horses/' + uploadFolderId + '/admin-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8) + ext;
-      sb.storage.from('horse-photos').upload(path, file, { upsert: true, contentType: file.type })
-        .then(function(res){
-          tile.remove();
-          if (res.error) {
-            showStatus('Upload failed: ' + res.error.message, false);
-            return;
-          }
-          var pub = sb.storage.from('horse-photos').getPublicUrl(path);
-          currentPhotos.push(pub.data.publicUrl);
-          renderGallery();
-        });
+      sb.storage.from('horse-photos').upload(path, file, { upsert: true, contentType: file.type }).then(function(res){
+        tile.remove();
+        if (res.error) { toast('Upload failed: ' + res.error.message, true); return; }
+        currentPhotos.push(sb.storage.from('horse-photos').getPublicUrl(path).data.publicUrl);
+        renderGallery(); refreshDirty();
+      });
     });
   }
-
-  var galleryDrop = document.getElementById('galleryDrop');
-  var galleryInput = document.getElementById('f-photo-input');
-  galleryInput.addEventListener('change', function(){
-    uploadFiles(galleryInput.files);
-    galleryInput.value = '';
-  });
-  ['dragover','dragenter'].forEach(function(evt){
-    galleryDrop.addEventListener(evt, function(e){ e.preventDefault(); galleryDrop.classList.add('drag-over'); });
-  });
-  ['dragleave','dragend','drop'].forEach(function(evt){
-    galleryDrop.addEventListener(evt, function(e){ galleryDrop.classList.remove('drag-over'); });
-  });
+  var galleryDrop = $('galleryDrop'), galleryInput = $('f-photo-input');
+  galleryInput.addEventListener('change', function(){ uploadFiles(galleryInput.files); galleryInput.value = ''; });
+  ['dragover','dragenter'].forEach(function(n){ galleryDrop.addEventListener(n, function(e){ e.preventDefault(); galleryDrop.classList.add('drag-over'); }); });
+  ['dragleave','dragend','drop'].forEach(function(n){ galleryDrop.addEventListener(n, function(){ galleryDrop.classList.remove('drag-over'); }); });
   galleryDrop.addEventListener('drop', function(e){
     e.preventDefault();
-    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
-      uploadFiles(e.dataTransfer.files);
-    }
+    if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) uploadFiles(e.dataTransfer.files);
   });
 
-  renderGallery();
-
-  function showStatus(msg, ok){
-    var el = document.getElementById('formStatus');
-    el.textContent = msg;
-    el.className = 'status ' + (ok ? 'ok' : 'err');
-    setTimeout(function(){ el.className = 'status'; }, 4000);
+  /* ---------- videos ---------- */
+  function parseVideos(text){
+    var out = [], bad = [];
+    text.split(/\n+/).map(function(l){ return l.trim(); }).filter(Boolean).forEach(function(line){
+      var m = line.match(/(?:youtu\.be\/|youtube(?:-nocookie)?\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/|v\/))([\w-]{11})/i);
+      if (m) out.push('https://www.youtube.com/embed/' + m[1]);
+      else if (/^https?:\/\/(player\.)?vimeo\.com\//i.test(line)) out.push(line);
+      else bad.push(line);
+    });
+    return { list: out.filter(function(v, i, a){ return a.indexOf(v) === i; }), bad: bad };
   }
 
-  function resetForm(){
-    editingId = null;
-    document.getElementById('horseForm').reset();
-    document.getElementById('formTitle').textContent = 'Add a horse';
-    document.getElementById('submitBtn').textContent = 'Add horse';
-    document.getElementById('cancelEditBtn').style.display = 'none';
-    currentPhotos = [];
-    uploadFolderId = (crypto.randomUUID ? crypto.randomUUID() : 'tmp-' + Date.now());
-    renderGallery();
-  }
-
-  document.getElementById('cancelEditBtn').addEventListener('click', resetForm);
-
-  function fillForm(h){
-    editingId = h.id;
-    document.getElementById('f-name').value = h.name || '';
-    document.getElementById('f-age').value = h.age || '';
-    document.getElementById('f-breed').value = h.breed || '';
-    document.getElementById('f-sex').value = h.sex || '';
-    document.getElementById('f-height').value = h.height || '';
-    document.getElementById('f-categories').value = h.categories || '';
-    document.getElementById('f-price').value = h.price || '';
-    document.getElementById('f-sold').checked = !!h.sold;
-    document.getElementById('f-description').value = h.description || '';
-    document.getElementById('formTitle').textContent = 'Edit ' + h.name;
-    document.getElementById('submitBtn').textContent = 'Save changes';
-    document.getElementById('cancelEditBtn').style.display = 'inline-flex';
-    currentPhotos = (h.photos && h.photos.length) ? h.photos.slice() : (h.photo ? [h.photo] : []);
-    uploadFolderId = h.id;
-    renderGallery();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  document.getElementById('horseForm').addEventListener('submit', function(e){
+  /* ---------- save / delete ---------- */
+  $('horseForm').addEventListener('submit', function(e){
     e.preventDefault();
+    var name = $('f-name').value.trim();
+    if (!name) { toast('Please enter a name.', true); $('f-name').focus(); return; }
+    var vids = parseVideos($('f-videos').value);
+    if (vids.bad.length) { toast('Could not read this video link: ' + vids.bad[0], true); $('f-videos').focus(); return; }
+    var val = function(id){ return $(id).value.trim() || null; };
     var payload = {
-      name: document.getElementById('f-name').value.trim(),
-      age: document.getElementById('f-age').value.trim() || null,
-      breed: document.getElementById('f-breed').value.trim() || null,
-      sex: document.getElementById('f-sex').value.trim() || null,
-      height: document.getElementById('f-height').value.trim() || null,
-      categories: document.getElementById('f-categories').value.trim() || null,
-      price: document.getElementById('f-price').value.trim() || null,
-      sold: document.getElementById('f-sold').checked,
-      photo: currentPhotos[0] || null,
-      photos: currentPhotos,
-      description: document.getElementById('f-description').value.trim() || null
+      name: name, age: val('f-age'), breed: val('f-breed'), sex: val('f-sex'), height: val('f-height'),
+      categories: val('f-categories'), price: val('f-price'),
+      sold: $('f-sold').checked, exported_us: $('f-us').checked,
+      photo: currentPhotos[0] || null, photos: currentPhotos,
+      videos: vids.list, description: val('f-description')
     };
-    if (!payload.name) return;
-
-    var req = editingId
-      ? sb.from('horses').update(payload).eq('id', editingId)
-      : sb.from('horses').insert(payload);
-
+    var btn = $('saveBtn'), label = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Saving\u2026';
+    var req = isNew ? sb.from('horses').insert(payload).select().single()
+                    : sb.from('horses').update(payload).eq('id', selectedId).select().single();
     req.then(function(res){
-      if (res.error) {
-        showStatus('Error: ' + res.error.message, false);
-        return;
-      }
-      showStatus(editingId ? 'Horse updated.' : 'Horse added.', true);
-      resetForm();
-      loadHorses();
+      btn.disabled = false; btn.textContent = label;
+      if (res.error) { toast('Could not save: ' + res.error.message, true); return; }
+      toast(isNew ? 'Horse added.' : 'Changes saved. They are live on the website.');
+      var savedId = res.data.id;
+      return loadHorses().then(function(){
+        var h = horses.find(function(x){ return x.id === savedId; });
+        if (h) openHorse(h);
+      });
     });
   });
 
-  function deleteHorse(id, name){
-    if (!confirm('Delete ' + name + '? This can\'t be undone.')) return;
-    sb.from('horses').delete().eq('id', id).then(function(res){
-      if (res.error) {
-        showStatus('Error: ' + res.error.message, false);
-        return;
-      }
-      loadHorses();
+  $('deleteBtn').addEventListener('click', function(){
+    var h = horses.find(function(x){ return x.id === selectedId; }); if (!h) return;
+    if (!confirm('Delete ' + h.name + '? This can\'t be undone.')) return;
+    sb.from('horses').delete().eq('id', h.id).then(function(res){
+      if (res.error) { toast('Could not delete: ' + res.error.message, true); return; }
+      toast(h.name + ' deleted.');
+      baseline = formState(); closeEditor(); loadHorses();
     });
-  }
-
-  function toggleSold(h){
-    sb.from('horses').update({ sold: !h.sold }).eq('id', h.id).then(function(res){
-      if (res.error) {
-        showStatus('Error: ' + res.error.message, false);
-        return;
-      }
-      loadHorses();
-    });
-  }
-
-  function loadHorses(){
-    sb.from('horses').select('*').order('sort_order', { ascending: true }).order('created_at', { ascending: true })
-      .then(function(res){
-        var wrap = document.getElementById('tableWrap');
-        if (res.error) {
-          wrap.innerHTML = '<div class="empty">Error loading horses: ' + esc(res.error.message) + '</div>';
-          return;
-        }
-        var horses = res.data || [];
-        if (!horses.length) {
-          wrap.innerHTML = '<div class="empty">No horses yet, add one above.</div>';
-          return;
-        }
-        var rows = horses.map(function(h){
-          return '<tr>' +
-            '<td>' + (h.photo ? '<img class="thumb" src="' + esc(h.photo) + '" alt="">' : '<div class="thumb"></div>') + '</td>' +
-            '<td><strong>' + esc(h.name) + '</strong><br><span style="color:#8a8683;font-size:12px;">' + esc(h.breed || '') + '</span></td>' +
-            '<td>' + esc(h.age || '') + '</td>' +
-            '<td>' + esc(h.price || '') + '</td>' +
-            '<td><span class="badge ' + (h.sold ? 'badge-sold' : 'badge-available') + '" style="cursor:pointer;" data-toggle="' + h.id + '">' + (h.sold ? 'Sold' : 'Available') + '</span></td>' +
-            '<td><div class="row-actions">' +
-              '<button type="button" class="btn btn-ghost btn-small" data-edit="' + h.id + '">Edit</button>' +
-              '<button type="button" class="btn btn-danger btn-small" data-delete="' + h.id + '" data-name="' + esc(h.name) + '">Delete</button>' +
-            '</div></td>' +
-          '</tr>';
-        }).join('');
-        wrap.innerHTML =
-          '<table><thead><tr>' +
-            '<th></th><th>Name / Breed</th><th>Age</th><th>Price</th><th>Status</th><th>Actions</th>' +
-          '</tr></thead><tbody>' + rows + '</tbody></table>';
-
-        wrap.querySelectorAll('[data-edit]').forEach(function(btn){
-          btn.addEventListener('click', function(){
-            var h = horses.find(function(x){ return x.id === btn.getAttribute('data-edit'); });
-            if (h) fillForm(h);
-          });
-        });
-        wrap.querySelectorAll('[data-delete]').forEach(function(btn){
-          btn.addEventListener('click', function(){
-            deleteHorse(btn.getAttribute('data-delete'), btn.getAttribute('data-name'));
-          });
-        });
-        wrap.querySelectorAll('[data-toggle]').forEach(function(badge){
-          badge.addEventListener('click', function(){
-            var h = horses.find(function(x){ return x.id === badge.getAttribute('data-toggle'); });
-            if (h) toggleSold(h);
-          });
-        });
-      });
-  }
+  });
 })();
 </script>
 </body>
