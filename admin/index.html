@@ -637,7 +637,7 @@
       $('gallery').appendChild(tile);
       var ext = (file.name.match(/\.\w+$/) || ['.jpg'])[0];
       var path = 'horses/' + uploadFolderId + '/admin-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8) + ext;
-      sb.storage.from('horse-photos').upload(path, file, { upsert: true, contentType: file.type }).then(function(res){
+      sb.storage.from('horse-photos').upload(path, file, { upsert: false, contentType: file.type }).then(function(res){
         tile.remove();
         if (res.error) { toast('Upload failed: ' + res.error.message, true); return; }
         currentPhotos.push(sb.storage.from('horse-photos').getPublicUrl(path).data.publicUrl);
